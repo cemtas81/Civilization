@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2693321850349188117
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2693321850349188106}
+  - component: {fileID: 2693321850349188107}
+  - component: {fileID: 2693321850349188105}
+  m_Layer: 0
+  m_Name: pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &2693321850349188106
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2693321850349188117}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2693321850349188107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2693321850349188117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d1ea6dd1300e46408c00e39df5cab90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabs:
+  - {fileID: 1063500868937916, guid: b46460f1bbbc12748b60dcdabbcb01e5, type: 3}
+  - {fileID: 1063500868937916, guid: 7bf8f7abfa5ad954494c488543046f40, type: 3}
+  - {fileID: 1063500868937916, guid: ea8c826b7eac04f468353eb30ea9c703, type: 3}
+  - {fileID: 1063500868937916, guid: 21f2da8ae71959a49b222b9f9ddcb236, type: 3}
+  - {fileID: 1063500868937916, guid: b3278ab1e5dcc2749b40c728866c02f9, type: 3}
+  desiredCircleRadius: 50
+  minSpawnCount: 8
+  maxSpawnCount: 20
+  maxActivePrefabs: 120
+  movableObject: {fileID: 0}
+  nadide: 0.75
+  spawnedPrefabs: []
+  spawnInterval: 3
+  spawnIntervalBoss: 60
+  objectPool: {fileID: 2693321850349188105}
+  BossHere: 0
+--- !u!114 &2693321850349188105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2693321850349188117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f9a11dfd53b3204dba3b16f44b92c25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  objectToPool: {fileID: 6587295368435362768, guid: 8a023d651718fe144bf9bec4366dc365,
+    type: 3}
+  amountToPool: 120
