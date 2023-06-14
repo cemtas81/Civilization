@@ -57,8 +57,10 @@ namespace Pathfinding {
 			} else {
 				// Fire a ray through the scene at the mouse position and place the target where it hits
 				RaycastHit hit;
-				if (Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity, mask)) {
+				if (Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity, mask)) 
+				{
 					newPosition = hit.point;
+				Debug.DrawLine(Input.mousePosition, hit.point);
 					positionFound = true;
 				}
 			}

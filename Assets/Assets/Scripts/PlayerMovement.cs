@@ -90,11 +90,11 @@ public class PlayerMovement : CharacterMovement {
                 target = positionPoint;
                 if (hit.collider.gameObject.CompareTag("Enemy")|| hit.collider.gameObject.CompareTag("Boss"))
                 {
-                    Cursor.SetCursor(texture, Vector2.zero, CursorMode.Auto);
+                    Cursor.SetCursor(texture, new Vector2(Screen.width * .02f, Screen.height * .020f), CursorMode.Auto);
                 }
                 else
                 {
-                    Cursor.SetCursor(texture2, Vector2.zero, CursorMode.Auto);
+                    Cursor.SetCursor(texture2, new Vector2(Screen.width*.02f,Screen.height*.02f), CursorMode.Auto);
                 }
                     
             }
