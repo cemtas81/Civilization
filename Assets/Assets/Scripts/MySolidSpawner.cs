@@ -20,7 +20,7 @@ public class MySolidSpawner : MonoBehaviour
     public float spawnInterval; 
     public float spawnIntervalBoss;  
     public bool BossHere;
-   
+    private BarbScreenCont screen;
     void Start()
     {
         // Initialize the list of spawned prefabs
@@ -29,7 +29,7 @@ public class MySolidSpawner : MonoBehaviour
         // Start the spawn coroutine
         StartCoroutine(SpawnCoroutine());
         StartCoroutine(SpawnCoroutineBoss());
-       
+       screen=FindObjectOfType<BarbScreenCont>();
     }
 
     IEnumerator SpawnCoroutine()
@@ -129,9 +129,9 @@ public class MySolidSpawner : MonoBehaviour
         GameObject prefab = prefabs[prefabIndex + 3]; // add 4 to get prefab 4 or 5
 
         float angle = Random.Range(0f, 360f);
-        float x = movableObject.transform.position.x + desiredCircleRadius * Mathf.Cos(angle);
-        float y = movableObject.transform.position.y;
-        float z = movableObject.transform.position.z + desiredCircleRadius * Mathf.Sin(angle);
+        float x = movableObject.transform.position.x + desiredCircleRadius*7 * Mathf.Cos(angle);
+        screen.ShowBossText();
+        float z = movableObject.transform.position.z + desiredCircleRadius *7* Mathf.Sin(angle);
         Vector3 position = new Vector3(x, 0, z);
         prefab.transform.SetPositionAndRotation(position, Quaternion.identity);
         Instantiate(prefab);
