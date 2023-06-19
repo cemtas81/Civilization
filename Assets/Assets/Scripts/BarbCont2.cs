@@ -1,4 +1,5 @@
 using Pathfinding;
+using Pathfinding.Examples;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -23,6 +24,7 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
     public GamePadCursorController joyAim;
     public TargetMover cursorAim;
     private InputAction action;
+    public AstarSmoothFollow2 map;
     private void Awake()
     {   
         myController = new MyController();
@@ -34,7 +36,8 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
         dead = false; 
         playerMovement = GetComponent<PlayerMovement>();
         playerAnimation = GetComponentInChildren<CharacterAnimation>();
-        playerStatus = GetComponent<Status>();      
+        playerStatus = GetComponent<Status>(); 
+        map=FindObjectOfType<AstarSmoothFollow2>();
     }
     private void OnEnable()
     {
@@ -80,6 +83,13 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             screenController.Pause();
+        }
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            map.enabled=!map.enabled;
+            map.GetComponent<Camera>().enabled = !map.GetComponent<Camera>().enabled;
+
+
         }
       
 #endif

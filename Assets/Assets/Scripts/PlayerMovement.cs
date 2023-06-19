@@ -82,7 +82,8 @@ public class PlayerMovement : CharacterMovement {
             {
                 //Vector3 positionPoint = Vector3.Slerp(transform.position, hit.point - transform.position, turnSpeed * Time.deltaTime);
                 Vector3 positionPoint = hit.point - transform.position;
-                positionPoint.y = transform.position.y;
+                //positionPoint.y = transform.position.y;
+                positionPoint.y = 0;
                 //joy.cursorInputForLook = false;
            
                 //pad.SetActive(false);

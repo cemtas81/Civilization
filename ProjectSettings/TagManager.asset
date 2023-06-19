@@ -22,10 +22,10 @@ TagManager:
   - PostProcess
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Map
+  - Ground
+  - Enemy
+  - Player
   - 
   - 
   - 
