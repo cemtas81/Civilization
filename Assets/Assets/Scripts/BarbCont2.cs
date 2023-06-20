@@ -136,7 +136,7 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
             StartCoroutine(Throwy());
             Throwing();
             canThrow = false;
-            screenController.UpdateSpear(-1);
+            screenController.DecreaseSpear(1);
         }
     }
     IEnumerator Throwy()
@@ -185,7 +185,7 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
             if (FootstepAudioClips.Length > 0)
             {
                 var index = Random.Range(0, FootstepAudioClips.Length);
-                audio1.PlayOneShot(FootstepAudioClips[index], Random.Range(0.7f, 1));
+                audio1.PlayOneShot(FootstepAudioClips[index], Random.Range(0.25f, 0.5f));
             }
         }
             

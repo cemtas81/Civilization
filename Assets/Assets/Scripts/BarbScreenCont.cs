@@ -7,7 +7,7 @@ public class BarbScreenCont : MonoBehaviour
 {
   
     [SerializeField] private Slider healthSlider,coinSlider;
-    [SerializeField] private GameObject gameOverPanel, pausePanel;
+    [SerializeField] private GameObject gameOverPanel, pausePanel,ammo;
     [SerializeField] private Text scoreText, maxScoreText, deadZombiesText, bossText, woodText,comboText,spearText;   
     public GameObject upgradePanel;
     public int weaponLevel;
@@ -18,11 +18,11 @@ public class BarbScreenCont : MonoBehaviour
     private BarbCont2 playerController;
     [SerializeField] private int comboCount;
     [SerializeField] private float comboTimeLimit = 2f;
-
+    
     private void Start()
     {
-      
-        
+
+        ammo = GameObject.FindGameObjectWithTag("Spear");
         playerController =FindObjectOfType<BarbCont2>();
         maxScore = PlayerPrefs.GetFloat("MaxScore");
         coinSlider.value = 0;
@@ -81,11 +81,21 @@ public class BarbScreenCont : MonoBehaviour
             deadZombiesText.text = headCount.ToString();
             woodCount--;
             woodText.text = woodCount.ToString();
+            ammo.GetComponent<MeshRenderer>().enabled=true;
         }
         else
             Debug.Log("Bitti!");
     }
-
+    public void DecreaseSpear(int spear)
+    {
+        if (spearCount >= 1)
+        {
+            spearCount--;
+            spearText.text = spearCount.ToString();
+        }
+        else
+            ammo.GetComponent<MeshRenderer>().enabled = false;
+    }
     public void GameOver()
     {
         gameOverPanel.SetActive(true);

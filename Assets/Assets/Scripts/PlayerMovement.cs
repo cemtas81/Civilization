@@ -1,7 +1,5 @@
 ﻿
-using Pathfinding;
-using StarterAssets;
-using System;
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -112,7 +110,8 @@ public class PlayerMovement : CharacterMovement {
             //Rotation(smoothdir);
             //joy.cursorInputForLook = true;
             Vector3 positionPoint = aim.position - transform.position;
-            positionPoint.y = transform.position.y;          
+            //positionPoint.y = transform.position.y;
+            positionPoint.y = 0;
             Rotation(positionPoint);
             target = positionPoint;
         }

@@ -7248,9 +7248,17 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 3586522485837758128, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3586522485839692880, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3586522485839692880, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4416926083347132230, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
       propertyPath: joyAim
@@ -7388,9 +7396,25 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 7297984838686678533, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7297984838688662757, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7297984838688662757, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7297984838689090721, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 28.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7297984838689090721, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -32.8
       objectReference: {fileID: 0}
     - target: {fileID: 7699965370701951453, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
       propertyPath: m_Layer
@@ -12861,6 +12885,10 @@ PrefabInstance:
       propertyPath: spearText
       value: 
       objectReference: {fileID: 512873909}
+    - target: {fileID: 8803517679909876679, guid: f5c8b0349d955854da3249445ff0dda8, type: 3}
+      propertyPath: spearCount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8803517679909876679, guid: f5c8b0349d955854da3249445ff0dda8, type: 3}
       propertyPath: healthSlider
       value: 
