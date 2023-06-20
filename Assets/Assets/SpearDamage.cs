@@ -16,7 +16,7 @@ public class SpearDamage : MonoBehaviour
 
         // Apply a force in the calculated direction
         rb = GetComponent<Rigidbody>();
-        rb.AddForce(new Vector3(direction.x,0,direction.z) * 75f, ForceMode.Impulse);
+        rb.AddForce(direction * 75f, ForceMode.Impulse);
 
         Invoke(nameof(Dest), 1.5f);
     }

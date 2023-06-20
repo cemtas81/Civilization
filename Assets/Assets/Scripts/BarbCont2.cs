@@ -9,7 +9,7 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
     [HideInInspector] public Status playerStatus;
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private BarbScreenCont screenController;
-    [SerializeField] private AudioClip damageSound,stepSound;
+    [SerializeField] private AudioClip damageSound;
     private Vector3 direction;
     private PlayerMovement playerMovement;
     private CharacterAnimation playerAnimation;
@@ -92,7 +92,10 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
             map.enabled=!map.enabled;
             map.GetComponent<Camera>().enabled = !map.GetComponent<Camera>().enabled;
 
-
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            MakeSpear();
         }
       
 #endif
@@ -128,11 +131,12 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
     }
     void Throw()
     {
-        if (canThrow && canShoot)
+        if (canThrow && canShoot&&screenController.spearCount>=1)
         {
             StartCoroutine(Throwy());
             Throwing();
             canThrow = false;
+            screenController.UpdateSpear(-1);
         }
     }
     IEnumerator Throwy()
@@ -202,7 +206,10 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
         if (playerStatus.health <= 0)
             Die();
     }
-
+    public void MakeSpear()
+    {
+        screenController.UpdateSpear(1);
+    }
     public void Die()
     {
         screenController.GameOver();

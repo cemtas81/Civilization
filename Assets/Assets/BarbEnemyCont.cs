@@ -22,12 +22,7 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
     private MySolidSpawner Parent;
     public DamageNumber numberPrefab;
     public int random;
-    private enum EnemyState 
-    {
-        Walking,
-        Ragdoll
-    }
-    private EnemyState enemyState=EnemyState.Walking;
+
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -39,35 +34,9 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
         GetRandomEnemy();
         Parent.spawnedPrefabs.Add(this.gameObject);
         enabled = true;
-        //rigids = GetComponentsInChildren<Rigidbody>();
-        //Walk();
+   
     }
-    //private void Update()
-    //{
-    //    switch (enemyState)
-    //    {
-    //        case EnemyState.Walking:
-    //            Walk();
-    //            break;
-    //       case EnemyState.Ragdoll:
-    //            RagDoll();
-    //            break;
-    //    }
-    //}
-    //void Walk()
-    //{
-    //    foreach (var rig in rigids)
-    //    {
-    //        rig.isKinematic = true;
-    //    }
-    //}
-    //void RagDoll()
-    //{
-    //    foreach (var rig in rigids)
-    //    {
-    //        rig.isKinematic = false;
-    //    }
-    //}
+  
     void FixedUpdate()
     {
 
@@ -137,11 +106,11 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
 
         if (enemyStatus.health <= 0)
         {
-            DamageN(.5f, "execution");
+            //DamageN(.5f, "execution");
             Die();
         }
-        else
-            DamageN(1.5f, "hit");
+        //else
+        //    DamageN(1.5f, "hit");
     }
 
     public void Die()

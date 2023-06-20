@@ -8,11 +8,12 @@ public class BarbScreenCont : MonoBehaviour
   
     [SerializeField] private Slider healthSlider,coinSlider;
     [SerializeField] private GameObject gameOverPanel, pausePanel;
-    [SerializeField] private Text scoreText, maxScoreText, deadZombiesText, bossText, woodText,comboText;   
+    [SerializeField] private Text scoreText, maxScoreText, deadZombiesText, bossText, woodText,comboText,spearText;   
     public GameObject upgradePanel;
     public int weaponLevel;
     private float maxScore,lastKillTime;
-    private int deadZombiesCount,woodCount,headCount;
+    private int woodCount,headCount;
+    public int spearCount;
     MyController control;
     private BarbCont2 playerController;
     [SerializeField] private int comboCount;
@@ -69,6 +70,20 @@ public class BarbScreenCont : MonoBehaviour
     {
         woodCount++;
         woodText.text=woodCount.ToString();
+    }
+    public void UpdateSpear(int spear)
+    {
+        if (headCount >= 1 && woodCount >= 1)
+        {
+            spearCount++;
+            spearText.text = spearCount.ToString();
+            headCount--;
+            deadZombiesText.text = headCount.ToString();
+            woodCount--;
+            woodText.text = woodCount.ToString();
+        }
+        else
+            Debug.Log("Bitti!");
     }
 
     public void GameOver()
