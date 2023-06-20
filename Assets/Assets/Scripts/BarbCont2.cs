@@ -9,7 +9,7 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
     [HideInInspector] public Status playerStatus;
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private BarbScreenCont screenController;
-    [SerializeField] private AudioClip damageSound;
+    [SerializeField] private AudioClip damageSound,stepSound;
     private Vector3 direction;
     private PlayerMovement playerMovement;
     private CharacterAnimation playerAnimation;
@@ -24,7 +24,9 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
     public GamePadCursorController joyAim;
     public TargetMover cursorAim;
     private InputAction action;
-    public AstarSmoothFollow2 map;
+    private AstarSmoothFollow2 map;
+    private AudioSource audio1;
+    public AudioClip[] FootstepAudioClips;
     private void Awake()
     {   
         myController = new MyController();
@@ -38,6 +40,7 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
         playerAnimation = GetComponentInChildren<CharacterAnimation>();
         playerStatus = GetComponent<Status>(); 
         map=FindObjectOfType<AstarSmoothFollow2>();
+        audio1=FindObjectOfType<AudioSource>();
     }
     private void OnEnable()
     {
@@ -170,6 +173,19 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
         //animator.SetBool("Block",true);
         playerAnimation.PlayerThrow();
     }
+    private void Step(AnimationEvent animationEvent)
+    {
+        if (animationEvent.animatorClipInfo.weight > 0.5f)
+        {
+           
+            if (FootstepAudioClips.Length > 0)
+            {
+                var index = Random.Range(0, FootstepAudioClips.Length);
+                audio1.PlayOneShot(FootstepAudioClips[index], Random.Range(0.7f, 1));
+            }
+        }
+            
+    }
     /// <summary>
     /// Loses health based on the damage value. 
     /// If health is equal to or less than 0 the game ends.
@@ -181,7 +197,7 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
         screenController.UpdateHealthSlider();
         Instantiate(bloodParticle, bloodEffect.transform.position, transform.rotation);
         // plays the damage sound
-        AudioController.instance.PlayOneShot(damageSound,Random.Range(0.2f,0.9f));
+        audio1.PlayOneShot(damageSound,Random.Range(0.2f,0.9f));
 
         if (playerStatus.health <= 0)
             Die();
