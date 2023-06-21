@@ -1,22 +1,32 @@
 ﻿using UnityEngine;
-
+using UnityEngine.AI;
 
 public class CharacterMovement : MonoBehaviour {
 
 	private Rigidbody myRigidbody;
     private CharacterAnimation playerAnimation;
+    private NavMeshAgent myAgent;
     void Awake () {
 		myRigidbody = GetComponent<Rigidbody>();
-		playerAnimation = GetComponent<CharacterAnimation>();	
-	} 
+		playerAnimation = GetComponent<CharacterAnimation>();
+        myAgent = GetComponent<NavMeshAgent>();
+    } 
 	
 	public void Movement (Vector3 direction, float speed) {
 		// moves the enemy as in the PlayerController but 
 		// instead using the GetAxis method it uses the normalized direction vector
 		myRigidbody.MovePosition (myRigidbody.position + (speed * Time.deltaTime * direction.normalized));
 	}
+    public void Movement(Vector3 direction)
+    {
+       
+        if (myAgent != null && myAgent.isOnNavMesh)
+        {
+            myAgent.SetDestination(direction);
+        }
 
-	public void Rotation (Vector3 direction) 
+    }
+    public void Rotation (Vector3 direction) 
 	{
 		// rotates the enemy towards the player
 		Quaternion newRotation = Quaternion.LookRotation(direction);

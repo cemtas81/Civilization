@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2370871578821088842}
   - component: {fileID: 2501509275209747530}
   - component: {fileID: 7284383343661363763}
+  - component: {fileID: -6671978606637545062}
   m_Layer: 7
   m_Name: RockyBig
   m_TagString: Untagged
@@ -110,3 +111,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 8172751377694698468, guid: 50472931133d5624e9d9678dfc708357, type: 3}
+--- !u!208 &-6671978606637545062
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2356392112432322788}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.8, y: 0.314, z: 0.8}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.024, y: 0.21900001, z: -0.095000006}
+  m_TimeToStationary: 0.5

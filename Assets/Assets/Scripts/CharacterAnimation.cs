@@ -9,7 +9,7 @@ public class CharacterAnimation : MonoBehaviour {
 		animator = GetComponent<Animator>();
 
 	}
-
+	
 	public void Attack(bool state)
 	{
 		animator.SetBool("Attacking", state);
@@ -29,10 +29,10 @@ public class CharacterAnimation : MonoBehaviour {
 		animator.SetFloat("VelocityX", value,0.1f,Time.deltaTime);
 	
 	}
-	public void Turning(float value)
-	{
-		animator.SetFloat("Turn", value * 2000 * Time.deltaTime);
-	}
+	//public void Turning(float value)
+	//{
+	//	animator.SetFloat("Turn", value * 2000 * Time.deltaTime);
+	//}
 
 	public void Die () {
 

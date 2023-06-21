@@ -35,7 +35,7 @@ public class MySolidSpawner : MonoBehaviour
     IEnumerator SpawnCoroutine()
     {
         
-        {
+       
             // Loop indefinitely
             while (true)
             {
@@ -52,7 +52,7 @@ public class MySolidSpawner : MonoBehaviour
                     }               
                 }             
             }
-        }
+        
     }
     IEnumerator SpawnCoroutineBoss()
     {

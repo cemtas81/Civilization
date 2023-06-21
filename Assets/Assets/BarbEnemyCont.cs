@@ -1,5 +1,6 @@
 using UnityEngine;
 using DamageNumbersPro;
+using UnityEngine.AI;
 
 public class BarbEnemyCont : MonoBehaviour, IKillable
 {
@@ -22,7 +23,8 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
     private MySolidSpawner Parent;
     public DamageNumber numberPrefab;
     public int random;
-
+    private NavMeshAgent agent;
+    private SettlementSpawner settlement;
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -34,7 +36,12 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
         GetRandomEnemy();
         Parent.spawnedPrefabs.Add(this.gameObject);
         enabled = true;
-   
+        agent = GetComponent<NavMeshAgent>();
+        settlement=FindObjectOfType<SettlementSpawner>();
+        if (agent!=null)
+        {
+            settlement.soldiers++;
+        }
     }
   
     void FixedUpdate()
@@ -42,13 +49,20 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
 
         // get the distance between this enemy and the player
         float distance = Vector3.Distance(transform.position, player.transform.position);
-        if (direction != Vector3.zero)
+        if (direction != Vector3.zero && agent == null)
         {
+            enemyAnimation.Movement(direction.magnitude * 5);
             enemyMovement.Rotation(direction);
         }
-
-        enemyAnimation.Movement(direction.magnitude * 5);
-        if (distance > 60)
+        if (distance>=40&&agent!=null)
+        {
+            enemyAnimation.Movement(0);
+        }
+        if (distance<40&&agent!=null)
+        {
+            enemyAnimation.Movement(direction.magnitude * 5);
+        }
+        if (distance > 60 && agent == null)
         {
             Parent.spawnedPrefabs.Remove(this.gameObject);
             Destroy(gameObject);
@@ -60,27 +74,38 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
         //{
         //	Rolling();
         //} 
-        else if (distance > 2.1f)
+        else if (distance >= 2.1f)
         {
-            // get the final position, that is, 
-            // the distance between the enemy and the player
+         
             direction = player.transform.position - transform.position;
             direction.y = 0;
-            // checks if enemy and player are not colliding.
-            // The 2.5f is because both enemy and player have a Capsule Collider with radius equal 1,
-            // so if the distance is bigger than both radius they are colliding
-            enemyMovement.Movement(direction, enemyStatus.speed);
+      
+           
+            if (agent != null)
+            {
 
-            // if they're not colliding the Attacking animation is off
-            enemyAnimation.Attack(false);
+                direction = player.transform.position;
+                enemyMovement.Movement(direction);
+            }
+            else
+                enemyMovement.Movement(direction, enemyStatus.speed);
+                enemyAnimation.Attack(false);
+
         }
         else
         {
-            direction = player.transform.position - transform.position;
-            direction.y = 0;
-            // otherwise, the Attacking animation is on
-            enemyAnimation.Attack(true);
+            if (agent != null)
+            {
+  
+                direction = player.transform.position;
+                enemyAnimation.Attack(true);
+            }
+            else
+                direction = player.transform.position - transform.position;
+                // otherwise, the Attacking animation is on
+                enemyAnimation.Attack(true);
         }
+
     }
 
     /// <summary>
@@ -120,8 +145,12 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
         enemyMovement.Die();
         //enemyState=EnemyState.Ragdoll;
         //RagDoll();
+      
+        if (agent!=null)
+        {
+            agent.enabled = false;
+        }
         enabled = false;
-
         screenController.UpdateDeadZombiesCount();
         head.SetActive(false);
         cust.SetActive(false);

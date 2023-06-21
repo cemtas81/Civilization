@@ -236,6 +236,7 @@ GameObject:
   - component: {fileID: 5607171784017271746}
   - component: {fileID: 5326200214571144754}
   - component: {fileID: 7425591970994778588}
+  - component: {fileID: 3117368151138561768}
   m_Layer: 7
   m_Name: Agac3
   m_TagString: Untagged
@@ -352,8 +353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e5cacb76cba02543ac5277e19a4100d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultSliceMaterial: {fileID: 2100000, guid: 466276b9fb77ee846a44d4698f720af0,
-    type: 2}
+  defaultSliceMaterial: {fileID: 2100000, guid: 466276b9fb77ee846a44d4698f720af0, type: 2}
   asynchronously: 1
   useLazyRunner: 0
   _sliceId: 0
@@ -385,6 +385,22 @@ CapsuleCollider:
   m_Height: 0.7987275
   m_Direction: 1
   m_Center: {x: 0, y: 0.34477782, z: 0}
+--- !u!208 &3117368151138561768
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5608114437091898770}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.1, y: 0.47100002, z: 0.1}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.015000001, y: 0.273, z: -0.008}
+  m_TimeToStationary: 0.5
 --- !u!1 &8671598006052501322
 GameObject:
   m_ObjectHideFlags: 0
