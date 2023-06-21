@@ -8,8 +8,8 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
     [HideInInspector] public EnemySpawner EnemySpawner;
 
     [SerializeField] private AudioClip deathSound;
-    [SerializeField] private GameObject aidKit;
-    [SerializeField] private GameObject bloodParticle;
+   
+    [SerializeField] private GameObject bloodParticle,aidKit;
 
     private Status enemyStatus;
     private GameObject player;
@@ -18,7 +18,7 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
     private BarbScreenCont screenController;
     public GameObject head, cust,randomClothes;
     private Vector3 direction;
-    //public Rigidbody[] rigids;
+    public float turnSpeed;
     private float probabilityAidKit = .08f;
     private MySolidSpawner Parent;
     public DamageNumber numberPrefab;
@@ -54,14 +54,7 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
             enemyAnimation.Movement(direction.magnitude * 5);
             enemyMovement.Rotation(direction);
         }
-        if (distance>=40&&agent!=null)
-        {
-            enemyAnimation.Movement(0);
-        }
-        if (distance<40&&agent!=null)
-        {
-            enemyAnimation.Movement(direction.magnitude * 5);
-        }
+   
         if (distance > 60 && agent == null)
         {
             Parent.spawnedPrefabs.Remove(this.gameObject);
@@ -83,9 +76,13 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
            
             if (agent != null)
             {
-
+                enemyAnimation.Movement(direction.magnitude * 5);
                 direction = player.transform.position;
                 enemyMovement.Movement(direction);
+                enemyAnimation.Attack(false);               
+                Vector3 direction2 = direction - transform.position;
+                Quaternion targetRotation = Quaternion.LookRotation(direction2);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.fixedDeltaTime);
             }
             else
                 enemyMovement.Movement(direction, enemyStatus.speed);
@@ -96,8 +93,12 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
         {
             if (agent != null)
             {
-  
-                direction = player.transform.position;
+               
+                //agent.updateRotation=false;
+                //agent.isStopped = true;
+                Vector3 direction2 = direction - transform.position;
+                Quaternion targetRotation = Quaternion.LookRotation(direction2);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.fixedDeltaTime);
                 enemyAnimation.Attack(true);
             }
             else
