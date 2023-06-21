@@ -88,13 +88,9 @@ public class BarbScreenCont : MonoBehaviour
     }
     public void DecreaseSpear(int spear)
     {
-        if (spearCount >= 1)
-        {
-            spearCount--;
-            spearText.text = spearCount.ToString();
-        }
-        else
-            ammo.GetComponent<MeshRenderer>().enabled = false;
+       
+        spearCount--;
+        spearText.text = spearCount.ToString();
     }
     public void GameOver()
     {

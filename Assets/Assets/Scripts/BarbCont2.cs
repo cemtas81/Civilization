@@ -14,7 +14,7 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
     private PlayerMovement playerMovement;
     private CharacterAnimation playerAnimation;
     [SerializeField] private float range; 
-    [SerializeField] private GameObject bloodParticle, spearCase, spearHold;
+    [SerializeField] private GameObject bloodParticle, spearCase, spearHold,ammo;
     [SerializeField] private Transform bloodEffect;
     //private BarbarWeaponCont BarbarWeaponCont;
     //public StarterAssetsInputs joy;
@@ -41,6 +41,7 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
         playerStatus = GetComponent<Status>(); 
         map=FindObjectOfType<AstarSmoothFollow2>();
         audio1=FindObjectOfType<AudioSource>();
+        ammo = GameObject.FindGameObjectWithTag("Spear");
     }
     private void OnEnable()
     {
@@ -137,19 +138,27 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
             Throwing();
             canThrow = false;
             screenController.DecreaseSpear(1);
+            if (screenController.spearCount < 1)
+                StartCoroutine(Thrown());
         }
+        
+    }
+    IEnumerator Thrown()
+    {
+        yield return new WaitForSeconds(.5f);
+        ammo.GetComponent<MeshRenderer>().enabled=false;
     }
     IEnumerator Throwy()
     {
-        yield return new WaitForSeconds(.5f);
-        spearCase.SetActive(false);
-        spearHold.SetActive(true);
-        yield return new WaitForSeconds(0.2f);
-        spearHold.SetActive(false);
-        //BarbarWeaponCont.Shoot2();
-        yield return new WaitForSeconds(0.8f);
+        //yield return new WaitForSeconds(.5f);
+        //spearCase.SetActive(false);
+        //spearHold.SetActive(true);
+        //yield return new WaitForSeconds(0.2f);
+        //spearHold.SetActive(false);
+        ////BarbarWeaponCont.Shoot2();
+        yield return new WaitForSeconds(1.5f);
         canThrow = true;
-        spearCase.SetActive(true);
+        //spearCase.SetActive(true);
     }
     void Again()
     {
