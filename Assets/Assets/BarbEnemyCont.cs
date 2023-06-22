@@ -40,6 +40,7 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
         {
             settlement.soldiers++;
         }
+        enemyStatus.speed = Random.Range(2.4f, 3.1f);
     }
   
     void FixedUpdate()
@@ -81,7 +82,7 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
            
             if (agent != null)
             {
-                enemyAnimation.Movement(direction.magnitude * 5);
+                enemyAnimation.Movement(direction.magnitude );
                 direction = player.transform.position;
                 enemyMovement.Movement(direction);
                 enemyAnimation.Attack(false);               
