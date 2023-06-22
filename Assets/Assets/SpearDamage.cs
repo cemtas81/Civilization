@@ -4,23 +4,22 @@ using UnityEngine;
 
 public class SpearDamage : MonoBehaviour
 {
-    private Rigidbody rb;
+    //private Rigidbody rb;
+    private Transform aim2;
     private PlayerMovement plyrmvmnt;
-    private void Awake()
+    private Vector3 targetPosition;
+    public float movementSpeed;
+    private void Start()
     {
         plyrmvmnt = FindObjectOfType<PlayerMovement>();
-        Vector3 aim2 = plyrmvmnt.aim.position;
-
-        // Calculate the direction from the spear's position to the aim position
-        Vector3 direction = (aim2 - transform.position).normalized;
-
-        // Apply a force in the calculated direction
-        rb = GetComponent<Rigidbody>();
-        rb.AddForce(direction * 75f, ForceMode.Impulse);
-
-        Invoke(nameof(Dest), 1.5f);
+        aim2 = plyrmvmnt.aim;
+        targetPosition = aim2.position;
+        Invoke(nameof(Dest), 1f);
     }
-    
+    private void Update()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * movementSpeed);
+    }
     void OnTriggerEnter(Collider other)
     {
         Quaternion rotation = Quaternion.LookRotation(-transform.forward);
@@ -30,12 +29,18 @@ public class SpearDamage : MonoBehaviour
                 BarbEnemyCont enemy = other.GetComponent<BarbEnemyCont>();
                 enemy.LoseHealth(2);
                 enemy.BloodParticle(transform.position, rotation);
+
                 break;
             case "Boss":
                 BossCont2 boss = other.GetComponent<BossCont2>();
                 boss.LoseHealth(2);
                 boss.BloodParticle(transform.position, rotation);
                 break;
+
+                default:
+                Destroy(this.gameObject);
+                break;
+
         }
 
     }

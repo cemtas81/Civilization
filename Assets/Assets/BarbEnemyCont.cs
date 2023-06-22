@@ -6,11 +6,8 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
 {
 
     [HideInInspector] public EnemySpawner EnemySpawner;
-
-    [SerializeField] private AudioClip deathSound;
-   
+    [SerializeField] private AudioClip deathSound; 
     [SerializeField] private GameObject bloodParticle,aidKit;
-
     private Status enemyStatus;
     private GameObject player;
     private CharacterMovement enemyMovement;
@@ -25,6 +22,7 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
     public int random;
     private NavMeshAgent agent;
     private SettlementSpawner settlement;
+    public bool Ranged;
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -47,7 +45,6 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
     void FixedUpdate()
     {
 
-        // get the distance between this enemy and the player
         float distance = Vector3.Distance(transform.position, player.transform.position);
         if (direction != Vector3.zero && agent == null)
         {
@@ -55,7 +52,7 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
             enemyMovement.Rotation(direction);
         }
    
-        if (distance > 60 && agent == null)
+        if (distance > 60 && agent == null )
         {
             Parent.spawnedPrefabs.Remove(this.gameObject);
             Destroy(gameObject);
@@ -67,6 +64,14 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
         //{
         //	Rolling();
         //} 
+        if (Ranged && distance <= 10)
+        {
+            direction.y = transform.position.y;
+            Vector3 direction2 = direction - transform.position;
+            Quaternion targetRotation = Quaternion.LookRotation(direction2);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.fixedDeltaTime);
+            enemyAnimation.Attack(true);
+        }
         else if (distance >= 2.1f)
         {
          
@@ -85,9 +90,11 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.fixedDeltaTime);
             }
             else
+            {
                 enemyMovement.Movement(direction, enemyStatus.speed);
                 enemyAnimation.Attack(false);
-
+            }
+                
         }
         else
         {
@@ -102,16 +109,15 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
                 enemyAnimation.Attack(true);
             }
             else
-                direction = player.transform.position - transform.position;
-                // otherwise, the Attacking animation is on
+            {
+                direction = player.transform.position - transform.position;            
                 enemyAnimation.Attack(true);
+            }
+              
         }
 
     }
 
-    /// <summary>
-    /// Attacks the player, causing a random damage between 20 and 30.
-    /// </summary>
     void AttackPlayer()
     {
         int damage = Random.Range(5, 10);
@@ -120,8 +126,6 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
 
     void GetRandomEnemy()
     {
-        // gets a random enemy
-        // (the Zombie prefab has 27 different zombie models inside it)
         int randomEnemy = Random.Range(1, randomClothes.transform.childCount);
         randomClothes.transform.GetChild(randomEnemy).gameObject.SetActive(true);
     }
@@ -144,9 +148,7 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
         Destroy(gameObject, 1.5f);
         enemyAnimation.Die();
         enemyMovement.Die();
-        //enemyState=EnemyState.Ragdoll;
-        //RagDoll();
-      
+
         if (agent!=null)
         {
             agent.enabled = false;
@@ -157,7 +159,6 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
         cust.SetActive(false);
         Parent.Spawn3(this.transform.position);
         Parent.spawnedPrefabs.Remove(this.gameObject);
-        // plays the death sound
         AudioController.instance.PlayOneShot(deathSound,Random.Range(0.2f, 0.9f));
         InstantiateAidKit(probabilityAidKit);
     }
