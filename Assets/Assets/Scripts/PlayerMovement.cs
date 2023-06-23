@@ -87,14 +87,14 @@ public class PlayerMovement : CharacterMovement {
                 //pad.SetActive(false);
                 Rotation(positionPoint);
                 target = positionPoint;
-                if (hit.collider.gameObject.CompareTag("Enemy")|| hit.collider.gameObject.CompareTag("Boss"))
-                {
-                    Cursor.SetCursor(texture, new Vector2(Screen.width * .02f, Screen.height * .020f), CursorMode.Auto);
-                }
-                else
-                {
-                    Cursor.SetCursor(texture2, new Vector2(Screen.width*.02f,Screen.height*.02f), CursorMode.Auto);
-                }
+                //if (hit.collider.gameObject.CompareTag("Enemy")|| hit.collider.gameObject.CompareTag("Boss"))
+                //{
+                //    Cursor.SetCursor(texture, new Vector2(Screen.width * .02f, Screen.height * .020f), CursorMode.Auto);
+                //}
+                //else
+                //{
+                //    Cursor.SetCursor(texture2, new Vector2(Screen.width*.02f,Screen.height*.02f), CursorMode.Auto);
+                //}
                     
             }
         }

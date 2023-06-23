@@ -14,7 +14,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: DefaultCompany
   productName: Civilization
-  defaultCursor: {fileID: 2800000, guid: 56f8165bc8b0a98419e06f018a808c4c, type: 3}
+  defaultCursor: {fileID: 2800000, guid: af2b94a5eff9e0649bf746e9fcd91082, type: 3}
   cursorHotspot: {x: 32, y: 32}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1

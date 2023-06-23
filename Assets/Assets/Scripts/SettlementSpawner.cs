@@ -28,6 +28,7 @@ public class SettlementSpawner : MonoBehaviour
             if (soldiers<=maxSoldier&&isHere)
             {
                 Instantiate(prefab, transform.position, Quaternion.identity);
+                soldiers++;
             }
             
         }

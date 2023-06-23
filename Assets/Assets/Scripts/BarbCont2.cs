@@ -118,9 +118,7 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
 
     void FixedUpdate()
     {
-        // moves the player by second using physics
-        // use physics (rigidbody) to compute the player movement is better than transform.position 
-        // because prevents the player to "bug" when colliding with other objects
+    
         playerMovement.Movement(direction, playerStatus.speed);    
         playerMovement.PlayerRotation(groundMask);
 
@@ -150,15 +148,8 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
     }
     IEnumerator Throwy()
     {
-        //yield return new WaitForSeconds(.5f);
-        //spearCase.SetActive(false);
-        //spearHold.SetActive(true);
-        //yield return new WaitForSeconds(0.2f);
-        //spearHold.SetActive(false);
-        ////BarbarWeaponCont.Shoot2();
         yield return new WaitForSeconds(1.5f);
-        canThrow = true;
-        //spearCase.SetActive(true);
+        canThrow = true;   
     }
     void Again()
     {

@@ -4921,7 +4921,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 90
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!136 &8339102879347197992
 CapsuleCollider:
@@ -4959,6 +4959,7 @@ MonoBehaviour:
   turnSpeed: 3
   numberPrefab: {fileID: 1584410138532935668, guid: 1850c5272b1fc6b4783cc9c41329ef05, type: 3}
   random: 0
+  Ranged: 0
 --- !u!114 &8339102879347198421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5008,8 +5009,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3
-  m_Acceleration: 12
+  m_Speed: 3.5
+  m_Acceleration: 24
   avoidancePriority: 50
   m_AngularSpeed: 280
   m_StoppingDistance: 2.1
@@ -6906,6 +6907,10 @@ PrefabInstance:
     - target: {fileID: 100002, guid: 28a5e79925e3ce04a82856c16a572cbe, type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 28a5e79925e3ce04a82856c16a572cbe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 28a5e79925e3ce04a82856c16a572cbe, type: 3}
       propertyPath: m_StaticEditorFlags
