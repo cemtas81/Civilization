@@ -4374,7 +4374,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2693321850349188107, guid: 4b696d284aaf53944adab03d7a6fa95b, type: 3}
       propertyPath: spawnIntervalBoss
-      value: 60
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2693321850349188107, guid: 4b696d284aaf53944adab03d7a6fa95b, type: 3}
       propertyPath: prefabs.Array.size
@@ -11090,6 +11090,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5709534272246318426, guid: f5c8b0349d955854da3249445ff0dda8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e8484dd69052d6f4c87f5d748b5124bc, type: 3}
     - target: {fileID: 5709534272246318427, guid: f5c8b0349d955854da3249445ff0dda8, type: 3}
       propertyPath: aim
       value: 
