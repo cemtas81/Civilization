@@ -6232,8 +6232,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.5, g: 0.0731132, b: 0.0731132, a: 1}
-        key1: {r: 0.6509434, g: 0.45750266, b: 0.45750266, a: 0}
+        key0: {r: 0.4999555, g: 0.8856768, b: 0.990566, a: 1}
+        key1: {r: 1, g: 1, b: 1, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -9861,7 +9861,6 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: ad719412221768a42ba4202549784d28, type: 3}
 --- !u!4 &7411890734618347510 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 485884, guid: ad719412221768a42ba4202549784d28,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 485884, guid: ad719412221768a42ba4202549784d28, type: 3}
   m_PrefabInstance: {fileID: 7411890734617914890}
   m_PrefabAsset: {fileID: 0}

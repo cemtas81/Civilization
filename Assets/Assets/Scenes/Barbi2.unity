@@ -4944,10 +4944,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LayerMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 4294967295
   Player: {fileID: 1281240129}
   Camera: {fileID: 1209796834}
-  FadedAlpha: 0.33
+  FadedAlpha: 0.1
   FadingMode: 1
   ChecksPerSecond: 10
   FadeFPS: 30
