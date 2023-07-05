@@ -40,81 +40,88 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
         {
             settlement.soldiers++;
         }
-        enemyStatus.speed = Random.Range(2.4f, 3.1f);
+        enemyStatus.speed = Random.Range(2.6f, 3.1f);
     }
   
     void FixedUpdate()
     {
-
+        direction = player.transform.position - transform.position;
+        direction.y = 0;
         float distance = Vector3.Distance(transform.position, player.transform.position);
-        if (direction != Vector3.zero && agent == null)
+        if (Ranged != true)
         {
-            enemyAnimation.Movement(direction.magnitude * 5);
-            enemyMovement.Rotation(direction);
-        }
-   
-        if (distance > 60 && agent == null )
-        {
-            Parent.spawnedPrefabs.Remove(this.gameObject);
-            Destroy(gameObject);
-            //this.gameObject.SetActive(false);
+            if (direction != Vector3.zero && agent == null)
+            {
+                enemyAnimation.Movement(direction.magnitude * 5);
+                enemyMovement.Rotation(direction);
+            }
 
-            enabled = false;
+            if (distance > 60 && agent == null )
+            {
+                Parent.spawnedPrefabs.Remove(this.gameObject);
+                Destroy(gameObject);
+                //this.gameObject.SetActive(false);
+
+                enabled = false;
+            }
+            else if (distance >= 2.1f)
+            {
+
+                if (agent != null)
+                {
+                    enemyAnimation.Movement(direction.magnitude);
+                    direction = player.transform.position;
+                    enemyMovement.Movement(direction);
+                    enemyAnimation.Attack(false);
+                    Vector3 direction2 = direction - transform.position;
+                    Quaternion targetRotation = Quaternion.LookRotation(direction2);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.fixedDeltaTime);
+                }
+                else
+                {
+                    enemyMovement.Movement(direction, enemyStatus.speed);
+                    enemyAnimation.Attack(false);
+                }
+
+            }
+            else
+            {
+                if (agent != null)
+                {
+
+                    //agent.updateRotation=false;
+                    //agent.isStopped = true;
+                    Vector3 direction2 = direction - transform.position;
+                    Quaternion targetRotation = Quaternion.LookRotation(direction2);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.fixedDeltaTime);
+                    enemyAnimation.Attack(true);
+                }
+                else
+                {
+                    direction = player.transform.position - transform.position;
+                    enemyAnimation.Attack(true);
+                }
+
+            }
         }
+
         //      else if (distance > 30) 
         //{
         //	Rolling();
-        //} 
-        if (Ranged && distance <= 10)
-        {
-            direction.y = transform.position.y;
-            Vector3 direction2 = direction - transform.position;
-            Quaternion targetRotation = Quaternion.LookRotation(direction2);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.fixedDeltaTime);
-            enemyAnimation.Attack(true);
-        }
-        else if (distance >= 2.1f)
-        {
-         
-            direction = player.transform.position - transform.position;
-            direction.y = 0;
-      
-           
-            if (agent != null)
-            {
-                enemyAnimation.Movement(direction.magnitude );
-                direction = player.transform.position;
-                enemyMovement.Movement(direction);
-                enemyAnimation.Attack(false);               
-                Vector3 direction2 = direction - transform.position;
-                Quaternion targetRotation = Quaternion.LookRotation(direction2);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.fixedDeltaTime);
-            }
-            else
-            {
-                enemyMovement.Movement(direction, enemyStatus.speed);
-                enemyAnimation.Attack(false);
-            }
-                
-        }
+        //}
         else
         {
-            if (agent != null)
+           
+            enemyMovement.Rotation(direction);
+            if (distance <= 10)
             {
                
-                //agent.updateRotation=false;
-                //agent.isStopped = true;
-                Vector3 direction2 = direction - transform.position;
-                Quaternion targetRotation = Quaternion.LookRotation(direction2);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.fixedDeltaTime);
                 enemyAnimation.Attack(true);
             }
             else
             {
-                direction = player.transform.position - transform.position;            
-                enemyAnimation.Attack(true);
+                enemyAnimation.Attack(false);
             }
-              
         }
 
     }
