@@ -13,7 +13,7 @@ public class PlayerMovement : CharacterMovement {
     private Quaternion qTo;
     private Camera m_camera;
     public Transform aim;
-    public Texture2D texture,texture2;
+    //public Texture2D texture,texture2;
     private void Start()
     {
         qTo = transform.rotation;
@@ -79,38 +79,26 @@ public class PlayerMovement : CharacterMovement {
             if (Physics.Raycast(ray, out RaycastHit hit, 100, groundMask))
             {
                 //Vector3 positionPoint = Vector3.Slerp(transform.position, hit.point - transform.position, turnSpeed * Time.deltaTime);
-                Vector3 positionPoint = hit.point - transform.position;
-                //positionPoint.y = transform.position.y;
+                Vector3 positionPoint = hit.point - transform.position;              
                 positionPoint.y = 0;
-                //joy.cursorInputForLook = false;
-           
-                //pad.SetActive(false);
                 Rotation(positionPoint);
                 target = positionPoint;
-                //if (hit.collider.gameObject.CompareTag("Enemy")|| hit.collider.gameObject.CompareTag("Boss"))
+                //if (hit.collider.gameObject.CompareTag("Enemy") || hit.collider.gameObject.CompareTag("Boss"))
                 //{
                 //    Cursor.SetCursor(texture, new Vector2(Screen.width * .02f, Screen.height * .020f), CursorMode.Auto);
                 //}
                 //else
                 //{
-                //    Cursor.SetCursor(texture2, new Vector2(Screen.width*.02f,Screen.height*.02f), CursorMode.Auto);
+                //    Cursor.SetCursor(texture2, new Vector2(Screen.width * .02f, Screen.height * .02f), CursorMode.Auto);
                 //}
-                    
+
             }
         }
 
         else if (gamepad.rightStick.IsActuated(0F))
         {
-            //joy.cursorInputForLook = true;
-            //Vector3 direction = new Vector3(joy.look.x, 0, joy.look.y * -1);
-            //qTo = Quaternion.LookRotation(direction);
-            //Quaternion smoothdir = Quaternion.Slerp(transform.rotation, qTo, speed * Time.deltaTime);
-            ////transform.rotation = Quaternion.Slerp(transform.rotation, qTo, speed * Time.deltaTime);
-            ////for character movement                    
-            //Rotation(smoothdir);
-            //joy.cursorInputForLook = true;
+
             Vector3 positionPoint = aim.position - transform.position;
-            //positionPoint.y = transform.position.y;
             positionPoint.y = 0;
             Rotation(positionPoint);
             target = positionPoint;

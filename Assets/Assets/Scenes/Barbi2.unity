@@ -4313,7 +4313,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2693321850349188107, guid: 4b696d284aaf53944adab03d7a6fa95b, type: 3}
       propertyPath: spawnIntervalBoss
-      value: 1
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 2693321850349188107, guid: 4b696d284aaf53944adab03d7a6fa95b, type: 3}
       propertyPath: prefabs.Array.size
@@ -4810,7 +4810,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1281240129}
   prefabs:
-  - prefab: {fileID: 803792796255981711, guid: cd55fbdf9baf9824db93b40401f4ea49, type: 3}
+  - prefab: {fileID: 1830106991322360239, guid: c1ad289bfeca1c948832d76b68140b0b, type: 3}
     density: 0
     perlin: 0
     perlinPower: 0
@@ -4819,7 +4819,7 @@ MonoBehaviour:
     random: 0
     randomRotation: 0
     singleFixed: 1
-  - prefab: {fileID: 2356392112432322788, guid: c2bcd6fd8a9273f4399b59dc82778f8f, type: 3}
+  - prefab: {fileID: 165502, guid: 05754f5754df0d84a8a3532bd8274180, type: 3}
     density: 0.003
     perlin: 0
     perlinPower: 0
@@ -7295,11 +7295,11 @@ PrefabInstance:
     - target: {fileID: 4416926083347132231, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
       propertyPath: texture
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2800000, guid: 2d5a225381f1efb4bad1f1b4abbe3236, type: 3}
     - target: {fileID: 4416926083347132231, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
       propertyPath: texture2
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2800000, guid: af2b94a5eff9e0649bf746e9fcd91082, type: 3}
     - target: {fileID: 5068862358356120220, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
       propertyPath: m_Name
       value: Barbar5th
@@ -8975,67 +8975,67 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 373088966e33bec4e86c87fb8a5c00dd, type: 3}
---- !u!1001 &1698993339229010970
+--- !u!1001 &420651872041207098
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 803792796255981711, guid: cd55fbdf9baf9824db93b40401f4ea49, type: 3}
+    - target: {fileID: 1830106991322360239, guid: c1ad289bfeca1c948832d76b68140b0b, type: 3}
       propertyPath: m_Name
-      value: MyGround2
+      value: SnowyGround
       objectReference: {fileID: 0}
-    - target: {fileID: 803792796255981711, guid: cd55fbdf9baf9824db93b40401f4ea49, type: 3}
+    - target: {fileID: 1830106991322360239, guid: c1ad289bfeca1c948832d76b68140b0b, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8280658830688797849, guid: cd55fbdf9baf9824db93b40401f4ea49, type: 3}
+    - target: {fileID: 6965013102895644089, guid: c1ad289bfeca1c948832d76b68140b0b, type: 3}
       propertyPath: m_RootOrder
       value: 30
       objectReference: {fileID: 0}
-    - target: {fileID: 8280658830688797849, guid: cd55fbdf9baf9824db93b40401f4ea49, type: 3}
+    - target: {fileID: 6965013102895644089, guid: c1ad289bfeca1c948832d76b68140b0b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8280658830688797849, guid: cd55fbdf9baf9824db93b40401f4ea49, type: 3}
+    - target: {fileID: 6965013102895644089, guid: c1ad289bfeca1c948832d76b68140b0b, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8280658830688797849, guid: cd55fbdf9baf9824db93b40401f4ea49, type: 3}
+    - target: {fileID: 6965013102895644089, guid: c1ad289bfeca1c948832d76b68140b0b, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8280658830688797849, guid: cd55fbdf9baf9824db93b40401f4ea49, type: 3}
+    - target: {fileID: 6965013102895644089, guid: c1ad289bfeca1c948832d76b68140b0b, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8280658830688797849, guid: cd55fbdf9baf9824db93b40401f4ea49, type: 3}
+    - target: {fileID: 6965013102895644089, guid: c1ad289bfeca1c948832d76b68140b0b, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8280658830688797849, guid: cd55fbdf9baf9824db93b40401f4ea49, type: 3}
+    - target: {fileID: 6965013102895644089, guid: c1ad289bfeca1c948832d76b68140b0b, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8280658830688797849, guid: cd55fbdf9baf9824db93b40401f4ea49, type: 3}
+    - target: {fileID: 6965013102895644089, guid: c1ad289bfeca1c948832d76b68140b0b, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8280658830688797849, guid: cd55fbdf9baf9824db93b40401f4ea49, type: 3}
+    - target: {fileID: 6965013102895644089, guid: c1ad289bfeca1c948832d76b68140b0b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8280658830688797849, guid: cd55fbdf9baf9824db93b40401f4ea49, type: 3}
+    - target: {fileID: 6965013102895644089, guid: c1ad289bfeca1c948832d76b68140b0b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8280658830688797849, guid: cd55fbdf9baf9824db93b40401f4ea49, type: 3}
+    - target: {fileID: 6965013102895644089, guid: c1ad289bfeca1c948832d76b68140b0b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: cd55fbdf9baf9824db93b40401f4ea49, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: c1ad289bfeca1c948832d76b68140b0b, type: 3}
 --- !u!1001 &2038416869751596128
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11159,7 +11159,7 @@ PrefabInstance:
       objectReference: {fileID: 512873909}
     - target: {fileID: 8803517679909876679, guid: f5c8b0349d955854da3249445ff0dda8, type: 3}
       propertyPath: spearCount
-      value: 0
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8803517679909876679, guid: f5c8b0349d955854da3249445ff0dda8, type: 3}
       propertyPath: healthSlider
