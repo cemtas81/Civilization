@@ -401,7 +401,7 @@ GameObject:
   - component: {fileID: 8240148344811905733}
   m_Layer: 7
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Settlement
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -508,7 +508,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7614905947255778318}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -155.44759, y: 0, z: 194.33841}
+  m_LocalPosition: {x: 220.03432, y: 0, z: -97.1582}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6413987648152095673}
@@ -23643,7 +23643,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.62748533, y: 3.6711068, z: 3.7559285}
-  m_Center: {x: 0.0000009536744, y: 0.031829417, z: -0.0050659184}
+  m_Center: {x: 0.0000009536744, y: 0.031829417, z: 0}
 --- !u!1001 &7614905948591092930
 PrefabInstance:
   m_ObjectHideFlags: 0
