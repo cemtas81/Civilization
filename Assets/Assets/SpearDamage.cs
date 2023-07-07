@@ -13,12 +13,14 @@ public class SpearDamage : MonoBehaviour
         plyrmvmnt = FindObjectOfType<PlayerMovement>();
         aim2 = plyrmvmnt.aim;
         targetPosition = aim2.position;
-        Invoke(nameof(Dest), 1f);
+        Invoke(nameof(Dest), 1.5f);
         rb = GetComponent<Rigidbody>();
         rb.isKinematic = true;
-        transform.DOMove(targetPosition, 0.3f).SetEase(Ease.Linear)
-        .OnComplete(() => rb.isKinematic = false);
-      
+
+        float distance = Vector3.Distance(transform.position, targetPosition);
+        float duration = distance / 25;
+        transform.DOMove(targetPosition, duration).SetEase(Ease.Linear)
+            .OnComplete(() => rb.isKinematic = false);
     }
 
     void OnTriggerEnter(Collider other)
@@ -36,9 +38,9 @@ public class SpearDamage : MonoBehaviour
                 boss.LoseHealth(2);
                 boss.BloodParticle(transform.position, rotation);
                 break;
-            default:
-                Destroy(this.gameObject);
-                break;
+            //default:
+            //    Destroy(this.gameObject);
+            //    break;
         }
     }
 

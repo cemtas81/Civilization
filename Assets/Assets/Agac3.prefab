@@ -236,10 +236,10 @@ GameObject:
   - component: {fileID: 5607171784017271746}
   - component: {fileID: 5326200214571144754}
   - component: {fileID: 7425591970994778588}
-  - component: {fileID: 3117368151138561768}
+  - component: {fileID: -1209441572831242363}
   m_Layer: 7
   m_Name: Agac3
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -385,22 +385,19 @@ CapsuleCollider:
   m_Height: 0.7987275
   m_Direction: 1
   m_Center: {x: 0, y: 0.34477782, z: 0}
---- !u!208 &3117368151138561768
-NavMeshObstacle:
+--- !u!65 &-1209441572831242363
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5608114437091898770}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.1, y: 0.47100002, z: 0.1}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: -0.015000001, y: 0.273, z: -0.008}
-  m_TimeToStationary: 0.5
+  serializedVersion: 2
+  m_Size: {x: 0.55594134, y: 0.9423163, z: 0.39752838}
+  m_Center: {x: -0.014809951, y: 0.27298343, z: -0.0081653595}
 --- !u!1 &8671598006052501322
 GameObject:
   m_ObjectHideFlags: 0

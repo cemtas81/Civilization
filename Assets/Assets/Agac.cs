@@ -16,9 +16,9 @@ public class Agac : MonoBehaviour
         {
             rb.isKinematic = false;
         }
-        else if (other.CompareTag("Player") && rb.isKinematic != true)
+        else if (other.CompareTag("Settlement") && rb.isKinematic == true)
         {
-          
+            Destroy(this.gameObject);
         }
     }
     private void OnCollisionEnter(Collision collision)
@@ -28,6 +28,7 @@ public class Agac : MonoBehaviour
             barb.UpdateWood(1);
             this.gameObject.SetActive(false);
         }
+    
     }
 
 }
