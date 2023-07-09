@@ -4313,7 +4313,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2693321850349188107, guid: 4b696d284aaf53944adab03d7a6fa95b, type: 3}
       propertyPath: spawnIntervalBoss
-      value: 1
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 2693321850349188107, guid: 4b696d284aaf53944adab03d7a6fa95b, type: 3}
       propertyPath: prefabs.Array.size
