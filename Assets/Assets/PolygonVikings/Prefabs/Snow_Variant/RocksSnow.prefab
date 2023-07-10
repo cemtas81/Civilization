@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2302836}
   - component: {fileID: 1262743073692888432}
   - component: {fileID: 2179133954496492360}
-  - component: {fileID: 5345915713641493350}
   m_Layer: 7
   m_Name: RocksSnow
   m_TagString: Environment
@@ -110,16 +109,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 607203d65062e4746811d73d0b50c95c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &5345915713641493350
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 165502}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.2612389, y: 0.4, z: 1.2644958}
-  m_Center: {x: 0, y: 0.02178219, z: 0}
