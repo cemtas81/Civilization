@@ -1,14 +1,18 @@
 
+using System.Collections;
 using UnityEngine;
 public class BeHead : MonoBehaviour
 {
     private Rigidbody body;
     private BarbScreenCont slider;
-    public float expForce;
+    public float expForce, footprintOffset;
+    private ObjectPooling2 objectPooling;
+    public Transform Pos;
     private void Awake()
     {
         body = GetComponent<Rigidbody>();
-        slider = FindObjectOfType<BarbScreenCont>();
+        slider=SharedVariables.screenCont;
+        objectPooling = ObjectPooling2.SharedInstance;
     }
     private void OnEnable()
     {
@@ -27,7 +31,31 @@ public class BeHead : MonoBehaviour
             slider.UpdateHead(1);
         }
     }
-    void OnBecameInvisible()
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Finish")||collision.collider.CompareTag("Settlement"))
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(Pos.position, Pos.forward, out hit, 0.1f))
+            {
+                GameObject footprintPrefab = objectPooling.GetPooledObject(objectPooling.objectsToPool[2]);
+
+                if (footprintPrefab != null)
+                {
+
+                    Vector3 footprintPosition = hit.point + hit.normal * footprintOffset; // Calculate the footprint position with an offset
+                    footprintPrefab.transform.SetPositionAndRotation(footprintPosition, Quaternion.LookRotation(hit.normal, Pos.up));
+                    footprintPrefab.SetActive(true);
+
+                }
+
+            }
+
+        }
+
+    }
+  
+   void OnBecameInvisible()
     {
         this.gameObject.SetActive(false);
     }

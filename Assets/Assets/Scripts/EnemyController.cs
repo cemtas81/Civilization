@@ -20,7 +20,7 @@ public class EnemyController : MonoBehaviour, IKillable
 	private Vector3 randomPosition;
 	private Vector3 direction;
 	private float rollingCounter;
-	private float randomPositionTime = 4;
+	//private float randomPositionTime = 4;
 	private float probabilityAidKit = .05f;
     private MySolidSpawner Parent;
 	public DamageNumber numberPrefab;

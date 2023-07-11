@@ -132,6 +132,7 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
     } 
     void AttackPlayer2()
     {
+     
         Instantiate(spear, ThrowPos.position,ThrowPos.rotation);
         // plays the shot sound
         AudioController.instance.PlayOneShot(ThrowSound, 0.6f);
