@@ -17,6 +17,7 @@ TagManager:
   - Selectable
   - Settlement
   - Environment
+  - EnemySpear
   layers:
   - Default
   - TransparentFX

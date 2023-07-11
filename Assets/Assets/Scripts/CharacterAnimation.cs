@@ -14,6 +14,10 @@ public class CharacterAnimation : MonoBehaviour {
 	{
 		animator.SetBool("Attacking", state);
 	}
+	public void Attack2(bool state)
+	{
+		animator.SetBool("Attacking2", state);
+	}
 	public void Movement (float value) {
 
 		animator.SetFloat("Running", value,0.1f,Time.deltaTime);

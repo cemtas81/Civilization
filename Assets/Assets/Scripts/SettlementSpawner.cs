@@ -1,5 +1,5 @@
 using System.Collections;
-using Unity.VisualScripting;
+
 using UnityEngine;
 
 public class SettlementSpawner : MonoBehaviour
@@ -12,10 +12,11 @@ public class SettlementSpawner : MonoBehaviour
     private BarbCont2 barbar;
     private Transform player;
     public float dist;
-    // Start is called before the first frame update
+
     private void Awake()
     {
-        barbar = FindObjectOfType<BarbCont2>();
+     
+        barbar = SharedVariables.cont;
         player = barbar.GetComponent<Transform>();
         StartCoroutine(SpawnCoroutine());
     }

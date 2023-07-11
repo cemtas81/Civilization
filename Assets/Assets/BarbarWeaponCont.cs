@@ -32,14 +32,13 @@ public class BarbarWeaponCont : MonoBehaviour
        
         Instantiate(projectile, shootPosition.position, shootPosition.rotation);
 
-        // plays the shot sound
         AudioController.instance.PlayOneShot(shotSound, 0.5f);
     } 
     public void Shoot2()
     {
 
         Instantiate(spear, pos2.position, pos2.rotation);      
-        // plays the shot sound
+       
         AudioController.instance.PlayOneShot(sound2, 0.6f);
     }
    

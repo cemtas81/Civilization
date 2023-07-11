@@ -10,7 +10,8 @@ public class SpearDamage : MonoBehaviour
 
     private void Start()
     {
-        plyrmvmnt = FindObjectOfType<PlayerMovement>();
+        //plyrmvmnt = FindObjectOfType<PlayerMovement>();
+        plyrmvmnt=SharedVariables.plyrmvmnt;
         aim2 = plyrmvmnt.aim;
         targetPosition = aim2.position;
         Invoke(nameof(Dest), 1.5f);

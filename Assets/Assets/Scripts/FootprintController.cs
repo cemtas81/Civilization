@@ -7,9 +7,11 @@ public class FootprintController : MonoBehaviour
     public Transform leftFootPos;
     public Transform rightFootPos;
     public float footprintOffset = 0.05f; // Offset value to raise the footprint above the hit point
-
+    private AudioSource audio1;
+    public AudioClip[] FootstepAudioClips;
     private void Start()
     {
+        audio1 = SharedVariables.audioS;
         objectPooling = ObjectPooling2.SharedInstance; 
     }
 
@@ -47,7 +49,19 @@ public class FootprintController : MonoBehaviour
             }
         }
     }
-
+     private void Step(AnimationEvent animationEvent)
+    {
+        if (animationEvent.animatorClipInfo.weight > 0.5f)
+        {
+           
+            if (FootstepAudioClips.Length > 0)
+            {
+                var index = Random.Range(0, FootstepAudioClips.Length);
+                audio1.PlayOneShot(FootstepAudioClips[index], Random.Range(0.25f, 0.5f));
+            }
+        }
+            
+    }
     private IEnumerator DeactivateFootstepDelayed(GameObject footprintPrefab)
     {
         yield return new WaitForSeconds(1f); 

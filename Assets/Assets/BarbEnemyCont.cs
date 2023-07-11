@@ -6,8 +6,8 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
 {
 
     [HideInInspector] public EnemySpawner EnemySpawner;
-    [SerializeField] private AudioClip deathSound; 
-    [SerializeField] private GameObject bloodParticle,aidKit;
+    [SerializeField] private AudioClip deathSound, ThrowSound; 
+    [SerializeField] private GameObject bloodParticle,aidKit, spear;
     private Status enemyStatus;
     private GameObject player;
     private CharacterMovement enemyMovement;
@@ -22,24 +22,23 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
     public int random;
     private NavMeshAgent agent;
     private SettlementSpawner settlement;
-    public bool Ranged;
+    public bool Ranged; 
+    public Transform ThrowPos;
+   
     void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+      
+        player = SharedVariables.playa;
         enemyMovement = GetComponent<CharacterMovement>();
         enemyAnimation = GetComponent<CharacterAnimation>();
-        enemyStatus = GetComponent<Status>();
-        screenController = FindObjectOfType<BarbScreenCont>();
-        Parent = FindObjectOfType<MySolidSpawner>();
+        enemyStatus = GetComponent<Status>();   
+        screenController=SharedVariables.screenCont;     
+        Parent=SharedVariables.spawner;
         GetRandomEnemy();
         Parent.spawnedPrefabs.Add(this.gameObject);
         enabled = true;
-        agent = GetComponent<NavMeshAgent>();
-        settlement=FindObjectOfType<SettlementSpawner>();
-        if (agent!=null)
-        {
-            settlement.soldiers++;
-        }
+        agent = GetComponent<NavMeshAgent>();  
+        settlement = SharedVariables.settlementSpawner;   
         enemyStatus.speed = Random.Range(2.6f, 3.1f);
     }
   
@@ -116,11 +115,11 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
             if (distance <= 10)
             {
                
-                enemyAnimation.Attack(true);
+                enemyAnimation.Attack2(true);
             }
             else
             {
-                enemyAnimation.Attack(false);
+                enemyAnimation.Attack2(false);
             }
         }
 
@@ -130,6 +129,13 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
     {
         int damage = Random.Range(5, 10);
         player.GetComponent<BarbCont2>().LoseHealth(damage);
+    } 
+    void AttackPlayer2()
+    {
+        Instantiate(spear, ThrowPos.position,ThrowPos.rotation);
+        // plays the shot sound
+        AudioController.instance.PlayOneShot(ThrowSound, 0.6f);
+
     }
 
     void GetRandomEnemy()
