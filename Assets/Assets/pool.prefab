@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2693321850349188106}
   - component: {fileID: 2693321850349188107}
-  - component: {fileID: 2693321850349188105}
+  - component: {fileID: 1952574194}
   m_Layer: 0
   m_Name: pool
   m_TagString: Untagged
@@ -45,23 +45,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabs:
-  - {fileID: 1063500868937916, guid: b46460f1bbbc12748b60dcdabbcb01e5, type: 3}
-  - {fileID: 1063500868937916, guid: 7bf8f7abfa5ad954494c488543046f40, type: 3}
-  - {fileID: 1063500868937916, guid: ea8c826b7eac04f468353eb30ea9c703, type: 3}
-  - {fileID: 1063500868937916, guid: 21f2da8ae71959a49b222b9f9ddcb236, type: 3}
-  - {fileID: 1063500868937916, guid: b3278ab1e5dcc2749b40c728866c02f9, type: 3}
-  desiredCircleRadius: 50
-  minSpawnCount: 8
-  maxSpawnCount: 20
-  maxActivePrefabs: 120
+  - {fileID: 6332343693690062689, guid: 151c79cecd8f26a42bc12c427a65214b, type: 3}
+  - {fileID: 6332343693690062689, guid: 151c79cecd8f26a42bc12c427a65214b, type: 3}
+  - {fileID: 6332343693690062689, guid: 151c79cecd8f26a42bc12c427a65214b, type: 3}
+  - {fileID: 7614905947255778318, guid: 6883b65ea180f444bbe5782cee23235d, type: 3}
+  - {fileID: 7614905947255778318, guid: 6883b65ea180f444bbe5782cee23235d, type: 3}
+  desiredCircleRadius: 40
+  minSpawnCount: 1
+  maxSpawnCount: 13
+  maxActivePrefabs: 26
   movableObject: {fileID: 0}
-  nadide: 0.75
+  nadide: 0.8
   spawnedPrefabs: []
-  spawnInterval: 3
-  spawnIntervalBoss: 60
-  objectPool: {fileID: 2693321850349188105}
+  spawnInterval: 5
+  spawnIntervalBoss: 1
   BossHere: 0
---- !u!114 &2693321850349188105
+--- !u!114 &1952574194
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -70,10 +69,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2693321850349188117}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f9a11dfd53b3204dba3b16f44b92c25, type: 3}
+  m_Script: {fileID: 11500000, guid: 7ddb608db1d8c8c48a4e227be3b3e060, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pooledObjects: []
-  objectToPool: {fileID: 6587295368435362768, guid: 8a023d651718fe144bf9bec4366dc365,
-    type: 3}
-  amountToPool: 120
+  objectsToPool:
+  - {fileID: 5896531169112796093, guid: 5aca4d0d2d0e69547b76ed31ee9d7f23, type: 3}
+  - {fileID: 5896531169112796093, guid: cf2162d9860308b49ad6959067bb3eba, type: 3}
+  - {fileID: 5625790779370756472, guid: 1cafc0cfab48ee64c98351892b34b7f2, type: 3}
+  - {fileID: 9138348284767057810, guid: 254b56f1722121d4ea7215d92bc67cef, type: 3}
+  amountToPool: 1e0000001e0000001e0000001e000000

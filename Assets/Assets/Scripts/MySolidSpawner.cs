@@ -21,6 +21,7 @@ public class MySolidSpawner : MonoBehaviour
     public float spawnIntervalBoss;  
     public bool BossHere;
     private BarbScreenCont screen;
+    private ObjectPooling2 pooling2;
     void Start()
     {
         // Initialize the list of spawned prefabs
@@ -29,7 +30,8 @@ public class MySolidSpawner : MonoBehaviour
         // Start the spawn coroutine
         StartCoroutine(SpawnCoroutine());
         StartCoroutine(SpawnCoroutineBoss());
-       screen=FindObjectOfType<BarbScreenCont>();
+        screen=SharedVariables.screenCont;
+        pooling2=ObjectPooling2.SharedInstance;
     }
 
     IEnumerator SpawnCoroutine()
@@ -75,23 +77,12 @@ public class MySolidSpawner : MonoBehaviour
     public void Spawn3(Vector3 pos)
     {
 
-        GameObject prefabToSpawn = ObjectPooler.SharedInstance.GetPooledObject();
+        GameObject prefabToSpawn = pooling2.GetPooledObject(pooling2.objectsToPool[3]);
         if (prefabToSpawn==null) return;      
         prefabToSpawn.transform.SetPositionAndRotation(new Vector3(pos.x,1,pos.z), Quaternion.identity);
-        // Enable the prefab
+    
         prefabToSpawn.SetActive(true);
 
-        //Vector3 startPos = prefabToSpawn.transform.position;
-        //int height = 5;
-        //float duration = 0.3f;
-        //DOTween.To(() => 0, x =>
-        //{
-        //    float y = height * (x / duration - (x / duration) * (x / duration));
-        //    prefabToSpawn.transform.position = startPos + (movableObject.transform.position - startPos) * x / duration + new Vector3(0, y, 0);
-        //}, duration, duration)
-        //.SetEase(Ease.Linear)
-        //.Play();
-        
     }
     public void Spawn4()
     {
@@ -116,7 +107,7 @@ public class MySolidSpawner : MonoBehaviour
         }
         float angle = Random.Range(0f, 360f);
         float x = movableObject.transform.position.x + desiredCircleRadius * Mathf.Cos(angle);
-        float y = movableObject.transform.position.y;
+        //float y = movableObject.transform.position.y;
         float z = movableObject.transform.position.z + desiredCircleRadius * Mathf.Sin(angle);
         Vector3 position = new Vector3(x, 0, z);
         prefab.transform.SetPositionAndRotation(position, Quaternion.identity);

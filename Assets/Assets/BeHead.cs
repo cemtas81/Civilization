@@ -6,13 +6,13 @@ public class BeHead : MonoBehaviour
     private Rigidbody body;
     private BarbScreenCont slider;
     public float expForce, footprintOffset;
-    private MultiObjectPooling objectPooling;
+    private ObjectPooling2 objectPooling;
     public Transform Pos;
     private void Awake()
     {
         body = GetComponent<Rigidbody>();
         slider=SharedVariables.screenCont;
-        objectPooling = MultiObjectPooling.Instance;
+        objectPooling = ObjectPooling2.SharedInstance;
     }
     private void OnEnable()
     {
@@ -38,17 +38,16 @@ public class BeHead : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(Pos.position, Pos.forward, out hit, 0.1f))
             {
-                Vector3 footprintPosition = hit.point + hit.normal * footprintOffset;
-                objectPooling.SpawnFromPool("Kan", footprintPosition, Quaternion.LookRotation(hit.normal, Pos.up));
+                GameObject footprintPrefab = objectPooling.GetPooledObject(objectPooling.objectsToPool[2]);
 
-                //if (footprintPrefab != null)
-                //{
+                if (footprintPrefab != null)
+                {
 
-                //    Vector3 footprintPosition = hit.point + hit.normal * footprintOffset; // Calculate the footprint position with an offset
-                //    footprintPrefab.transform.SetPositionAndRotation(footprintPosition, Quaternion.LookRotation(hit.normal, Pos.up));
-                //    footprintPrefab.SetActive(true);
+                    Vector3 footprintPosition = hit.point + hit.normal * footprintOffset; // Calculate the footprint position with an offset
+                    footprintPrefab.transform.SetPositionAndRotation(footprintPosition, Quaternion.LookRotation(hit.normal, Pos.up));
+                    footprintPrefab.SetActive(true);
 
-                //}
+                }
 
             }
 
