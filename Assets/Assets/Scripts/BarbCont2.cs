@@ -35,11 +35,10 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
         dead = false; 
         playerMovement = GetComponent<PlayerMovement>();
         playerAnimation = GetComponentInChildren<CharacterAnimation>();
-        playerStatus = GetComponent<Status>(); 
-        map=FindObjectOfType<AstarSmoothFollow2>();
-        //audio1=FindObjectOfType<AudioSource>();
+        playerStatus = GetComponent<Status>();      
+        map = SharedVariables.astar;
         audio1 = SharedVariables.audioS;
-        ammo = GameObject.FindGameObjectWithTag("Spear");
+        ammo = SharedVariables.Ammo;
     }
     private void OnEnable()
     {

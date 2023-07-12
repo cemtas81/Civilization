@@ -4,21 +4,14 @@ using System.Collections;
 using DG.Tweening;
 public class MySolidSpawner : MonoBehaviour
 {
-    // The prefabs to spawn
+ 
     public GameObject[] prefabs;
-    public float desiredCircleRadius;
-    // The minimum and maximum number of prefabs to spawn
-    public int minSpawnCount = 5;
-    public int maxSpawnCount = 10;
-    public int maxActivePrefabs = 65;
-    // The movable object to generate spawn points around
+    public int minSpawnCount = 5, maxSpawnCount = 10, maxActivePrefabs = 65;
     public GameObject movableObject;
     [Range(0.0f, 1f)]
     public float nadide;
-    // The list of spawned prefabs
     public List<GameObject> spawnedPrefabs;
-    public float spawnInterval; 
-    public float spawnIntervalBoss;  
+    public float spawnInterval,spawnIntervalBoss, desiredCircleRadius; 
     public bool BossHere;
     private BarbScreenCont screen;
     private ObjectPooling2 pooling2;
@@ -27,7 +20,6 @@ public class MySolidSpawner : MonoBehaviour
         // Initialize the list of spawned prefabs
         spawnedPrefabs = new List<GameObject>();
         Spawn4();
-        // Start the spawn coroutine
         StartCoroutine(SpawnCoroutine());
         StartCoroutine(SpawnCoroutineBoss());
         screen=SharedVariables.screenCont;
@@ -41,10 +33,8 @@ public class MySolidSpawner : MonoBehaviour
             // Loop indefinitely
             while (true)
             {
-                // Wait for the specified interval
                 yield return new WaitForSeconds(spawnInterval);
 
-                // Spawn the prefabs
                 int spawnCount = Random.Range(minSpawnCount, maxSpawnCount + 1);
                 for (int i = 0; i < spawnCount; i++)
                 {

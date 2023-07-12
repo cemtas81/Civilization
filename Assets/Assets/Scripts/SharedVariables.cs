@@ -1,3 +1,4 @@
+using Pathfinding.Examples;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine;
 public class SharedVariables : MonoBehaviour
 {
     public static PlayerMovement plyrmvmnt;
-    public static GameObject playa, sword;
+    public static GameObject playa, sword,Ammo;
     public static BarbCont2 cont;
     public static MeshRenderer swordIm;
     public static BarbScreenCont screenCont;
@@ -13,6 +14,7 @@ public class SharedVariables : MonoBehaviour
     public static SettlementSpawner settlementSpawner;
     public static WeaponController weaponController;
     public static AudioSource audioS;
+    public static AstarSmoothFollow2 astar;
     private void Awake()
     {
         plyrmvmnt=FindObjectOfType<PlayerMovement>();   
@@ -25,5 +27,7 @@ public class SharedVariables : MonoBehaviour
         settlementSpawner=FindObjectOfType<SettlementSpawner>(); 
         weaponController=FindObjectOfType<WeaponController>();
         audioS=FindObjectOfType<AudioSource>();
+        Ammo = GameObject.FindGameObjectWithTag("Spear");
+        astar=FindObjectOfType<AstarSmoothFollow2>();   
     }
 }
