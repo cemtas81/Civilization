@@ -28,7 +28,8 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
     {   
         myController = new MyController();
         myController.MyGameplay.WeaponSelect.performed += wpn => Atto();
-        myController.MyGameplay.SecondWeapon.performed += wpn => Throw();         
+        myController.MyGameplay.SecondWeapon.performed += wpn => Throw();
+        myController.MyGameplay.MakeAmmo.performed += wpn => MakeSpear();
         canShoot = true;
         canThrow = true;    
         screenController = SharedVariables.Instance.screenCont;

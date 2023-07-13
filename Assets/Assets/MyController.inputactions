@@ -85,6 +85,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "MakeAmmo",
+                    "type": "Button",
+                    "id": "13281b6d-8231-4421-b09e-adab99b1a23b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -307,6 +316,17 @@
                     "action": "MoveCursor",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "be48fa5e-feee-4b4c-adac-be3730b19566",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MakeAmmo",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
