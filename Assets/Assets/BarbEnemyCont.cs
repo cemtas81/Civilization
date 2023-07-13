@@ -28,17 +28,17 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
     void Awake()
     {
       
-        player = SharedVariables.playa;
+        player = SharedVariables.Instance.playa;
         enemyMovement = GetComponent<CharacterMovement>();
         enemyAnimation = GetComponent<CharacterAnimation>();
         enemyStatus = GetComponent<Status>();   
-        screenController=SharedVariables.screenCont;     
-        Parent=SharedVariables.spawner;
+        screenController=SharedVariables.Instance.screenCont;     
+        Parent=SharedVariables.Instance.spawner;
         GetRandomEnemy();
         Parent.spawnedPrefabs.Add(this.gameObject);
         enabled = true;
         agent = GetComponent<NavMeshAgent>();  
-        settlement = SharedVariables.settlementSpawner;   
+        settlement = SharedVariables.Instance.settlementSpawner;   
         enemyStatus.speed = Random.Range(2.6f, 3.1f);
     }
   

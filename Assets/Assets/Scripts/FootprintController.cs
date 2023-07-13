@@ -11,7 +11,7 @@ public class FootprintController : MonoBehaviour
     public AudioClip[] FootstepAudioClips;
     private void Start()
     {
-        audio1 = SharedVariables.audioS;
+        audio1 = SharedVariables.Instance.audioS;
         objectPooling = ObjectPooling2.SharedInstance; 
     }
 

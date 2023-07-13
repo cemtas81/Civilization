@@ -8,7 +8,7 @@ public class AxeBoomerang : MonoBehaviour
     GameObject player;
     private MeshRenderer swordImage;
     Transform itemToRotate;
-    private WeaponController weaponController;
+    private BarbarWeaponCont weaponController;
     Vector3 locationInFrontOfPlayer;  
     private Vector3 target2;
     private Transform target;
@@ -17,9 +17,9 @@ public class AxeBoomerang : MonoBehaviour
     {
         go = false;
        
-        weaponController=SharedVariables.weaponController;
-        player = SharedVariables.playa;
-        swordImage = SharedVariables.swordIm;
+        weaponController=SharedVariables.Instance.weaponController;
+        player = SharedVariables.Instance.playa;
+        swordImage = SharedVariables.Instance.swordIm;
         swordImage.enabled = false;
 
         itemToRotate = gameObject.transform.GetChild(0);      

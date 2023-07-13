@@ -11,7 +11,7 @@ public class BeHead : MonoBehaviour
     private void Awake()
     {
         body = GetComponent<Rigidbody>();
-        slider=SharedVariables.screenCont;
+        slider=SharedVariables.Instance.screenCont;
         objectPooling = ObjectPooling2.SharedInstance;
     }
     private void OnEnable()

@@ -22,7 +22,7 @@ public class MySolidSpawner : MonoBehaviour
         Spawn4();
         StartCoroutine(SpawnCoroutine());
         StartCoroutine(SpawnCoroutineBoss());
-        screen=SharedVariables.screenCont;
+        screen=SharedVariables.Instance.screenCont;
         pooling2=ObjectPooling2.SharedInstance;
     }
 

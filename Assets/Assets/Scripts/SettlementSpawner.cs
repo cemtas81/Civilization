@@ -16,7 +16,7 @@ public class SettlementSpawner : MonoBehaviour
     private void Awake()
     {
      
-        barbar = SharedVariables.cont;
+        barbar = SharedVariables.Instance.cont;
         player = barbar.GetComponent<Transform>();
         StartCoroutine(SpawnCoroutine());
     }

@@ -31,14 +31,14 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
         myController.MyGameplay.SecondWeapon.performed += wpn => Throw();         
         canShoot = true;
         canThrow = true;    
-        screenController = SharedVariables.screenCont;
+        screenController = SharedVariables.Instance.screenCont;
         dead = false; 
         playerMovement = GetComponent<PlayerMovement>();
         playerAnimation = GetComponentInChildren<CharacterAnimation>();
         playerStatus = GetComponent<Status>();      
-        map = SharedVariables.astar;
-        audio1 = SharedVariables.audioS;
-        ammo = SharedVariables.Ammo;
+        map = SharedVariables.Instance.astar;
+        audio1 = SharedVariables.Instance.audioS;
+        ammo = SharedVariables.Instance.Ammo;
     }
     private void OnEnable()
     {

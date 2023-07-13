@@ -11,7 +11,7 @@ public class SpearDamage : MonoBehaviour
     private void Start()
     {
 
-        plyrmvmnt=SharedVariables.plyrmvmnt;
+        plyrmvmnt=SharedVariables.Instance.plyrmvmnt;
         aim2 = plyrmvmnt.aim;
         targetPosition = aim2.position;
         Invoke(nameof(Dest), 1.5f);

@@ -10,7 +10,7 @@ public class EnemySpearDamage : MonoBehaviour
     private void Start()
     {
   
-        targetPosition = SharedVariables.playa.transform.position;
+        targetPosition = SharedVariables.Instance.playa.transform.position;
         Invoke(nameof(Dest), 1.5f);
         rb = GetComponent<Rigidbody>();
         rb.isKinematic = true;

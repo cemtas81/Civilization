@@ -1,33 +1,44 @@
 using Pathfinding.Examples;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SharedVariables : MonoBehaviour
 {
-    public static PlayerMovement plyrmvmnt;
-    public static GameObject playa, sword,Ammo;
-    public static BarbCont2 cont;
-    public static MeshRenderer swordIm;
-    public static BarbScreenCont screenCont;
-    public static MySolidSpawner spawner;
-    public static SettlementSpawner settlementSpawner;
-    public static WeaponController weaponController;
-    public static AudioSource audioS;
-    public static AstarSmoothFollow2 astar;
+    private static SharedVariables instance;
+    public static SharedVariables Instance { get { return instance; } }
+
+    public PlayerMovement plyrmvmnt;
+    public GameObject playa, sword, Ammo;
+    public BarbCont2 cont;
+    public MeshRenderer swordIm;
+    public BarbScreenCont screenCont;
+    public MySolidSpawner spawner;
+    public SettlementSpawner settlementSpawner;
+    public BarbarWeaponCont weaponController;
+    public AudioSource audioS;
+    public AstarSmoothFollow2 astar;
+
     private void Awake()
     {
-        plyrmvmnt=FindObjectOfType<PlayerMovement>();   
-        cont=FindObjectOfType<BarbCont2>();
-        sword=GameObject.FindGameObjectWithTag("boomerang");
-        playa =cont.gameObject;
-        swordIm=sword.GetComponent<MeshRenderer>();
-        screenCont=FindObjectOfType<BarbScreenCont>();
-        spawner=FindObjectOfType<MySolidSpawner>();
-        settlementSpawner=FindObjectOfType<SettlementSpawner>(); 
-        weaponController=FindObjectOfType<WeaponController>();
-        audioS=FindObjectOfType<AudioSource>();
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+
+        instance = this;
+        DontDestroyOnLoad(this.gameObject);
+
+        plyrmvmnt = FindObjectOfType<PlayerMovement>();
+        cont = FindObjectOfType<BarbCont2>();
+        sword = GameObject.FindGameObjectWithTag("boomerang");
+        playa = cont.gameObject;
+        swordIm = sword.GetComponent<MeshRenderer>();
+        screenCont = FindObjectOfType<BarbScreenCont>();
+        spawner = FindObjectOfType<MySolidSpawner>();
+        settlementSpawner = FindObjectOfType<SettlementSpawner>();
+        weaponController = FindObjectOfType<BarbarWeaponCont>();
+        audioS = FindObjectOfType<AudioSource>();
         Ammo = GameObject.FindGameObjectWithTag("Spear");
-        astar=FindObjectOfType<AstarSmoothFollow2>();   
+        astar = FindObjectOfType<AstarSmoothFollow2>();
     }
 }
