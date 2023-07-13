@@ -1,6 +1,6 @@
 using Pathfinding.Examples;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class SharedVariables : MonoBehaviour
 {
     private static SharedVariables instance;
@@ -28,6 +28,24 @@ public class SharedVariables : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(this.gameObject);
 
+      
+    }
+    private void Start()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+       
+    }
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        RefreshVariables();
+    }
+    public void RefreshVariables()
+    {
         plyrmvmnt = FindObjectOfType<PlayerMovement>();
         cont = FindObjectOfType<BarbCont2>();
         sword = GameObject.FindGameObjectWithTag("boomerang");

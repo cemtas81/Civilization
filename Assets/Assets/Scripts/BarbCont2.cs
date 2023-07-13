@@ -3,7 +3,7 @@ using Pathfinding.Examples;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.SceneManagement;
 public class BarbCont2 : MonoBehaviour, IKillable, ICurable
 {
     [HideInInspector] public Status playerStatus;
@@ -32,20 +32,21 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
         myController.MyGameplay.MakeAmmo.performed += wpn => MakeSpear();
         canShoot = true;
         canThrow = true;    
-        screenController = SharedVariables.Instance.screenCont;
+        screenController =FindObjectOfType<BarbScreenCont>();
         dead = false; 
         playerMovement = GetComponent<PlayerMovement>();
         playerAnimation = GetComponentInChildren<CharacterAnimation>();
         playerStatus = GetComponent<Status>();      
-        map = SharedVariables.Instance.astar;
-        audio1 = SharedVariables.Instance.audioS;
-        ammo = SharedVariables.Instance.Ammo;
+        map = FindObjectOfType<AstarSmoothFollow2>();
+        audio1 = FindObjectOfType<AudioSource>();
+        ammo = GameObject.FindGameObjectWithTag("Spear"); 
     }
     private void OnEnable()
     {
         myController.Enable();
         action = myController.MyGameplay.MoveCursor;
     }
+   
     void Update()
     {
 
