@@ -8,7 +8,7 @@ public class AxeBoomerang : MonoBehaviour
     GameObject player;
     private MeshRenderer swordImage;
     Transform itemToRotate;
-    private BarbarWeaponCont weaponController;
+    private BarbarWeaponCont weaponController1;
     Vector3 locationInFrontOfPlayer;  
     private Vector3 target2;
     private Transform target;
@@ -17,14 +17,14 @@ public class AxeBoomerang : MonoBehaviour
     {
         go = false;
        
-        weaponController=SharedVariables.Instance.weaponController;
+        weaponController1=SharedVariables.Instance.weaponController;
         player = SharedVariables.Instance.playa;
         swordImage = SharedVariables.Instance.swordIm;
         swordImage.enabled = false;
 
-        itemToRotate = gameObject.transform.GetChild(0);      
-
-        target = GameObject.FindWithTag("Aim").GetComponent<Transform>();
+        itemToRotate = gameObject.transform.GetChild(0);
+        target = SharedVariables.Instance.axeAim;
+        //target = GameObject.FindWithTag("Aim").GetComponent<Transform>();
         target2 = target.position;
         locationInFrontOfPlayer = target2;
         StartCoroutine(Boom());
@@ -33,7 +33,7 @@ public class AxeBoomerang : MonoBehaviour
     IEnumerator Boom()
     {
         go = true;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.5f);
         go = false;
     }
 
@@ -46,12 +46,12 @@ public class AxeBoomerang : MonoBehaviour
 
         if (go)
         {
-            transform.position = Vector3.MoveTowards(transform.position, locationInFrontOfPlayer, Time.deltaTime * 20); //Change The Position To The Location In Front Of The Player            
+            transform.position = Vector3.MoveTowards(transform.position, locationInFrontOfPlayer, Time.deltaTime * 30); //Change The Position To The Location In Front Of The Player            
         }
 
         if (!go)
         {
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.transform.position.x, player.transform.position.y + 1, player.transform.position.z), Time.deltaTime * 25); //Return To Player
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.transform.position.x, player.transform.position.y + 1, player.transform.position.z), Time.deltaTime * 30); //Return To Player
         }
 
         if (!go && Vector3.Distance(player.transform.position, transform.position) < 1.5)

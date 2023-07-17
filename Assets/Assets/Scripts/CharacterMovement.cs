@@ -6,6 +6,7 @@ public class CharacterMovement : MonoBehaviour {
 	private Rigidbody myRigidbody;
     private CharacterAnimation playerAnimation;
     private NavMeshAgent myAgent;
+	public float turnSpeed;
     void Awake () {
 		myRigidbody = GetComponent<Rigidbody>();
 		playerAnimation = GetComponent<CharacterAnimation>();
@@ -35,8 +36,7 @@ public class CharacterMovement : MonoBehaviour {
     }
 	public void Rotation(Quaternion smoothdir)
 	{
-		myRigidbody.MoveRotation(smoothdir);
-		//playerAnimation.Turning(smoothdir.y - transform.rotation.y);
+		myRigidbody.MoveRotation(Quaternion.Slerp(transform.rotation, smoothdir, turnSpeed * Time.fixedDeltaTime));
 	}
 	public void Die() {
 		//myRigidbody.constraints = RigidbodyConstraints.None;

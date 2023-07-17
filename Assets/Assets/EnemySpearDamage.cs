@@ -32,7 +32,8 @@ public class EnemySpearDamage : MonoBehaviour
         }
         else
         {
-            GetComponent<BoxCollider>().enabled = false;
+            //GetComponent<BoxCollider>().enabled = false;
+            GetComponent<Collider>().isTrigger = false;
         }
     }
 

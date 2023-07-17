@@ -9,7 +9,7 @@ public class PlayerMovement : CharacterMovement {
     public GameObject pad;
     [SerializeField] private float range;
     public Vector3 target;
-    public float speed = 2.0f,turnSpeed, nextUpdate;
+    public float speed = 2.0f, nextUpdate;
     private Quaternion qTo;
     private Camera m_camera;
     public Transform aim;

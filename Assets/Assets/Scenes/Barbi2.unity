@@ -1442,6 +1442,7 @@ MonoBehaviour:
   weaponController: {fileID: 1281240138}
   audioS: {fileID: 2141658290}
   astar: {fileID: 1140146445}
+  axeAim: {fileID: 379758397}
 --- !u!1001 &303530472
 PrefabInstance:
   m_ObjectHideFlags: 0

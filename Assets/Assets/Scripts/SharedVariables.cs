@@ -16,6 +16,7 @@ public class SharedVariables : MonoBehaviour
     public BarbarWeaponCont weaponController;
     public AudioSource audioS;
     public AstarSmoothFollow2 astar;
+    public Transform axeAim;
 
     private void Awake()
     {
@@ -58,5 +59,6 @@ public class SharedVariables : MonoBehaviour
         audioS = FindObjectOfType<AudioSource>();
         Ammo = GameObject.FindGameObjectWithTag("Spear");
         astar = FindObjectOfType<AstarSmoothFollow2>();
+        axeAim= GameObject.FindWithTag("Aim").GetComponent<Transform>();
     }
 }

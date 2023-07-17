@@ -3,7 +3,7 @@ using Pathfinding.Examples;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
+
 public class BarbCont2 : MonoBehaviour, IKillable, ICurable
 {
     [HideInInspector] public Status playerStatus;
@@ -13,7 +13,6 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
     private Vector3 direction;
     private PlayerMovement playerMovement;
     private CharacterAnimation playerAnimation;
-    [SerializeField] private float range; 
     [SerializeField] private GameObject bloodParticle, spearCase, spearHold,ammo;
     [SerializeField] private Transform bloodEffect;
     private bool canShoot, canThrow,dead;  
@@ -111,15 +110,13 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
         playerAnimation.Movement(direction.magnitude);
     }
     void FixedUpdate()
-    {
-    
+    {   
         playerMovement.Movement(direction, playerStatus.speed);    
         playerMovement.PlayerRotation(groundMask);
-
     }
     IEnumerator Attack()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.2f);
         canShoot = true;
     }
     void Throw()

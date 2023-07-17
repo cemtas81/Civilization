@@ -21,13 +21,14 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
     public DamageNumber numberPrefab;
     public int random;
     private NavMeshAgent agent;
-    private SettlementSpawner settlement;
+    //private SettlementSpawner settlement;
     public bool Ranged; 
     public Transform ThrowPos;
-   
+    private NavMeshObstacle obstacle;
+
     void Awake()
     {
-      
+        obstacle = GetComponent<NavMeshObstacle>();
         player = SharedVariables.Instance.playa;
         enemyMovement = GetComponent<CharacterMovement>();
         enemyAnimation = GetComponent<CharacterAnimation>();
@@ -38,8 +39,9 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
         Parent.spawnedPrefabs.Add(this.gameObject);
         enabled = true;
         agent = GetComponent<NavMeshAgent>();  
-        settlement = SharedVariables.Instance.settlementSpawner;   
+        //settlement = SharedVariables.Instance.settlementSpawner;   
         enemyStatus.speed = Random.Range(2.6f, 3.1f);
+     
     }
   
     void FixedUpdate()
@@ -60,21 +62,27 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
                 Parent.spawnedPrefabs.Remove(this.gameObject);
                 Destroy(gameObject);
                 //this.gameObject.SetActive(false);
-
                 enabled = false;
+                return;
             }
             else if (distance >= 2.1f)
             {
 
                 if (agent != null)
                 {
+                    if (!agent.enabled)
+                    {
+                        obstacle.enabled = false;
+                        agent.enabled = true;
+                        
+                    }
                     enemyAnimation.Movement(direction.magnitude);
                     direction = player.transform.position;
                     enemyMovement.Movement(direction);
                     enemyAnimation.Attack(false);
-                    Vector3 direction2 = direction - transform.position;
-                    Quaternion targetRotation = Quaternion.LookRotation(direction2);
-                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.fixedDeltaTime);
+                    Vector3 direction2 = direction - transform.position;       
+                    enemyMovement.Rotation(direction2);                   
+                    //transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.fixedDeltaTime);
                 }
                 else
                 {
@@ -87,23 +95,24 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
             {
                 if (agent != null)
                 {
-
-                    //agent.updateRotation=false;
-                    //agent.isStopped = true;
-                    Vector3 direction2 = direction - transform.position;
-                    Quaternion targetRotation = Quaternion.LookRotation(direction2);
-                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.fixedDeltaTime);
+                    if (agent.enabled)
+                    {
+                        agent.velocity = Vector3.zero;
+                        agent.enabled = false;
+                        obstacle.enabled = true;
+                    }         
+                    enemyMovement.Rotation(direction);
                     enemyAnimation.Attack(true);
                 }
                 else
                 {
+                 
                     direction = player.transform.position - transform.position;
                     enemyAnimation.Attack(true);
                 }
 
             }
         }
-
         //      else if (distance > 30) 
         //{
         //	Rolling();
@@ -131,12 +140,9 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
         player.GetComponent<BarbCont2>().LoseHealth(damage);
     } 
     void AttackPlayer2()
-    {
-     
+    {    
         Instantiate(spear, ThrowPos.position,ThrowPos.rotation);
-        // plays the shot sound
         AudioController.instance.PlayOneShot(ThrowSound, 0.6f);
-
     }
 
     void GetRandomEnemy()
@@ -148,7 +154,6 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
     public void LoseHealth(int damage)
     {
         enemyStatus.health -= damage;
-
         if (enemyStatus.health <= 0)
         {
             //DamageN(.5f, "execution");
@@ -163,7 +168,6 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
         Destroy(gameObject, 1.5f);
         enemyAnimation.Die();
         enemyMovement.Die();
-
         if (agent!=null)
         {
             agent.enabled = false;
