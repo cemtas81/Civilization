@@ -33,10 +33,16 @@ public class AxeBoomerang : MonoBehaviour
     IEnumerator Boom()
     {
         go = true;
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(1f);
         go = false;
     }
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Untagged"))
+        {
+            go = false;
+        }
+    }
     void Update()
     {
         if (itemToRotate != null)

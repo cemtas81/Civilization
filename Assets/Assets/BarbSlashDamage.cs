@@ -1,4 +1,4 @@
-using System.Collections;
+
 using UnityEngine;
 
 public class BarbSlashDamage : MonoBehaviour
@@ -19,22 +19,6 @@ public class BarbSlashDamage : MonoBehaviour
                 boss.LoseHealth(1);
                 boss.BloodParticle(transform.position, rotation);
                 break;
-            case "Untagged":
-                GetComponent<AxeBoomerang>().enabled = false;
-                GetComponent<Rigidbody>().isKinematic = false;
-                GetComponent<Collider>().isTrigger = false;
-                //particle1.SetActive(false);
-                //Destroy(this.gameObject,2);
-                StartCoroutine(Come());
-                break;
-        }
-        IEnumerator Come()
-        {
-            yield return new WaitForSeconds(.3f);
-            GetComponent<AxeBoomerang>().enabled = true;
-            GetComponent<Rigidbody>().isKinematic = true;
-            //GetComponent<Collider>().isTrigger = true;
-            //particle1.SetActive(true);
 
         }
 
