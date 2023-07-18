@@ -132,31 +132,34 @@ public class BarbScreenCont : MonoBehaviour
 
     public void UpdateDeadZombiesCount()
     {
-        if (Time.time - lastKillTime <= comboTimeLimit)
+        if (!canSpecial)
         {
-            comboText.gameObject.SetActive(true);
-            comboCount++;
-            comboText.text = string.Format("{1}x combo", headCount, comboCount);
-            StartCoroutine(TextDisappear(2,comboText));
-            if (comboCount>=3&&canSpecial==false)
+            if (Time.time - lastKillTime <= comboTimeLimit)
             {
-                canSpecial=true;
-                StartCoroutine(SpecialEnd(5));
+                comboText.gameObject.SetActive(true);
+                comboCount++;
+                comboText.text = string.Format("{1}x combo", headCount, comboCount);
+                StartCoroutine(TextDisappear(2, comboText));
+                if (comboCount >= 5)
+                {
+                    canSpecial = true;
+                }
             }
-        }
-        else
-        {
-            comboCount = 1;
-            comboText.text = string.Format("", headCount);
-        }
+            else
+            {
+                comboCount = 1;
+                comboText.text = string.Format("", headCount);
+            }
 
-        lastKillTime = Time.time;
+            lastKillTime = Time.time;
+        }
 
     }
-    IEnumerator SpecialEnd(float time)
+    public IEnumerator SpecialEnd(float time)
     {
         yield return new WaitForSeconds(time);
         canSpecial=false;
+        SharedVariables.Instance.cam2.enabled=false;    
     }
     private void UpdateMaxScore(int minutes, int seconds, float time)
     {

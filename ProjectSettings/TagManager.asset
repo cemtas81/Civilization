@@ -18,6 +18,7 @@ TagManager:
   - Settlement
   - Environment
   - EnemySpear
+  - AttackCam
   layers:
   - Default
   - TransparentFX

@@ -1,3 +1,4 @@
+using Cinemachine;
 using Pathfinding.Examples;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,7 +8,7 @@ public class SharedVariables : MonoBehaviour
     public static SharedVariables Instance { get { return instance; } }
 
     public PlayerMovement plyrmvmnt;
-    public GameObject playa, sword, Ammo;
+    public GameObject playa, sword, Ammo,attackCam;
     public BarbCont2 cont;
     public MeshRenderer swordIm;
     public BarbScreenCont screenCont;
@@ -17,7 +18,7 @@ public class SharedVariables : MonoBehaviour
     public AudioSource audioS;
     public AstarSmoothFollow2 astar;
     public Transform axeAim;
-
+    public CinemachineVirtualCamera cam2;
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -60,5 +61,7 @@ public class SharedVariables : MonoBehaviour
         Ammo = GameObject.FindGameObjectWithTag("Spear");
         astar = FindObjectOfType<AstarSmoothFollow2>();
         axeAim= GameObject.FindWithTag("Aim").GetComponent<Transform>();
+        attackCam = GameObject.FindGameObjectWithTag("AttackCam");
+        cam2 = attackCam.GetComponent<CinemachineVirtualCamera>();
     }
 }

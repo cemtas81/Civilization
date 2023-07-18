@@ -15,7 +15,7 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
     private CharacterAnimation playerAnimation;
     [SerializeField] private GameObject bloodParticle, spearCase, spearHold,ammo;
     [SerializeField] private Transform bloodEffect;
-    private bool canShoot, canThrow,dead;  
+    private bool canShoot, canThrow,dead,specialAttack;  
     MyController myController; 
     public GamePadCursorController joyAim;
     public TargetMover cursorAim;
@@ -98,6 +98,7 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
         if (screenController.canSpecial==false)
         {
             playerAnimation.Special1(false);
+            specialAttack = false;
         }
       
 #endif
@@ -125,7 +126,7 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
     }
     void Throw()
     {
-        if (canThrow && canShoot&&screenController.spearCount>=1)
+        if (canThrow && canShoot&&screenController.spearCount>=1&&!specialAttack)
         {
             StartCoroutine(Throwy());
             Throwing();
@@ -147,7 +148,13 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
     }
     void Special1()
     {      
-        playerAnimation.Special1(screenController.canSpecial);   
+        playerAnimation.Special1(screenController.canSpecial);
+        if (screenController.canSpecial)
+        {
+            SharedVariables.Instance.cam2.enabled=true;
+            SharedVariables.Instance.StartCoroutine(screenController.SpecialEnd(5));
+            specialAttack = true;
+        }
     }
     void Again()
     {
@@ -158,7 +165,7 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
     }
     void Atto()
     {
-        if (canShoot && canThrow)
+        if (canShoot && canThrow&&!specialAttack)
         {
             StartCoroutine(Attack());
             Attacking();
@@ -176,12 +183,16 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
 
     public void LoseHealth(int damage)
     {
-        playerStatus.health -= damage;
-        screenController.UpdateHealthSlider();
-        Instantiate(bloodParticle, bloodEffect.transform.position, transform.rotation);
-        audio1.PlayOneShot(damageSound,Random.Range(0.2f,0.9f));
-        if (playerStatus.health <= 0)
-            Die();
+        if (!specialAttack)
+        {
+            playerStatus.health -= damage;
+            screenController.UpdateHealthSlider();
+            Instantiate(bloodParticle, bloodEffect.transform.position, transform.rotation);
+            audio1.PlayOneShot(damageSound, Random.Range(0.2f, 0.9f));
+            if (playerStatus.health <= 0)
+                Die();
+        }
+       
     }
     public void MakeSpear()
     {
