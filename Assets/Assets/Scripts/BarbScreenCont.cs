@@ -140,7 +140,7 @@ public class BarbScreenCont : MonoBehaviour
                 comboCount++;
                 comboText.text = string.Format("{1}x combo", headCount, comboCount);
                 StartCoroutine(TextDisappear(2, comboText));
-                if (comboCount >= 5)
+                if (comboCount >= 2)
                 {
                     canSpecial = true;
                 }
