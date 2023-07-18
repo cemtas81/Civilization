@@ -21,10 +21,8 @@ public class AxeBoomerang : MonoBehaviour
         player = SharedVariables.Instance.playa;
         swordImage = SharedVariables.Instance.swordIm;
         swordImage.enabled = false;
-
         itemToRotate = gameObject.transform.GetChild(0);
         target = SharedVariables.Instance.axeAim;
-        //target = GameObject.FindWithTag("Aim").GetComponent<Transform>();
         target2 = target.position;
         locationInFrontOfPlayer = target2;
         StartCoroutine(Boom());

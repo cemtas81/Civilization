@@ -18,10 +18,9 @@ public class BarbScreenCont : MonoBehaviour
     private BarbCont2 playerController;
     [SerializeField] private int comboCount;
     [SerializeField] private float comboTimeLimit = 2f;
-    
+    public bool canSpecial;
     private void Start()
     {
-
         ammo = GameObject.FindGameObjectWithTag("Spear");
         playerController =FindObjectOfType<BarbCont2>();
         maxScore = PlayerPrefs.GetFloat("MaxScore");
@@ -96,9 +95,7 @@ public class BarbScreenCont : MonoBehaviour
     {
         gameOverPanel.SetActive(true);
         Time.timeScale = 0;
-
         float time = Time.timeSinceLevelLoad;
-
         int minutes = (int)(time / 60);
         int seconds = (int)(time % 100);
         scoreText.text = "You survived for " + minutes + " centuries and " + seconds + " years.";
@@ -141,6 +138,11 @@ public class BarbScreenCont : MonoBehaviour
             comboCount++;
             comboText.text = string.Format("{1}x combo", headCount, comboCount);
             StartCoroutine(TextDisappear(2,comboText));
+            if (comboCount>=3&&canSpecial==false)
+            {
+                canSpecial=true;
+                StartCoroutine(SpecialEnd(5));
+            }
         }
         else
         {
@@ -151,7 +153,11 @@ public class BarbScreenCont : MonoBehaviour
         lastKillTime = Time.time;
 
     }
-
+    IEnumerator SpecialEnd(float time)
+    {
+        yield return new WaitForSeconds(time);
+        canSpecial=false;
+    }
     private void UpdateMaxScore(int minutes, int seconds, float time)
     {
         if (time > maxScore)

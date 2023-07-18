@@ -62,7 +62,6 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
             joyAim.enabled = false;
             cursorAim.enabled = true;
             Cursor.visible = true;
-
         }
         if (Input.GetMouseButtonDown(0))
         {
@@ -76,7 +75,10 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
         {
             Again();
         }
-
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            Special1();
+        }
         Vector2 moving=action.ReadValue<Vector2>();
         float xAxis =moving.x;
         float zAxis = moving.y;
@@ -88,11 +90,14 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
         {
             map.enabled=!map.enabled;
             map.GetComponent<Camera>().enabled = !map.GetComponent<Camera>().enabled;
-
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             MakeSpear();
+        }
+        if (screenController.canSpecial==false)
+        {
+            playerAnimation.Special1(false);
         }
       
 #endif
@@ -101,7 +106,6 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
 		float xAxis = zone.move.x;
 		float zAxis = zone.move.y;
 #endif
-
         direction = new Vector3(xAxis, 0, zAxis);
         float velocityZ = Vector3.Dot(direction.normalized, transform.forward);
         float velocityX = Vector3.Dot(direction.normalized, transform.right);
@@ -141,6 +145,10 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
         yield return new WaitForSeconds(1.5f);
         canThrow = true;   
     }
+    void Special1()
+    {      
+        playerAnimation.Special1(screenController.canSpecial);   
+    }
     void Again()
     {
         if (dead)
@@ -172,7 +180,6 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
         screenController.UpdateHealthSlider();
         Instantiate(bloodParticle, bloodEffect.transform.position, transform.rotation);
         audio1.PlayOneShot(damageSound,Random.Range(0.2f,0.9f));
-
         if (playerStatus.health <= 0)
             Die();
     }

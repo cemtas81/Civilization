@@ -61,4 +61,8 @@ public class CharacterAnimation : MonoBehaviour {
 	{
 		animator.SetTrigger("Throw");
 	}
+	public void Special1(bool state) 
+	{
+		animator.SetBool("Special1",state);
+	}
 }

@@ -39,7 +39,6 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
         Parent.spawnedPrefabs.Add(this.gameObject);
         enabled = true;
         agent = GetComponent<NavMeshAgent>();  
-        //settlement = SharedVariables.Instance.settlementSpawner;   
         enemyStatus.speed = Random.Range(2.6f, 3.1f);
      
     }
@@ -105,8 +104,7 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
                     enemyAnimation.Attack(true);
                 }
                 else
-                {
-                 
+                {                
                     direction = player.transform.position - transform.position;
                     enemyAnimation.Attack(true);
                 }
@@ -142,7 +140,7 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
     void AttackPlayer2()
     {    
         Instantiate(spear, ThrowPos.position,ThrowPos.rotation);
-        AudioController.instance.PlayOneShot(ThrowSound, 0.6f);
+        AudioController.instance.PlayOneShot(ThrowSound, 0.8f);
     }
 
     void GetRandomEnemy()
