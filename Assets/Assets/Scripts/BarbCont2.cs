@@ -29,10 +29,8 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
         myController.MyGameplay.WeaponSelect.performed += wpn => Atto();
         myController.MyGameplay.SecondWeapon.performed += wpn => Throw();
         myController.MyGameplay.MakeAmmo.performed += wpn => MakeSpear();
-        canShoot = true;
-        canThrow = true;    
-        screenController =FindObjectOfType<BarbScreenCont>();
-        dead = false; 
+        canShoot = true; canThrow = true; dead = false;
+        screenController =FindObjectOfType<BarbScreenCont>();      
         playerMovement = GetComponent<PlayerMovement>();
         playerAnimation = GetComponentInChildren<CharacterAnimation>();
         playerStatus = GetComponent<Status>();      

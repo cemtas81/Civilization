@@ -54,7 +54,6 @@ public class BarbScreenCont : MonoBehaviour
         if (coinSlider.value >= 100)
         {
             weaponLevel++;
-            //playerController.Upgrade(uP.recentWeapon.skillLevel);
             upgradePanel.SetActive(true);
             coinSlider.value = 0;
         }
@@ -86,8 +85,7 @@ public class BarbScreenCont : MonoBehaviour
             Debug.Log("Bitti!");
     }
     public void DecreaseSpear(int spear)
-    {
-       
+    {      
         spearCount--;
         spearText.text = spearCount.ToString();
     }
@@ -122,12 +120,10 @@ public class BarbScreenCont : MonoBehaviour
 
     public void Restart()
     {
-        //SceneManager.LoadScene("Game");
         if (gameOverPanel.activeInHierarchy == true)
         {
             SceneManager.LoadScene("Barbi2");
         }
-
     }
 
     public void UpdateDeadZombiesCount()
