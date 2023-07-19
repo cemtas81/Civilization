@@ -22,7 +22,9 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
     private InputAction action;
     private AstarSmoothFollow2 map;
     private AudioSource audio1;
-   
+    private Light scLight;
+    public Color normalColor;
+    public GameObject specialTrail;
     private void Awake()
     {   
         myController = new MyController();
@@ -37,6 +39,7 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
         map = FindObjectOfType<AstarSmoothFollow2>();
         audio1 = FindObjectOfType<AudioSource>();
         ammo = GameObject.FindGameObjectWithTag("Spear"); 
+        scLight=SharedVariables.Instance.sceneLight;
     }
     private void OnEnable()
     {
@@ -97,7 +100,7 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
         {
             playerAnimation.Special1(false);
             specialAttack = false;
-        }
+        }    
       
 #endif
 #if UNITY_ANDROID || UNITY_IPHONE
@@ -113,8 +116,12 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
         playerAnimation.Movement(direction.magnitude);
     }
     void FixedUpdate()
-    {   
-        playerMovement.Movement(direction, playerStatus.speed);    
+    {
+        if (!specialAttack)
+        {
+            playerMovement.Movement(direction, playerStatus.speed);
+        } 
+          
         playerMovement.PlayerRotation(groundMask);
     }
     IEnumerator Attack()
@@ -149,9 +156,11 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
         playerAnimation.Special1(screenController.canSpecial);
         if (screenController.canSpecial)
         {
+            specialTrail.SetActive(true);
             SharedVariables.Instance.cam2.enabled=true;
-            SharedVariables.Instance.StartCoroutine(screenController.SpecialEnd(5));
+            SharedVariables.Instance.StartCoroutine(screenController.SpecialEnd(5,normalColor,specialTrail));
             specialAttack = true;
+            scLight.color = Color.red;
         }
     }
     void Again()

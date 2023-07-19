@@ -19,6 +19,7 @@ public class BarbScreenCont : MonoBehaviour
     [SerializeField] private int comboCount;
     [SerializeField] private float comboTimeLimit = 2f;
     public bool canSpecial;
+ 
     private void Start()
     {
         ammo = GameObject.FindGameObjectWithTag("Spear");
@@ -151,11 +152,13 @@ public class BarbScreenCont : MonoBehaviour
         }
 
     }
-    public IEnumerator SpecialEnd(float time)
+    public IEnumerator SpecialEnd(float time,Color color,GameObject trail)
     {
         yield return new WaitForSeconds(time);
         canSpecial=false;
-        SharedVariables.Instance.cam2.enabled=false;    
+        SharedVariables.Instance.cam2.enabled=false;
+        SharedVariables.Instance.sceneLight.color=color;
+        trail.SetActive(false);
     }
     private void UpdateMaxScore(int minutes, int seconds, float time)
     {

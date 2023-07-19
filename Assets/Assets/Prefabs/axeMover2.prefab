@@ -9745,7 +9745,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cbf38c3b75bd874eb2b5a991c1034b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particle1: {fileID: 3585340205547055269}
+  damage: 1
 --- !u!54 &6633247005726018619
 Rigidbody:
   m_ObjectHideFlags: 0

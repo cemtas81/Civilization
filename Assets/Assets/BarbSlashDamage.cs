@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BarbSlashDamage : MonoBehaviour
 {
-    public GameObject particle1;
+    public int damage;
     void OnTriggerEnter(Collider other)
     {
         Quaternion rotation = Quaternion.LookRotation(-transform.forward);
@@ -11,12 +11,12 @@ public class BarbSlashDamage : MonoBehaviour
         {
             case "Enemy":
                 BarbEnemyCont enemy = other.GetComponent<BarbEnemyCont>();
-                enemy.LoseHealth(1);
+                enemy.LoseHealth(damage);
                 enemy.BloodParticle(transform.position, rotation);
                 break;
             case "Boss":
                 BossCont2 boss = other.GetComponent<BossCont2>();
-                boss.LoseHealth(1);
+                boss.LoseHealth(damage);
                 boss.BloodParticle(transform.position, rotation);
                 break;
 

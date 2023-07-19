@@ -19,6 +19,7 @@ public class SharedVariables : MonoBehaviour
     public AstarSmoothFollow2 astar;
     public Transform axeAim;
     public CinemachineVirtualCamera cam2;
+    public Light sceneLight;
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -63,5 +64,6 @@ public class SharedVariables : MonoBehaviour
         axeAim= GameObject.FindWithTag("Aim").GetComponent<Transform>();
         attackCam = GameObject.FindGameObjectWithTag("AttackCam");
         cam2 = attackCam.GetComponent<CinemachineVirtualCamera>();
+        sceneLight=FindObjectOfType<Light>();   
     }
 }
