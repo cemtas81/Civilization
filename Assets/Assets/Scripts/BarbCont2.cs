@@ -15,7 +15,8 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
     private CharacterAnimation playerAnimation;
     [SerializeField] private GameObject bloodParticle, spearCase, spearHold,ammo;
     [SerializeField] private Transform bloodEffect;
-    private bool canShoot, canThrow,dead,specialAttack;  
+    private bool canShoot, canThrow,dead;
+    public bool specialAttack;
     MyController myController; 
     public GamePadCursorController joyAim;
     public TargetMover cursorAim;
@@ -39,7 +40,7 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
         map = FindObjectOfType<AstarSmoothFollow2>();
         audio1 = FindObjectOfType<AudioSource>();
         ammo = GameObject.FindGameObjectWithTag("Spear"); 
-        scLight=SharedVariables.Instance.sceneLight;
+        scLight=FindObjectOfType<Light>();  
     }
     private void OnEnable()
     {

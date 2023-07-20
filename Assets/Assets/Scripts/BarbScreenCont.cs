@@ -22,8 +22,10 @@ public class BarbScreenCont : MonoBehaviour
  
     private void Start()
     {
-        ammo = GameObject.FindGameObjectWithTag("Spear");
-        playerController =FindObjectOfType<BarbCont2>();
+        //ammo = GameObject.FindGameObjectWithTag("Spear");
+        ammo = SharedVariables.Instance.Ammo;
+        //playerController =FindObjectOfType<BarbCont2>();
+        playerController = SharedVariables.Instance.cont;
         maxScore = PlayerPrefs.GetFloat("MaxScore");
         coinSlider.value = 0;
         healthSlider.maxValue = playerController.playerStatus.health;
@@ -137,7 +139,7 @@ public class BarbScreenCont : MonoBehaviour
                 comboCount++;
                 comboText.text = string.Format("{1}x combo", headCount, comboCount);
                 StartCoroutine(TextDisappear(2, comboText));
-                if (comboCount >= 2)
+                if (comboCount >= 5)
                 {
                     canSpecial = true;
                 }
