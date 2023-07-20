@@ -52,6 +52,11 @@ public class BeHead : MonoBehaviour
             }
 
         }
+        //else if (collision.collider.CompareTag("Spear"))
+        //{
+        //    this.gameObject.transform.parent = collision.collider.transform;
+        //    Debug.Log("MIzrak");
+        //}
 
     }
   
