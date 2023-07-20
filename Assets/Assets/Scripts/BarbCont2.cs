@@ -34,7 +34,7 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
         canShoot = true; canThrow = true; dead = false;
         screenController =FindObjectOfType<BarbScreenCont>();      
         playerMovement = GetComponent<PlayerMovement>();
-        playerAnimation = GetComponentInChildren<CharacterAnimation>();
+        playerAnimation = GetComponent<CharacterAnimation>();
         playerStatus = GetComponent<Status>();      
         map = FindObjectOfType<AstarSmoothFollow2>();
         audio1 = FindObjectOfType<AudioSource>();
@@ -158,7 +158,7 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
         {
             specialTrail.SetActive(true);
             SharedVariables.Instance.cam2.enabled=true;
-            SharedVariables.Instance.StartCoroutine(screenController.SpecialEnd(5,normalColor,specialTrail));
+            SharedVariables.Instance.StartCoroutine(screenController.SpecialEnd(10,normalColor,specialTrail));
             specialAttack = true;
             scLight.color = Color.red;
         }

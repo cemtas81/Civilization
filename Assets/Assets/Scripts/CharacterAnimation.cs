@@ -60,5 +60,6 @@ public class CharacterAnimation : MonoBehaviour {
 	public void Special1(bool state) 
 	{
 		animator.SetBool("Special1",state);
+		animator.applyRootMotion=state;
 	}
 }
