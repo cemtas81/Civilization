@@ -20,6 +20,8 @@ public class SharedVariables : MonoBehaviour
     public Transform axeAim;
     public CinemachineVirtualCamera cam2;
     public Light sceneLight;
+    public bool gathering;
+    public Transform gatherPoint;
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -64,6 +66,6 @@ public class SharedVariables : MonoBehaviour
         axeAim= GameObject.FindWithTag("Aim").GetComponent<Transform>();
         attackCam = GameObject.FindGameObjectWithTag("AttackCam");
         cam2 = attackCam.GetComponent<CinemachineVirtualCamera>();
-        sceneLight=FindObjectOfType<Light>();   
+        sceneLight=FindObjectOfType<Light>();        
     }
 }

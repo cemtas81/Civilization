@@ -1464,6 +1464,7 @@ MonoBehaviour:
   axeAim: {fileID: 379758397}
   cam2: {fileID: 2050134308}
   sceneLight: {fileID: 2114283754330233425}
+  gathering: 0
 --- !u!1001 &303530472
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7634,6 +7635,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 213340865}
     m_Modifications:
+    - target: {fileID: 331938383, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 331938385, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.b
+      value: 0.0731132
+      objectReference: {fileID: 0}
+    - target: {fileID: 331938385, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.g
+      value: 0.0731132
+      objectReference: {fileID: 0}
+    - target: {fileID: 331938385, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.r
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 331938385, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 331938385, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.b
+      value: 0.45750266
+      objectReference: {fileID: 0}
+    - target: {fileID: 331938385, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.g
+      value: 0.45750266
+      objectReference: {fileID: 0}
+    - target: {fileID: 331938385, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.r
+      value: 0.6509434
+      objectReference: {fileID: 0}
     - target: {fileID: 4416926083347132230, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
       propertyPath: joyAim
       value: 

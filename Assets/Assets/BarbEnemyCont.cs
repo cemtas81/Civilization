@@ -73,15 +73,27 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
                     {
                         obstacle.enabled = false;
                         agent.enabled = true;
-                        
+
                     }
-                    enemyAnimation.Movement(direction.magnitude);
-                    direction = player.transform.position;
-                    enemyMovement.Movement(direction);
-                    enemyAnimation.Attack(false);
-                    Vector3 direction2 = direction - transform.position;       
-                    enemyMovement.Rotation(direction2);                   
-                    //transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.fixedDeltaTime);
+                    if (!SharedVariables.Instance.gathering)
+                    {
+                        enemyAnimation.Movement(direction.magnitude);
+                        direction = SharedVariables.Instance.gatherPoint.transform.position;
+                        enemyMovement.Movement(direction);
+                        enemyAnimation.Attack(false);
+                        Vector3 direction2 = direction - transform.position;
+                        enemyMovement.Rotation(direction2);                  
+                    }
+                    else
+                    {
+                        enemyAnimation.Movement(direction.magnitude);
+                        direction = player.transform.position;
+                        enemyMovement.Movement(direction);
+                        enemyAnimation.Attack(false);
+                        Vector3 direction2 = direction - transform.position;
+                        enemyMovement.Rotation(direction2);                   
+                    }
+
                 }
                 else
                 {
