@@ -20,7 +20,7 @@ public class SharedVariables : MonoBehaviour
     public Transform axeAim;
     public CinemachineVirtualCamera cam2;
     public Light sceneLight;
-    public bool gathering;
+    //public bool gathering;
     public Transform gatherPoint;
     private void Awake()
     {

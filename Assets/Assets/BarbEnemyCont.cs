@@ -40,7 +40,7 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
         enabled = true;
         agent = GetComponent<NavMeshAgent>();  
         enemyStatus.speed = Random.Range(2.6f, 3.1f);
-     
+        random = Random.Range(5, 10);
     }
   
     void FixedUpdate()
@@ -75,23 +75,28 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
                         agent.enabled = true;
 
                     }
-                    if (!SharedVariables.Instance.gathering)
-                    {
-                        enemyAnimation.Movement(direction.magnitude);
-                        direction = SharedVariables.Instance.gatherPoint.transform.position;
-                        enemyMovement.Movement(direction);
-                        enemyAnimation.Attack(false);
-                        Vector3 direction2 = direction - transform.position;
-                        enemyMovement.Rotation(direction2);                  
-                    }
                     else
                     {
-                        enemyAnimation.Movement(direction.magnitude);
-                        direction = player.transform.position;
-                        enemyMovement.Movement(direction);
-                        enemyAnimation.Attack(false);
-                        Vector3 direction2 = direction - transform.position;
-                        enemyMovement.Rotation(direction2);                   
+                       
+                        if (IsPlayerOnNavMesh())
+                        {
+                            enemyAnimation.Movement(direction.magnitude);
+                            direction = player.transform.position;
+                            enemyMovement.Movement(direction);
+                            enemyAnimation.Attack(false);
+                            Vector3 direction2 = direction - transform.position;
+                            enemyMovement.Rotation(direction2);                          
+                        }
+                        else
+                        {
+                            // Stop the agent when the player is outside the navmesh                         
+                            enemyAnimation.Movement(direction.magnitude);
+                            direction = SharedVariables.Instance.gatherPoint.transform.position;
+                            enemyMovement.Movement(direction);
+                            enemyAnimation.Attack(false);
+                            Vector3 direction2 = direction - transform.position;
+                            enemyMovement.Rotation(direction2);
+                        }
                     }
 
                 }
@@ -143,11 +148,13 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
         }
 
     }
-
-    void AttackPlayer()
+    private bool IsPlayerOnNavMesh()
     {
-        int damage = Random.Range(5, 10);
-        player.GetComponent<BarbCont2>().LoseHealth(damage);
+        return NavMesh.SamplePosition(player.transform.position, out NavMeshHit hit, 1f, NavMesh.AllAreas);
+    }
+    void AttackPlayer()
+    {       
+        player.GetComponent<BarbCont2>().LoseHealth(random);
     } 
     void AttackPlayer2()
     {    

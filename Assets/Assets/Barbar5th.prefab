@@ -1439,8 +1439,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.4999555, g: 0.8856768, b: 0.990566, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 1}
+        key0: {r: 0.5, g: 0.0731132, b: 0.0731132, a: 1}
+        key1: {r: 0.6509434, g: 0.45750266, b: 0.45750266, a: 0}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -5230,7 +5230,6 @@ GameObject:
   - component: {fileID: 6775800685354929042}
   - component: {fileID: 7692559120689015570}
   - component: {fileID: 7692559120689015582}
-  - component: {fileID: 5068862358356120218}
   - component: {fileID: 4416926083347132230}
   - component: {fileID: 4416926083347132231}
   - component: {fileID: 4416926083347132232}
@@ -5331,19 +5330,6 @@ MonoBehaviour:
   initialHealth: 500
   health: 0
   speed: 5
---- !u!114 &5068862358356120218
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5068862358356120220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c5b990d73f9aef40b1d8afcda127749, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turnSpeed: 0
 --- !u!114 &4416926083347132230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5367,6 +5353,7 @@ MonoBehaviour:
   spearHold: {fileID: 3586522485839692880}
   ammo: {fileID: 0}
   bloodEffect: {fileID: 4453656915626104425}
+  specialAttack: 0
   joyAim: {fileID: 0}
   cursorAim: {fileID: 0}
   normalColor: {r: 1, g: 0.9485697, b: 0.8160377, a: 1}
