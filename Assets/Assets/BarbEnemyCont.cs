@@ -25,7 +25,7 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
     public bool Ranged; 
     public Transform ThrowPos;
     private NavMeshObstacle obstacle;
-
+    public bool isBoss;
     void Awake()
     {
         obstacle = GetComponent<NavMeshObstacle>();
@@ -39,8 +39,15 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
         Parent.spawnedPrefabs.Add(this.gameObject);
         enabled = true;
         agent = GetComponent<NavMeshAgent>();  
-        enemyStatus.speed = Random.Range(2.6f, 3.1f);
-        random = Random.Range(5, 10);
+        enemyStatus.speed = Random.Range(2.6f, 3.1f);     
+        if (isBoss)
+        {
+            random = 15;
+        }
+        else
+        {
+            random = Random.Range(5, 10);
+        }
     }
   
     void FixedUpdate()
@@ -133,8 +140,7 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
         //	Rolling();
         //}
         else
-        {
-           
+        {           
             enemyMovement.Rotation(direction);
             if (distance <= 10)
             {
@@ -144,6 +150,8 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
             else
             {
                 enemyAnimation.Attack2(false);
+                enemyMovement.Movement(direction, enemyStatus.speed);                
+                enemyAnimation.Movement(direction.magnitude * 5);
             }
         }
 
@@ -164,8 +172,12 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
 
     void GetRandomEnemy()
     {
-        int randomEnemy = Random.Range(1, randomClothes.transform.childCount);
-        randomClothes.transform.GetChild(randomEnemy).gameObject.SetActive(true);
+        if (!isBoss)
+        {
+            int randomEnemy = Random.Range(1, randomClothes.transform.childCount);
+            randomClothes.transform.GetChild(randomEnemy).gameObject.SetActive(true);
+        }
+       
     }
 
     public void LoseHealth(int damage)

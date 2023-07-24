@@ -30,6 +30,10 @@ public class EnemySpearDamage : MonoBehaviour
             enemy.LoseHealth(5);
             Dest();
         }
+        if (other.CompareTag("Enemy"))
+        {
+            GetComponent<Collider>().isTrigger = true;
+        }
         else
         {
             //GetComponent<BoxCollider>().enabled = false;
