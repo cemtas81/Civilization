@@ -142,6 +142,7 @@ public class BarbScreenCont : MonoBehaviour
                 if (comboCount >= 5)
                 {
                     canSpecial = true;
+                    StartCoroutine(SpecialFail());
                 }
             }
             else
@@ -154,6 +155,11 @@ public class BarbScreenCont : MonoBehaviour
         }
 
     }
+    IEnumerator SpecialFail()
+    {
+        yield return new WaitForSeconds(1);
+        canSpecial = false;
+    }
     public IEnumerator SpecialEnd(float time,Color color,GameObject trail)
     {
         yield return new WaitForSeconds(time);
@@ -161,6 +167,7 @@ public class BarbScreenCont : MonoBehaviour
         SharedVariables.Instance.cam2.enabled=false;
         SharedVariables.Instance.sceneLight.color=color;
         trail.SetActive(false);
+        playerController.specialAttack = false;
     }
     private void UpdateMaxScore(int minutes, int seconds, float time)
     {

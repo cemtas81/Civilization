@@ -7635,6 +7635,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 213340865}
     m_Modifications:
+    - target: {fileID: 2077822668, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 78fe28b7e26367146869f0acd860219c, type: 2}
     - target: {fileID: 4416926083347132230, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
       propertyPath: joyAim
       value: 

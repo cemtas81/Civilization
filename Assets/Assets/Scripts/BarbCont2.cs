@@ -97,12 +97,10 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
         {
             MakeSpear();
         }
-        if (screenController.canSpecial==false)
+        if (!specialAttack)
         {
             playerAnimation.Special1(false);
-            specialAttack = false;
-        }    
-      
+        }
 #endif
 #if UNITY_ANDROID || UNITY_IPHONE
 		
@@ -154,13 +152,14 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
     }
     void Special1()
     {      
-        playerAnimation.Special1(screenController.canSpecial);
+        
         if (screenController.canSpecial)
         {
+            specialAttack = true;
+            playerAnimation.Special1(specialAttack);
             specialTrail.SetActive(true);
             SharedVariables.Instance.cam2.enabled=true;
-            SharedVariables.Instance.StartCoroutine(screenController.SpecialEnd(10,normalColor,specialTrail));
-            specialAttack = true;
+            SharedVariables.Instance.StartCoroutine(screenController.SpecialEnd(10,normalColor,specialTrail));      
             scLight.color = Color.red;
         }
     }
