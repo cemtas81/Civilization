@@ -150,7 +150,7 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
     }
     private bool IsPlayerOnNavMesh()
     {
-        return NavMesh.SamplePosition(player.transform.position, out NavMeshHit hit, 1f, NavMesh.AllAreas);
+        return NavMesh.SamplePosition(player.transform.position, out _, 1f, NavMesh.AllAreas);
     }
     void AttackPlayer()
     {       

@@ -1464,7 +1464,6 @@ MonoBehaviour:
   axeAim: {fileID: 379758397}
   cam2: {fileID: 2050134308}
   sceneLight: {fileID: 2114283754330233425}
-  gathering: 0
   gatherPoint: {fileID: 0}
 --- !u!1001 &303530472
 PrefabInstance:
@@ -4702,7 +4701,7 @@ PrefabInstance:
       objectReference: {fileID: 1281240118}
     - target: {fileID: 2693321850349188107, guid: 4b696d284aaf53944adab03d7a6fa95b, type: 3}
       propertyPath: spawnIntervalBoss
-      value: 1
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 2693321850349188117, guid: 4b696d284aaf53944adab03d7a6fa95b, type: 3}
       propertyPath: m_Name
@@ -5244,7 +5243,7 @@ MonoBehaviour:
     m_Bits: 129
   Player: {fileID: 1281240129}
   Camera: {fileID: 1209796834}
-  FadedAlpha: 0.1
+  FadedAlpha: 0.2
   FadingMode: 1
   ChecksPerSecond: 10
   FadeFPS: 30
