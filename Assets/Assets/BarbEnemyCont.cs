@@ -42,7 +42,7 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
         enemyStatus.speed = Random.Range(2.6f, 3.1f);     
         if (isBoss)
         {
-            random = 15;
+            random = 20;
         }
         else
         {
@@ -172,7 +172,7 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
 
     void GetRandomEnemy()
     {
-        if (!isBoss)
+        if (!isBoss&&!Ranged)
         {
             int randomEnemy = Random.Range(1, randomClothes.transform.childCount);
             randomClothes.transform.GetChild(randomEnemy).gameObject.SetActive(true);
@@ -202,10 +202,13 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
             agent.enabled = false;
         }
         enabled = false;
-        screenController.UpdateDeadZombiesCount();
-        head.SetActive(false);
-        cust.SetActive(false);
-        Parent.Spawn3(this.transform.position);
+        screenController.UpdateDeadZombiesCount();      
+        if (!Ranged&&!isBoss)
+        {
+            Parent.Spawn3(this.transform.position);
+            head.SetActive(false);
+            cust.SetActive(false);
+        }     
         Parent.spawnedPrefabs.Remove(this.gameObject);
         AudioController.instance.PlayOneShot(deathSound,Random.Range(0.2f, 0.9f));
         InstantiateAidKit(probabilityAidKit);

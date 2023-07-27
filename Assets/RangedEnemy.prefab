@@ -1600,7 +1600,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3369156882467596404}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.787645, y: 0, z: -13.989073}
+  m_LocalPosition: {x: -84.26045, y: 0, z: -69.84848}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1746,7 +1746,7 @@ MonoBehaviour:
   random: 0
   Ranged: 1
   ThrowPos: {fileID: 5960174550656278402}
-  isBoss: 1
+  isBoss: 0
 --- !u!1 &3369156882467596486
 GameObject:
   m_ObjectHideFlags: 0
@@ -3617,6 +3617,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Wep_Spear_03
       objectReference: {fileID: 0}
+    - target: {fileID: 124464, guid: bc97a13f46e9e7b4d8d2bfa40fcdc1e4, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 124464, guid: bc97a13f46e9e7b4d8d2bfa40fcdc1e4, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 487028, guid: bc97a13f46e9e7b4d8d2bfa40fcdc1e4, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -3691,6 +3699,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Wep_Spear_03 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 124464, guid: bc97a13f46e9e7b4d8d2bfa40fcdc1e4, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 124464, guid: bc97a13f46e9e7b4d8d2bfa40fcdc1e4, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 487028, guid: bc97a13f46e9e7b4d8d2bfa40fcdc1e4, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -3764,6 +3780,14 @@ PrefabInstance:
     - target: {fileID: 155018, guid: f6eebfa575699754d8f37dfd57a331c4, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Shield_Decor_04
+      objectReference: {fileID: 0}
+    - target: {fileID: 155018, guid: f6eebfa575699754d8f37dfd57a331c4, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 155018, guid: f6eebfa575699754d8f37dfd57a331c4, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 452432, guid: f6eebfa575699754d8f37dfd57a331c4, type: 3}
       propertyPath: m_RootOrder

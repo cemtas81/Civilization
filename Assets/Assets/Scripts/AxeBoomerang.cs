@@ -31,7 +31,7 @@ public class AxeBoomerang : MonoBehaviour
     IEnumerator Boom()
     {
         go = true;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.5f);
         go = false;
     }
     private void OnTriggerEnter(Collider other)
@@ -45,7 +45,7 @@ public class AxeBoomerang : MonoBehaviour
     {
         if (itemToRotate != null)
         {
-            itemToRotate.transform.Rotate(Time.deltaTime * 1500, 0, 0); 
+            itemToRotate.transform.Rotate(Time.deltaTime * 2000, 0, 0); 
         }
 
         if (go)

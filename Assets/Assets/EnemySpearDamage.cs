@@ -18,7 +18,7 @@ public class EnemySpearDamage : MonoBehaviour
         float distance = Vector3.Distance(transform.position, targetPosition);
         float duration = distance / 25;
         transform.DOMove(targetPosition, duration).SetEase(Ease.Linear)
-            .OnComplete(() => rb.isKinematic = false);
+            .OnComplete(() => rb.isKinematic=false);
     }
 
     void OnTriggerEnter(Collider other)
@@ -30,19 +30,11 @@ public class EnemySpearDamage : MonoBehaviour
             enemy.LoseHealth(5);
             Dest();
         }
-        if (other.CompareTag("Enemy"))
-        {
-            GetComponent<Collider>().isTrigger = true;
-        }
-        else
-        {
-            //GetComponent<BoxCollider>().enabled = false;
-            GetComponent<Collider>().isTrigger = false;
-        }
+     
     }
 
     void Dest()
     {
-        Destroy(this.gameObject);
+        Destroy(this.transform.parent.gameObject);
     }
 }
