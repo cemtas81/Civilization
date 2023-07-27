@@ -17,7 +17,7 @@ RenderSettings:
   m_Fog: 1
   m_FogColor: {r: 0.4862745, g: 0.69411767, b: 0.8117647, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.025
+  m_FogDensity: 0.03
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.9386859, g: 0.90466136, b: 0.84687346, a: 1}
@@ -11910,6 +11910,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3393324600977097, guid: f5c8b0349d955854da3249445ff0dda8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 634412074515085417, guid: f5c8b0349d955854da3249445ff0dda8, type: 3}
       propertyPath: m_Name
       value: CanvasForBarbi
@@ -11933,6 +11937,14 @@ PrefabInstance:
     - target: {fileID: 1675657611583836709, guid: f5c8b0349d955854da3249445ff0dda8, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2074271892062157251, guid: f5c8b0349d955854da3249445ff0dda8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2240774154102866819, guid: f5c8b0349d955854da3249445ff0dda8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2496883430559969890, guid: f5c8b0349d955854da3249445ff0dda8, type: 3}
       propertyPath: m_AnchorMax.y
@@ -11962,6 +11974,14 @@ PrefabInstance:
       propertyPath: aim
       value: 
       objectReference: {fileID: 379758397}
+    - target: {fileID: 5747926268766338165, guid: f5c8b0349d955854da3249445ff0dda8, type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5967358250846473930, guid: f5c8b0349d955854da3249445ff0dda8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9832d22fa2841a041aa2a6f4aadf4470, type: 3}
     - target: {fileID: 6716611514522229863, guid: f5c8b0349d955854da3249445ff0dda8, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -12078,6 +12098,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8010717978448811049, guid: f5c8b0349d955854da3249445ff0dda8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8803517679909876679, guid: f5c8b0349d955854da3249445ff0dda8, type: 3}
       propertyPath: deadCam
       value: 
@@ -12094,6 +12118,10 @@ PrefabInstance:
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 1274165904}
+    - target: {fileID: 9203714519782660156, guid: f5c8b0349d955854da3249445ff0dda8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5c8b0349d955854da3249445ff0dda8, type: 3}
 --- !u!1001 &9122106098596825927
