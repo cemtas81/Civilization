@@ -2,14 +2,15 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 public class BarbScreenCont : MonoBehaviour
 {
   
     [SerializeField] private Slider healthSlider,coinSlider;
-    [SerializeField] private GameObject gameOverPanel, pausePanel,ammo;
+    [SerializeField] private GameObject pausePanel,ammo;
     [SerializeField] private Text scoreText, maxScoreText, deadZombiesText, bossText, woodText,comboText,spearText;   
-    public GameObject upgradePanel;
+    public GameObject upgradePanel, gameOverPanel;
     public int weaponLevel;
     private float maxScore,lastKillTime;
     private int woodCount,headCount;
@@ -19,7 +20,7 @@ public class BarbScreenCont : MonoBehaviour
     [SerializeField] private int comboCount;
     [SerializeField] private float comboTimeLimit = 2f;
     public bool canSpecial;
- 
+    public CinemachineVirtualCamera deadCam;
     private void Start()
     {
         //ammo = GameObject.FindGameObjectWithTag("Spear");
@@ -94,8 +95,10 @@ public class BarbScreenCont : MonoBehaviour
     }
     public void GameOver()
     {
-        gameOverPanel.SetActive(true);
-        Time.timeScale = 0;
+        deadCam.enabled = true;
+        //gameOverPanel.SetActive(true);
+        Time.timeScale = 0.2f;
+        Time.fixedDeltaTime = 0.02F * Time.timeScale;
         float time = Time.timeSinceLevelLoad;
         int minutes = (int)(time / 60);
         int seconds = (int)(time % 100);

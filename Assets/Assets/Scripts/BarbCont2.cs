@@ -32,6 +32,7 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
         myController.MyGameplay.WeaponSelect.performed += wpn => Atto();
         myController.MyGameplay.SecondWeapon.performed += wpn => Throw();
         myController.MyGameplay.MakeAmmo.performed += wpn => MakeSpear();
+        myController.MyGameplay.Special.performed += wpn => Special1();
         canShoot = true; canThrow = true; dead = false;
         screenController =FindObjectOfType<BarbScreenCont>();      
         playerMovement = GetComponent<PlayerMovement>();
@@ -116,12 +117,15 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
     }
     void FixedUpdate()
     {
-        if (!specialAttack)
+        if (!dead)
         {
-            playerMovement.Movement(direction, playerStatus.speed);
-        } 
-          
-        playerMovement.PlayerRotation(groundMask);
+            if (!specialAttack)
+            {
+                playerMovement.Movement(direction, playerStatus.speed);
+            }
+
+            playerMovement.PlayerRotation(groundMask);
+        }      
     }
     IEnumerator Attack()
     {
@@ -130,7 +134,7 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
     }
     void Throw()
     {
-        if (canThrow && canShoot&&screenController.spearCount>=1&&!specialAttack)
+        if (canThrow && canShoot&&screenController.spearCount>=1&&!specialAttack&&!dead)
         {
             StartCoroutine(Throwy());
             Throwing();
@@ -153,7 +157,7 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
     void Special1()
     {      
         
-        if (screenController.canSpecial)
+        if (screenController.canSpecial&&!dead)
         {
             specialAttack = true;
             playerAnimation.Special1(specialAttack);
@@ -172,7 +176,7 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
     }
     void Atto()
     {
-        if (canShoot && canThrow&&!specialAttack)
+        if (canShoot && canThrow&&!specialAttack&&!dead)
         {
             StartCoroutine(Attack());
             Attacking();
@@ -196,7 +200,7 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
             screenController.UpdateHealthSlider();
             Instantiate(bloodParticle, bloodEffect.transform.position, transform.rotation);
             audio1.PlayOneShot(damageSound, Random.Range(0.2f, 0.9f));
-            if (playerStatus.health <= 0)
+            if (playerStatus.health <= 0&&!dead)
                 Die();
         }
        
@@ -209,6 +213,8 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
     {
         screenController.GameOver();
         dead = true;
+        playerMovement.Die();
+        playerAnimation.Die();
     }  
     public void HealHealth(int amount)
     {
@@ -216,7 +222,11 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
         if (playerStatus.health > playerStatus.initialHealth)
             playerStatus.health = playerStatus.initialHealth;
         screenController.UpdateHealthSlider();
-    }   
+    } 
+    public void Death()
+    {
+        screenController.gameOverPanel.SetActive(true);
+    }
     private void OnDisable()
     {
         myController.Disable();

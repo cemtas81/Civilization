@@ -116,6 +116,15 @@ public partial class @MyController : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Special"",
+                    ""type"": ""Button"",
+                    ""id"": ""e0ef9995-68f2-438f-a783-8e1b9b9c1608"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -349,6 +358,17 @@ public partial class @MyController : IInputActionCollection2, IDisposable
                     ""action"": ""MakeAmmo"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fb9e0b87-7a26-4f56-988b-4258755ee9c3"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Special"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -384,6 +404,7 @@ public partial class @MyController : IInputActionCollection2, IDisposable
         m_MyGameplay_MainMenu = m_MyGameplay.FindAction("MainMenu", throwIfNotFound: true);
         m_MyGameplay_SecondWeapon = m_MyGameplay.FindAction("SecondWeapon", throwIfNotFound: true);
         m_MyGameplay_MakeAmmo = m_MyGameplay.FindAction("MakeAmmo", throwIfNotFound: true);
+        m_MyGameplay_Special = m_MyGameplay.FindAction("Special", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -453,6 +474,7 @@ public partial class @MyController : IInputActionCollection2, IDisposable
     private readonly InputAction m_MyGameplay_MainMenu;
     private readonly InputAction m_MyGameplay_SecondWeapon;
     private readonly InputAction m_MyGameplay_MakeAmmo;
+    private readonly InputAction m_MyGameplay_Special;
     public struct MyGameplayActions
     {
         private @MyController m_Wrapper;
@@ -467,6 +489,7 @@ public partial class @MyController : IInputActionCollection2, IDisposable
         public InputAction @MainMenu => m_Wrapper.m_MyGameplay_MainMenu;
         public InputAction @SecondWeapon => m_Wrapper.m_MyGameplay_SecondWeapon;
         public InputAction @MakeAmmo => m_Wrapper.m_MyGameplay_MakeAmmo;
+        public InputAction @Special => m_Wrapper.m_MyGameplay_Special;
         public InputActionMap Get() { return m_Wrapper.m_MyGameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -506,6 +529,9 @@ public partial class @MyController : IInputActionCollection2, IDisposable
                 @MakeAmmo.started -= m_Wrapper.m_MyGameplayActionsCallbackInterface.OnMakeAmmo;
                 @MakeAmmo.performed -= m_Wrapper.m_MyGameplayActionsCallbackInterface.OnMakeAmmo;
                 @MakeAmmo.canceled -= m_Wrapper.m_MyGameplayActionsCallbackInterface.OnMakeAmmo;
+                @Special.started -= m_Wrapper.m_MyGameplayActionsCallbackInterface.OnSpecial;
+                @Special.performed -= m_Wrapper.m_MyGameplayActionsCallbackInterface.OnSpecial;
+                @Special.canceled -= m_Wrapper.m_MyGameplayActionsCallbackInterface.OnSpecial;
             }
             m_Wrapper.m_MyGameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -540,6 +566,9 @@ public partial class @MyController : IInputActionCollection2, IDisposable
                 @MakeAmmo.started += instance.OnMakeAmmo;
                 @MakeAmmo.performed += instance.OnMakeAmmo;
                 @MakeAmmo.canceled += instance.OnMakeAmmo;
+                @Special.started += instance.OnSpecial;
+                @Special.performed += instance.OnSpecial;
+                @Special.canceled += instance.OnSpecial;
             }
         }
     }
@@ -565,5 +594,6 @@ public partial class @MyController : IInputActionCollection2, IDisposable
         void OnMainMenu(InputAction.CallbackContext context);
         void OnSecondWeapon(InputAction.CallbackContext context);
         void OnMakeAmmo(InputAction.CallbackContext context);
+        void OnSpecial(InputAction.CallbackContext context);
     }
 }
