@@ -194,7 +194,7 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
 
     public void LoseHealth(int damage)
     {
-        if (!specialAttack)
+        if (!specialAttack&&!dead)
         {
             playerStatus.health -= damage;
             screenController.UpdateHealthSlider();

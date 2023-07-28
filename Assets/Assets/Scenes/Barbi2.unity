@@ -5347,7 +5347,7 @@ MonoBehaviour:
     m_Bits: 129
   Player: {fileID: 1281240129}
   Camera: {fileID: 1209796834}
-  FadedAlpha: 0.2
+  FadedAlpha: 0.1
   FadingMode: 1
   ChecksPerSecond: 10
   FadeFPS: 30
@@ -7916,14 +7916,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 213340865}
     m_Modifications:
-    - target: {fileID: 2079858604, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2080120734, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1.2
-      objectReference: {fileID: 0}
     - target: {fileID: 4416926083347132230, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
       propertyPath: joyAim
       value: 
@@ -7991,10 +7983,6 @@ PrefabInstance:
     - target: {fileID: 5554037688557504550, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7692559120689015582, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
-      propertyPath: initialHealth
-      value: 500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
@@ -9994,7 +9982,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 1
+    m_Type: 2
     m_Resolution: 1
     m_CustomResolution: -1
     m_Strength: 1

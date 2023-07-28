@@ -16,6 +16,7 @@ public class EnemySpearDamage : MonoBehaviour
         rb.isKinematic = true;
 
         float distance = Vector3.Distance(transform.position, targetPosition);
+        targetPosition.y = 1;
         float duration = distance / 12;
         transform.DOMove(targetPosition, duration).SetEase(Ease.Linear)
             .OnComplete(() => rb.isKinematic=false);

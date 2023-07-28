@@ -54,7 +54,7 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
     {
         direction = player.transform.position - transform.position;
         direction.y = 0;
-        float distance = Vector3.Distance(transform.position, player.transform.position);
+        float distance = Vector3.Distance(transform.position, player.transform.position);      
         if (Ranged != true)
         {
             if (direction != Vector3.zero && agent == null)

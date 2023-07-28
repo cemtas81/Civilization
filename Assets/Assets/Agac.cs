@@ -15,6 +15,8 @@ public class Agac : MonoBehaviour
         if (other.CompareTag("Sword"))
         {
             rb.isKinematic = false;
+            rb.AddForceAtPosition(100 * Time.deltaTime * Vector3.forward, Vector3.forward,ForceMode.Impulse); 
+         
         }
         else if (other.CompareTag("Settlement") && rb.isKinematic == true)
         {
