@@ -16,8 +16,7 @@ public class SpearDamage : MonoBehaviour
         targetPosition = aim2.position;
         Invoke(nameof(Dest), 1.5f);
         rb = GetComponent<Rigidbody>();
-        rb.isKinematic = true;
-
+        rb.isKinematic = true;      
         float distance = Vector3.Distance(transform.position, targetPosition);
         float duration = distance / 25;
         transform.DOMove(targetPosition, duration).SetEase(Ease.Linear)
@@ -41,7 +40,7 @@ public class SpearDamage : MonoBehaviour
                 Dest();
                 break;
             //default:
-            //    Destroy(this.gameObject);
+            //    GetComponent<Collider>().isTrigger= false;
             //    break;
         }
     }

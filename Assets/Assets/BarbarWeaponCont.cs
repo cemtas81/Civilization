@@ -4,9 +4,9 @@ using UnityEngine;
 public class BarbarWeaponCont : MonoBehaviour
 {
     [SerializeField] private GameObject projectile,spear,Sword;
-    [SerializeField] private Transform shootPosition,pos2;
+    [SerializeField] private Transform shootPosition,pos2,aim;
     [SerializeField] private AudioClip shotSound,sound2;
-    
+
     //public void ShootAxe()
     //{
 
@@ -27,6 +27,10 @@ public class BarbarWeaponCont : MonoBehaviour
     //    prefabToSpawn.SetActive(true);
     //    AudioController.instance.PlayOneShot(sound2, 0.6f);
     //}
+    private void Start()
+    {
+        aim=SharedVariables.Instance.plyrmvmnt.aim;
+    }
     public void Shoot()
     {
        
@@ -36,8 +40,11 @@ public class BarbarWeaponCont : MonoBehaviour
     } 
     public void Shoot2()
     {
-
-        Instantiate(spear, pos2.position, pos2.rotation);      
+        // Calculate direction and rotation
+        Vector3 direction = (aim.position - pos2.transform.position).normalized;
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        pos2.transform.rotation = targetRotation;
+        Instantiate(spear, pos2.position,targetRotation);      
        
         AudioController.instance.PlayOneShot(sound2, 0.6f);
     }

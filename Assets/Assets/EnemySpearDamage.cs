@@ -13,8 +13,7 @@ public class EnemySpearDamage : MonoBehaviour
         targetPosition = SharedVariables.Instance.playa.transform.position;
         Invoke(nameof(Dest), 1.5f);
         rb = GetComponent<Rigidbody>();
-        rb.isKinematic = true;
-
+        rb.isKinematic = true;     
         float distance = Vector3.Distance(transform.position, targetPosition);
         targetPosition.y = 1;
         float duration = distance / 12;
@@ -30,6 +29,10 @@ public class EnemySpearDamage : MonoBehaviour
             BarbCont2 enemy = other.GetComponent<BarbCont2>();
             enemy.LoseHealth(5);
             Dest();
+        }
+        else
+        {
+            GetComponent<Collider>().isTrigger = false; 
         }
      
     }

@@ -165,8 +165,11 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
         player.GetComponent<BarbCont2>().LoseHealth(random);
     } 
     void AttackPlayer2()
-    {    
-        Instantiate(spear, ThrowPos.position,ThrowPos.rotation);
+    {
+        Vector3 direction = (player.transform.position - ThrowPos.position).normalized;
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        ThrowPos.rotation = targetRotation;
+        Instantiate(spear, ThrowPos.position,targetRotation);
         AudioController.instance.PlayOneShot(ThrowSound, 0.8f);
     }
 

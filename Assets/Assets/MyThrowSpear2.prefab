@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3481371491085491521}
   - component: {fileID: 6401853574885692812}
   - component: {fileID: 4730272152009676768}
-  - component: {fileID: 8618480438997279897}
+  - component: {fileID: 7985318406697758619}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -116,7 +116,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &8618480438997279897
+--- !u!114 &7985318406697758619
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 520712285841982394}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f40de370a072d344eaa36010546a5c6a, type: 3}
+  m_Script: {fileID: 11500000, guid: c90511a53871f034c851b10b030e64fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6252864901094407968
@@ -139,8 +139,8 @@ GameObject:
   - component: {fileID: 6252864901094307684}
   - component: {fileID: 6252864901091403044}
   m_Layer: 0
-  m_Name: EnemyThrowSpear
-  m_TagString: EnemySpear
+  m_Name: MyThrowSpear2
+  m_TagString: Spear
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -153,8 +153,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6252864901094407968}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalPosition: {x: 0.016861359, y: 0.6620806, z: -0.790224}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6697868869608312404}
