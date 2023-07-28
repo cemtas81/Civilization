@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6401853574885692812}
   - component: {fileID: 4730272152009676768}
   - component: {fileID: 8618480438997279897}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,9 +138,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6252864901094307684}
   - component: {fileID: 6252864901091403044}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: EnemyThrowSpear
-  m_TagString: EnemySpear
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

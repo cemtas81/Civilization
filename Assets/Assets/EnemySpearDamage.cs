@@ -29,7 +29,7 @@ public class EnemySpearDamage : MonoBehaviour
             BarbCont2 enemy = other.GetComponent<BarbCont2>();
             enemy.LoseHealth(5);
             Dest();
-        }
+        }       
         else
         {
             GetComponent<Collider>().isTrigger = false; 
