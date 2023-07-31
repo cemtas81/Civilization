@@ -12,7 +12,7 @@ public class SettlementSpawner : MonoBehaviour
     private BarbCont2 barbar;
     private Transform player;
     public float dist;
-
+    public bool couldBurn;
     private void Awake()
     {
      
@@ -42,9 +42,14 @@ public class SettlementSpawner : MonoBehaviour
         {
             isHere=true;
         }
+        else if (soldiers>=maxSoldier)
+        {
+            couldBurn=true;
+        }
         else
         {
             isHere = false;
         }
+
     }
 }

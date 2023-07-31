@@ -5102,7 +5102,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!136 &8339102879347197992
 CapsuleCollider:
@@ -5143,6 +5143,7 @@ MonoBehaviour:
   numberPrefab: {fileID: 1584410138532935668, guid: 1850c5272b1fc6b4783cc9c41329ef05, type: 3}
   random: 0
   Ranged: 0
+  isBoss: 0
   ThrowPos: {fileID: 4342261680055518559}
 --- !u!114 &8339102879347198421
 MonoBehaviour:

@@ -22,10 +22,10 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
     public int random;
     private NavMeshAgent agent;
     //private SettlementSpawner settlement;
-    public bool Ranged; 
+    public bool Ranged, isBoss; 
     public Transform ThrowPos;
     private NavMeshObstacle obstacle;
-    public bool isBoss;
+    private bool playerInSight;
     void Awake()
     {
         obstacle = GetComponent<NavMeshObstacle>();
@@ -55,11 +55,11 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
         direction = player.transform.position - transform.position;
         direction.y = 0;
         float distance = Vector3.Distance(transform.position, player.transform.position);      
-        if (Ranged != true)
+        if (!Ranged)
         {
             if (direction != Vector3.zero && agent == null)
             {
-                enemyAnimation.Movement(direction.magnitude * 5);
+                enemyAnimation.Movement(direction.magnitude);
                 enemyMovement.Rotation(direction);
             }
 
@@ -86,26 +86,18 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
                     {
                        
                         if (IsPlayerOnNavMesh())
-                        {
-                            enemyAnimation.Movement(direction.magnitude);
-                            direction = player.transform.position;
-                            enemyMovement.Movement(direction);
-                            enemyAnimation.Attack(false);
-                            Vector3 direction2 = direction - transform.position;
-                            enemyMovement.Rotation(direction2);                          
+                        {                        
+                            direction = player.transform.position;                                      
                         }
                         else
-                        {
-                            // Stop the agent when the player is outside the navmesh                         
-                            enemyAnimation.Movement(direction.magnitude);
-                            direction = SharedVariables.Instance.gatherPoint.transform.position;
-                            enemyMovement.Movement(direction);
-                            enemyAnimation.Attack(false);
-                            Vector3 direction2 = direction - transform.position;
-                            enemyMovement.Rotation(direction2);
+                        {                   
+                            direction = SharedVariables.Instance.gatherPoint.transform.position;                    
                         }
+                        enemyMovement.Rotation(direction);
+                        enemyMovement.Movement(direction);
+                        enemyAnimation.Movement(direction.magnitude);
                     }
-
+                    enemyAnimation.Attack(false);
                 }
                 else
                 {
@@ -135,23 +127,68 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
 
             }
         }
-        //      else if (distance > 30) 
-        //{
-        //	Rolling();
-        //}
+
         else
-        {           
-            enemyMovement.Rotation(direction);
-            if (distance <= 10)
+        {
+
+            Vector3 rayOrigin = transform.position + Vector3.up;
+            Vector3 rayDirection = (player.transform.position + Vector3.up) - rayOrigin;
+            float rayDistance = rayDirection.magnitude;
+            rayDirection.Normalize();
+
+            if (Physics.Raycast(rayOrigin, rayDirection, out RaycastHit hit, rayDistance))
             {
-               
-                enemyAnimation.Attack2(true);
+                //Debug.DrawLine(rayOrigin, hit.point);
+                if (hit.collider.gameObject == player)
+                {
+                    playerInSight = true;
+                }
+                else
+                {
+                    playerInSight = false;
+                }
+            }
+            enemyMovement.Rotation(direction);
+            if (distance <= 10 && playerInSight)
+            {
+                if (agent!=null)
+                {
+                    if (agent.enabled)
+                    {
+                        agent.enabled = false;
+                        obstacle.enabled = true;                                            
+                    }
+                  
+                }
+              
+                    enemyAnimation.Attack2(true);
+                        
             }
             else
             {
                 enemyAnimation.Attack2(false);
-                enemyMovement.Movement(direction, enemyStatus.speed);                
-                enemyAnimation.Movement(direction.magnitude * 5);
+                if (agent != null)
+                {
+                    obstacle.enabled = false;
+                    agent.enabled = true;
+                    if (IsPlayerOnNavMesh())
+                    {
+                        direction = player.transform.position;      
+                    }
+                    else
+                    {
+                        direction = SharedVariables.Instance.gatherPoint.transform.position;
+                    }
+                    enemyMovement.Rotation(direction);
+                    enemyMovement.Movement(direction);
+                    enemyAnimation.Movement(direction.magnitude);
+                }
+                else
+                {
+                    enemyMovement.Movement(direction, enemyStatus.speed);
+                    enemyAnimation.Movement(direction.magnitude);
+                }
+     
             }
         }
 

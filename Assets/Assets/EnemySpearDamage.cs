@@ -30,10 +30,10 @@ public class EnemySpearDamage : MonoBehaviour
             enemy.LoseHealth(5);
             Dest();
         }       
-        else
-        {
-            GetComponent<Collider>().isTrigger = false; 
-        }
+        //else
+        //{
+        //    GetComponent<Collider>().isTrigger = false; 
+        //}
      
     }
 
