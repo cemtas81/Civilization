@@ -15,7 +15,7 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
     private BarbScreenCont screenController;
     public GameObject head, cust,randomClothes;
     private Vector3 direction;
-    public float turnSpeed;
+    //public float turnSpeed;
     private float probabilityAidKit = .08f;
     private MySolidSpawner Parent;
     public DamageNumber numberPrefab;
@@ -93,7 +93,6 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
                         {                   
                             direction = SharedVariables.Instance.gatherPoint.transform.position;                    
                         }
-                        enemyMovement.Rotation(direction);
                         enemyMovement.Movement(direction);
                         enemyAnimation.Movement(direction.magnitude);
                     }
@@ -138,7 +137,7 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
 
             if (Physics.Raycast(rayOrigin, rayDirection, out RaycastHit hit, rayDistance))
             {
-                //Debug.DrawLine(rayOrigin, hit.point);
+                Debug.DrawLine(rayOrigin, hit.point);
                 if (hit.collider.gameObject == player)
                 {
                     playerInSight = true;
@@ -159,10 +158,8 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
                         obstacle.enabled = true;                                            
                     }
                   
-                }
-              
-                    enemyAnimation.Attack2(true);
-                        
+                }              
+                    enemyAnimation.Attack2(true);                       
             }
             else
             {
@@ -179,7 +176,6 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
                     {
                         direction = SharedVariables.Instance.gatherPoint.transform.position;
                     }
-                    enemyMovement.Rotation(direction);
                     enemyMovement.Movement(direction);
                     enemyAnimation.Movement(direction.magnitude);
                 }
@@ -216,8 +212,7 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
         {
             int randomEnemy = Random.Range(1, randomClothes.transform.childCount);
             randomClothes.transform.GetChild(randomEnemy).gameObject.SetActive(true);
-        }
-       
+        }      
     }
 
     public void LoseHealth(int damage)
@@ -225,11 +220,9 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
         enemyStatus.health -= damage;
         if (enemyStatus.health <= 0)
         {
-            //DamageN(.5f, "execution");
             Die();
         }
-        //else
-        //    DamageN(1.5f, "hit");
+  
     }
 
     public void Die()

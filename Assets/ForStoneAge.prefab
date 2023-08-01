@@ -805,7 +805,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnInterval: 5
-  maxSoldier: 0
+  maxSoldier: 1
   soldiers: 0
   prefab: {fileID: 3369156882467596404, guid: c1de3ef04c54e1242a6c7444bed67795, type: 3}
   dist: 40
@@ -1010,7 +1010,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7614905947255778318}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -66.97453, y: 0, z: 66.38076}
+  m_LocalPosition: {x: -27.698906, y: 0, z: 75.05179}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

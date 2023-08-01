@@ -26,10 +26,15 @@ public class SettlementSpawner : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(spawnInterval);
-            if (soldiers<=maxSoldier&&isHere)
+            if (soldiers<maxSoldier&&isHere)
             {
                 Instantiate(prefab, transform.position, Quaternion.identity);
                 soldiers++;
+                if (soldiers == maxSoldier)
+                {
+                    couldBurn = true;
+                   
+                }
             }
             
         }
@@ -41,15 +46,11 @@ public class SettlementSpawner : MonoBehaviour
         if (distance<=dist)
         {
             isHere=true;
-        }
-        else if (soldiers>=maxSoldier)
-        {
-            couldBurn=true;
-        }
+        }       
         else
         {
             isHere = false;
         }
-
+      
     }
 }
