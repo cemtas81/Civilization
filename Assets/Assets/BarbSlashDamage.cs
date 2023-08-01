@@ -13,6 +13,11 @@ public class BarbSlashDamage : MonoBehaviour
                 BarbEnemyCont enemy = other.GetComponent<BarbEnemyCont>();
                 enemy.LoseHealth(damage);
                 enemy.BloodParticle(transform.position, rotation);
+                break; 
+            case "Enemy2":
+                BarbEnemyCont2 enemy2 = other.GetComponent<BarbEnemyCont2>();
+                enemy2.LoseHealth(damage);
+                enemy2.BloodParticle(transform.position, rotation);
                 break;
             case "Boss":
                 BarbEnemyCont boss = other.GetComponent<BarbEnemyCont>();

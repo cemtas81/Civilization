@@ -14,7 +14,6 @@ public class BarbEnemyCont2 : MonoBehaviour, IKillable
     [SerializeField] private float probabilityAidKit = 0.08f;
     [Header("References")]
     [HideInInspector] public EnemySpawner EnemySpawner;
-
     private Status enemyStatus;
     private GameObject player;
     private CharacterMovement enemyMovement;
@@ -69,8 +68,7 @@ public class BarbEnemyCont2 : MonoBehaviour, IKillable
 
     private void FixedUpdate()
     {
-        Vector3 pldirection=player.transform.position;
-        Vector3 direction =pldirection - transform.position;
+        Vector3 direction = (player.transform.position - transform.position).normalized;
         direction.y = 0;
         float distance = Vector3.Distance(transform.position, player.transform.position);
 
@@ -101,30 +99,6 @@ public class BarbEnemyCont2 : MonoBehaviour, IKillable
         Destroy(gameObject);
         enabled = false;
     }
-
-    private void HandleMeleeEnemy(float distance, Vector3 direction)
-    {
-        if (agent != null)
-        {
-            UpdateAgentAndObstacle(distance, direction);
-        }
-        else
-        {
-            enemyMovement.Movement(direction, enemyStatus.speed);
-            enemyAnimation.Movement(direction.magnitude);
-        }
-
-        if (distance >= 2.1f)
-        {
-            enemyAnimation.Attack(false);
-        }
-        else
-        {
-            enemyMovement.Rotation(direction);
-            enemyAnimation.Attack(true);
-        }
-    }
-
     private void UpdateAgentAndObstacle(float distance, Vector3 direction)
     {
         if (!agent.enabled)
@@ -152,46 +126,59 @@ public class BarbEnemyCont2 : MonoBehaviour, IKillable
             obstacle.enabled = true;
         }
     }
+    private void HandleMeleeEnemy(float distance, Vector3 direction)
+    {
+        if (agent != null)
+        {
+            UpdateAgentAndObstacle(distance, direction);
+        }
+        else
+        {
+            if (distance >= 2.1f)
+            {
+                enemyMovement.Movement(direction, enemyStatus.speed);
+                enemyAnimation.Movement(direction.magnitude);
+                enemyAnimation.Attack(false);
+                enemyMovement.Rotation(direction);
+            }
+        else
+            {
+                enemyMovement.Rotation(direction);
+                enemyAnimation.Attack(true);
+            }
+        }
+    }
 
     private void HandleRangedEnemy(float distance, Vector3 direction)
     {
         UpdatePlayerInSight();
-
         enemyMovement.Rotation(direction);
 
         if (distance <= 10 && playerInSight)
-        {
+    {
             if (agent != null)
             {
                 agent.enabled = false;
                 obstacle.enabled = true;
             }
-
             enemyAnimation.Attack2(true);
         }
-        else
+    else
         {
             enemyAnimation.Attack2(false);
 
             if (agent != null)
             {
-                obstacle.enabled = false;
-                agent.enabled = true;
-
-                if (IsPlayerOnNavMesh())
-                {
-                    direction = player.transform.position;
-                }
-                else
-                {
-                    direction = SharedVariables.Instance.gatherPoint.transform.position;
-                }
+                UpdateAgentAndObstacle(distance, direction);
             }
-
-            enemyMovement.Movement(direction, enemyStatus.speed);
-            enemyAnimation.Movement(direction.magnitude);
+            else
+            {
+                enemyMovement.Movement(transform.forward, enemyStatus.speed);
+                enemyAnimation.Movement(direction.magnitude);
+            }
         }
     }
+
 
     private void UpdatePlayerInSight()
     {
@@ -219,7 +206,10 @@ public class BarbEnemyCont2 : MonoBehaviour, IKillable
             Die();
         }
     }
-
+    public void BloodParticle(Vector3 position, Quaternion rotation)
+    {
+        Instantiate(bloodParticle, position, rotation);
+    }
     public void Die()
     {
         PrepareForDestruction();
@@ -258,5 +248,17 @@ public class BarbEnemyCont2 : MonoBehaviour, IKillable
     {
         if (Random.value <= probability)
             Instantiate(aidKit, transform.position, Quaternion.identity);
+    }
+    void AttackPlayer()
+    {
+        player.GetComponent<BarbCont2>().LoseHealth(random);
+    }
+    void AttackPlayer2()
+    {
+        Vector3 direction = (player.transform.position - ThrowPos.position).normalized;
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        ThrowPos.rotation = targetRotation;
+        Instantiate(spear, ThrowPos.position, targetRotation);
+        AudioController.instance.PlayOneShot(ThrowSound, 0.8f);
     }
 }

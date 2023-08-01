@@ -33,6 +33,11 @@ public class SpearDamage : MonoBehaviour
                 enemy.LoseHealth(2);
                 enemy.BloodParticle(transform.position, rotation);
                 break;
+            case "Enemy2":
+                BarbEnemyCont2 enemy2 = other.GetComponent<BarbEnemyCont2>();
+                enemy2.LoseHealth(2);
+                enemy2.BloodParticle(transform.position, rotation);
+                break;
             case "Boss":
                 BarbEnemyCont boss = other.GetComponent<BarbEnemyCont>();
                 boss.LoseHealth(2);
