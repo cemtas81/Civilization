@@ -66,42 +66,22 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
             cursorAim.enabled = true;
             Cursor.visible = true;
         }
-        if (Input.GetMouseButtonDown(0))
-        {
-            Atto();
-        }
-        if (Input.GetMouseButtonDown(1))
-        {
-            Throw();
-        }
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            Again();
-        }
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            Special1();
-        }
+        if (Input.GetMouseButtonDown(0)) Atto();  
+        if (Input.GetMouseButtonDown(1)) Throw();   
+        if (Input.GetKeyDown(KeyCode.Return)) Again();
+        if (Input.GetKeyDown(KeyCode.X)) Special1();   
         Vector2 moving=action.ReadValue<Vector2>();
         float xAxis =moving.x;
         float zAxis = moving.y;
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            screenController.Pause();
-        }
+        if (Input.GetKeyDown(KeyCode.Escape)) screenController.Pause();
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             map.enabled=!map.enabled;
             map.GetComponent<Camera>().enabled = !map.GetComponent<Camera>().enabled;
         }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            MakeSpear();
-        }
-        if (!specialAttack)
-        {
-            playerAnimation.Special1(false);
-        }
+        if (Input.GetKeyDown(KeyCode.Space)) MakeSpear();
+        if (!specialAttack) playerAnimation.Special1(false);
+
 #endif
 #if UNITY_ANDROID || UNITY_IPHONE
 		
@@ -117,14 +97,12 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
     }
     void FixedUpdate()
     {
-        if (!dead)
+        if (!dead) playerMovement.PlayerRotation(groundMask);
         {
             if (!specialAttack)
             {
                 playerMovement.Movement(direction, playerStatus.speed);
-            }
-
-            playerMovement.PlayerRotation(groundMask);
+            }  
         }      
     }
     IEnumerator Attack()
@@ -169,10 +147,7 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
     }
     void Again()
     {
-        if (dead)
-        {
-            screenController.Restart();
-        }
+        if (dead) screenController.Restart();
     }
     void Atto()
     {
