@@ -97,8 +97,9 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
     }
     void FixedUpdate()
     {
-        if (!dead) playerMovement.PlayerRotation(groundMask);
+        if (!dead) 
         {
+            playerMovement.PlayerRotation(groundMask);
             if (!specialAttack)
             {
                 playerMovement.Movement(direction, playerStatus.speed);

@@ -1587,9 +1587,9 @@ GameObject:
   - component: {fileID: 1609149321}
   - component: {fileID: 6612923117372710375}
   - component: {fileID: -5004341834776292683}
-  - component: {fileID: -3179941076734648896}
+  - component: {fileID: -3348400246316484580}
   m_Layer: 8
-  m_Name: BarbarBoss
+  m_Name: BarbarBoss2
   m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1761,7 +1761,7 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0.9, z: 0}
   m_TimeToStationary: 0.5
---- !u!114 &-3179941076734648896
+--- !u!114 &-3348400246316484580
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1770,10 +1770,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3369156882467596404}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab703b3202107ee448ff71468dea4f3f, type: 3}
+  m_Script: {fileID: 11500000, guid: 85fc3f7c6e1366a4a8501c15418fc977, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemySpawner: {fileID: 0}
   deathSound: {fileID: 8300000, guid: a80a20331fe6c5b49936c516a2631c05, type: 3}
   ThrowSound: {fileID: 8300000, guid: 70b6e007003158e4fa167f9b0a084a77, type: 3}
   bloodParticle: {fileID: 1100003762409686, guid: 594557b01b0b27840a04cfcc7b3cabb4, type: 3}
@@ -1782,11 +1781,11 @@ MonoBehaviour:
   head: {fileID: 0}
   cust: {fileID: 0}
   randomClothes: {fileID: 0}
-  numberPrefab: {fileID: 1584410138532935668, guid: 1850c5272b1fc6b4783cc9c41329ef05, type: 3}
-  random: 0
+  ThrowPos: {fileID: 0}
   Ranged: 0
   isBoss: 1
-  ThrowPos: {fileID: 0}
+  probabilityAidKit: 1
+  EnemySpawner: {fileID: 0}
 --- !u!1 &3369156882467596486
 GameObject:
   m_ObjectHideFlags: 0

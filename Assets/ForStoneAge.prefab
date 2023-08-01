@@ -617,7 +617,7 @@ MonoBehaviour:
   spawnInterval: 5
   maxSoldier: 20
   soldiers: 0
-  prefab: {fileID: 7712167626548112379, guid: 8267864f5264e7d4ea79a940077a16f5, type: 3}
+  prefab: {fileID: 7712167626548112379, guid: d30bbfa90b8b99a40aaf14dc046bbeef, type: 3}
   dist: 40
   couldBurn: 0
 --- !u!1 &4905731717330009722
@@ -667,7 +667,7 @@ MonoBehaviour:
   spawnInterval: 5
   maxSoldier: 10
   soldiers: 0
-  prefab: {fileID: 3369156882467596404, guid: 08ee5bb7b2515cf4d9a362e1df4be654, type: 3}
+  prefab: {fileID: 3369156882467596404, guid: 8a7b5f0a64d7e2644a930fe8fd05cc68, type: 3}
   dist: 40
   couldBurn: 0
 --- !u!1 &5054296222942105309
@@ -807,7 +807,7 @@ MonoBehaviour:
   spawnInterval: 5
   maxSoldier: 1
   soldiers: 0
-  prefab: {fileID: 3369156882467596404, guid: c1de3ef04c54e1242a6c7444bed67795, type: 3}
+  prefab: {fileID: 3369156882467596404, guid: 51747feea8231d34da23706352efe69d, type: 3}
   dist: 40
   couldBurn: 0
 --- !u!1 &5808180559154904626
@@ -1010,7 +1010,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7614905947255778318}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -27.698906, y: 0, z: 75.05179}
+  m_LocalPosition: {x: 30.118206, y: 0, z: 116.15891}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

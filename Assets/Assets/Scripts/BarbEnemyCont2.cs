@@ -1,5 +1,4 @@
 using UnityEngine;
-using DamageNumbersPro;
 using UnityEngine.AI;
 
 public class BarbEnemyCont2 : MonoBehaviour, IKillable
@@ -7,13 +6,14 @@ public class BarbEnemyCont2 : MonoBehaviour, IKillable
     [Header("Settings")]
     [SerializeField] private AudioClip deathSound, ThrowSound;
     [SerializeField] private GameObject bloodParticle, aidKit, spear;
-    [SerializeField] private DamageNumber numberPrefab;
     [SerializeField] private GameObject head, cust, randomClothes;
     [SerializeField] private Transform ThrowPos;
     [SerializeField] private bool Ranged, isBoss;
     [SerializeField] private float probabilityAidKit = 0.08f;
+
     [Header("References")]
     [HideInInspector] public EnemySpawner EnemySpawner;
+
     private Status enemyStatus;
     private GameObject player;
     private CharacterMovement enemyMovement;
@@ -28,7 +28,7 @@ public class BarbEnemyCont2 : MonoBehaviour, IKillable
     private void Awake()
     {
         InitializeComponents();
-        GetRandomEnemy();
+        if (!isBoss && !Ranged) GetRandomEnemy();
         SetInitialSpeed();
         SetRandomDamage();
     }
@@ -49,49 +49,31 @@ public class BarbEnemyCont2 : MonoBehaviour, IKillable
 
     private void GetRandomEnemy()
     {
-        if (!isBoss && !Ranged)
-        {
-            int randomEnemy = Random.Range(1, randomClothes.transform.childCount);
-            randomClothes.transform.GetChild(randomEnemy).gameObject.SetActive(true);
-        }
+        int randomEnemy = Random.Range(1, randomClothes.transform.childCount);
+        randomClothes.transform.GetChild(randomEnemy).gameObject.SetActive(true);
     }
 
-    private void SetInitialSpeed()
-    {
-        enemyStatus.speed = Random.Range(2.6f, 3.1f);
-    }
+    private void SetInitialSpeed() => enemyStatus.speed = Random.Range(2.6f, 3.1f);
 
-    private void SetRandomDamage()
-    {
-        random = isBoss ? 20 : Random.Range(5, 10);
-    }
+    private void SetRandomDamage() => random = isBoss? 20 : Random.Range(5, 10);
 
     private void FixedUpdate()
     {
         Vector3 direction = (player.transform.position - transform.position).normalized;
         direction.y = 0;
         float distance = Vector3.Distance(transform.position, player.transform.position);
-
-        if (ShouldDestroyEnemy(distance))
+        if (screenController.deadCam.enabled)
         {
-            DestroyEnemy();
+            StopEnemy();
             return;
         }
+        if (ShouldDestroyEnemy(distance)) { DestroyEnemy(); return; }
 
-        if (!Ranged)
-        {
-            HandleMeleeEnemy(distance, direction);
-        }
-        else
-        {
-            HandleRangedEnemy(distance, direction);
-        }
+        if (!Ranged) HandleMeleeEnemy(distance, direction);
+        else HandleRangedEnemy(distance, direction);
     }
 
-    private bool ShouldDestroyEnemy(float distance)
-    {
-        return distance > 60 && agent == null;
-    }
+    private bool ShouldDestroyEnemy(float distance) => distance >= 60 && agent == null;
 
     private void DestroyEnemy()
     {
@@ -99,6 +81,7 @@ public class BarbEnemyCont2 : MonoBehaviour, IKillable
         Destroy(gameObject);
         enabled = false;
     }
+
     private void UpdateAgentAndObstacle(float distance, Vector3 direction)
     {
         if (!agent.enabled)
@@ -107,31 +90,23 @@ public class BarbEnemyCont2 : MonoBehaviour, IKillable
             agent.enabled = true;
         }
 
-        if (IsPlayerOnNavMesh())
-        {
-            direction = player.transform.position;
-        }
-        else
-        {
-            direction = SharedVariables.Instance.gatherPoint.transform.position;
-        }
-
+        direction = IsPlayerOnNavMesh() ? player.transform.position : SharedVariables.Instance.gatherPoint.transform.position;
         enemyMovement.Movement(direction);
-        enemyAnimation.Movement(direction.magnitude);
-
-        if (distance < 2.1f)
+        enemyAnimation.Movement(direction.magnitude);      
+        enemyAnimation.Attack(false);
+        if (distance <= 2.1f)
         {
             agent.velocity = Vector3.zero;
             agent.enabled = false;
             obstacle.enabled = true;
+            enemyAnimation.Attack(true);
+            enemyMovement.Rotation(direction - transform.position);
         }
     }
+
     private void HandleMeleeEnemy(float distance, Vector3 direction)
     {
-        if (agent != null)
-        {
-            UpdateAgentAndObstacle(distance, direction);
-        }
+        if (agent != null) UpdateAgentAndObstacle(distance, direction);
         else
         {
             if (distance >= 2.1f)
@@ -141,7 +116,7 @@ public class BarbEnemyCont2 : MonoBehaviour, IKillable
                 enemyAnimation.Attack(false);
                 enemyMovement.Rotation(direction);
             }
-        else
+            else
             {
                 enemyMovement.Rotation(direction);
                 enemyAnimation.Attack(true);
@@ -155,7 +130,7 @@ public class BarbEnemyCont2 : MonoBehaviour, IKillable
         enemyMovement.Rotation(direction);
 
         if (distance <= 10 && playerInSight)
-    {
+        {
             if (agent != null)
             {
                 agent.enabled = false;
@@ -163,14 +138,10 @@ public class BarbEnemyCont2 : MonoBehaviour, IKillable
             }
             enemyAnimation.Attack2(true);
         }
-    else
+        else
         {
             enemyAnimation.Attack2(false);
-
-            if (agent != null)
-            {
-                UpdateAgentAndObstacle(distance, direction);
-            }
+            if (agent != null) UpdateAgentAndObstacle(distance, direction);
             else
             {
                 enemyMovement.Movement(transform.forward, enemyStatus.speed);
@@ -178,7 +149,6 @@ public class BarbEnemyCont2 : MonoBehaviour, IKillable
             }
         }
     }
-
 
     private void UpdatePlayerInSight()
     {
@@ -188,28 +158,19 @@ public class BarbEnemyCont2 : MonoBehaviour, IKillable
         rayDirection.Normalize();
 
         if (Physics.Raycast(rayOrigin, rayDirection, out RaycastHit hit, rayDistance))
-        {
             playerInSight = hit.collider.gameObject == player;
-        }
     }
 
-    private bool IsPlayerOnNavMesh()
-    {
-        return NavMesh.SamplePosition(player.transform.position, out _, 1f, NavMesh.AllAreas);
-    }
+    private bool IsPlayerOnNavMesh() => NavMesh.SamplePosition(player.transform.position, out _, 1f, NavMesh.AllAreas);
 
     public void LoseHealth(int damage)
     {
         enemyStatus.health -= damage;
-        if (enemyStatus.health <= 0)
-        {
-            Die();
-        }
+        if (enemyStatus.health <= 0) Die();
     }
-    public void BloodParticle(Vector3 position, Quaternion rotation)
-    {
-        Instantiate(bloodParticle, position, rotation);
-    }
+
+    public void BloodParticle(Vector3 position, Quaternion rotation) => Instantiate(bloodParticle, position, rotation);
+
     public void Die()
     {
         PrepareForDestruction();
@@ -226,10 +187,7 @@ public class BarbEnemyCont2 : MonoBehaviour, IKillable
         enemyAnimation.Die();
         enemyMovement.Die();
 
-        if (agent != null)
-        {
-            agent.enabled = false;
-        }
+        if (agent != null) agent.enabled = false;
 
         enabled = false;
     }
@@ -246,13 +204,11 @@ public class BarbEnemyCont2 : MonoBehaviour, IKillable
 
     private void InstantiateAidKit(float probability)
     {
-        if (Random.value <= probability)
-            Instantiate(aidKit, transform.position, Quaternion.identity);
+        if (Random.value <= probability) Instantiate(aidKit, transform.position, Quaternion.identity);
     }
-    void AttackPlayer()
-    {
-        player.GetComponent<BarbCont2>().LoseHealth(random);
-    }
+
+    void AttackPlayer() => player.GetComponent<BarbCont2>().LoseHealth(random);
+
     void AttackPlayer2()
     {
         Vector3 direction = (player.transform.position - ThrowPos.position).normalized;
@@ -260,5 +216,16 @@ public class BarbEnemyCont2 : MonoBehaviour, IKillable
         ThrowPos.rotation = targetRotation;
         Instantiate(spear, ThrowPos.position, targetRotation);
         AudioController.instance.PlayOneShot(ThrowSound, 0.8f);
+    }
+    private void StopEnemy()
+    {
+        if (agent != null && agent.enabled)
+    {
+            agent.velocity = Vector3.zero;
+        }
+        enemyAnimation.Attack(false);
+        enemyAnimation.Attack2(false);
+        enemyMovement.Movement(Vector3.zero);
+        enemyAnimation.Movement(0);
     }
 }

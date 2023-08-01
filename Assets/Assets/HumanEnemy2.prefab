@@ -4116,7 +4116,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6332343693690062689}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24.275063, y: 0, z: -16.791641}
+  m_LocalPosition: {x: -21.95296, y: 0, z: -13.793577}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4250,7 +4250,6 @@ MonoBehaviour:
   bloodParticle: {fileID: 1100003762409686, guid: 594557b01b0b27840a04cfcc7b3cabb4, type: 3}
   aidKit: {fileID: 1060151288946202, guid: 6dcf22dec98386a4ba43154934da0830, type: 3}
   spear: {fileID: 6252864901094407968, guid: 92dfef31b908f3a41a2acc4701484ec6, type: 3}
-  numberPrefab: {fileID: 0}
   head: {fileID: 2373794577072357058}
   cust: {fileID: 387419810536597494}
   randomClothes: {fileID: 5718568157071154291}

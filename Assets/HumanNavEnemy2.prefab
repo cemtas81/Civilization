@@ -5035,16 +5035,16 @@ GameObject:
   - component: {fileID: 5528260742368057380}
   - component: {fileID: 8339102879347197993}
   - component: {fileID: 8339102879347197992}
-  - component: {fileID: 8339102879347198420}
   - component: {fileID: 8339102879347198421}
   - component: {fileID: 8339102879347197994}
   - component: {fileID: 8339102879347197995}
   - component: {fileID: 4322856289705487923}
   - component: {fileID: 1008135214859523265}
   - component: {fileID: 768770347386907990}
+  - component: {fileID: -4752743718160611356}
   m_Layer: 8
-  m_Name: HumanNavEnemy
-  m_TagString: Enemy
+  m_Name: HumanNavEnemy2
+  m_TagString: Enemy2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -5118,32 +5118,6 @@ CapsuleCollider:
   m_Height: 1.9110098
   m_Direction: 1
   m_Center: {x: 0, y: 0.9296732, z: 0}
---- !u!114 &8339102879347198420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7712167626548112379}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab703b3202107ee448ff71468dea4f3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnemySpawner: {fileID: 0}
-  deathSound: {fileID: 8300000, guid: a80a20331fe6c5b49936c516a2631c05, type: 3}
-  ThrowSound: {fileID: 8300000, guid: 70b6e007003158e4fa167f9b0a084a77, type: 3}
-  bloodParticle: {fileID: 1100003762409686, guid: 594557b01b0b27840a04cfcc7b3cabb4, type: 3}
-  aidKit: {fileID: 1060151288946202, guid: 6dcf22dec98386a4ba43154934da0830, type: 3}
-  spear: {fileID: 6252864901094407968, guid: 92dfef31b908f3a41a2acc4701484ec6, type: 3}
-  head: {fileID: 2024217421801017944}
-  cust: {fileID: 4145135547914226540}
-  randomClothes: {fileID: 8339102878537363689}
-  numberPrefab: {fileID: 1584410138532935668, guid: 1850c5272b1fc6b4783cc9c41329ef05, type: 3}
-  random: 0
-  Ranged: 0
-  isBoss: 0
-  ThrowPos: {fileID: 4342261680055518559}
 --- !u!114 &8339102879347198421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5238,6 +5212,31 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0.9, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &-4752743718160611356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7712167626548112379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85fc3f7c6e1366a4a8501c15418fc977, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathSound: {fileID: 8300000, guid: a80a20331fe6c5b49936c516a2631c05, type: 3}
+  ThrowSound: {fileID: 8300000, guid: 70b6e007003158e4fa167f9b0a084a77, type: 3}
+  bloodParticle: {fileID: 1100003762409686, guid: 594557b01b0b27840a04cfcc7b3cabb4, type: 3}
+  aidKit: {fileID: 1060151288946202, guid: 6dcf22dec98386a4ba43154934da0830, type: 3}
+  spear: {fileID: 6252864901094407968, guid: 92dfef31b908f3a41a2acc4701484ec6, type: 3}
+  head: {fileID: 2024217421801017944}
+  cust: {fileID: 4145135547914226540}
+  randomClothes: {fileID: 8339102878537363689}
+  ThrowPos: {fileID: 4145717779530153016}
+  Ranged: 0
+  isBoss: 0
+  probabilityAidKit: 0.08
+  EnemySpawner: {fileID: 0}
 --- !u!1 &7741326726288273477
 GameObject:
   m_ObjectHideFlags: 0
@@ -7050,11 +7049,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f745586162057b4ba599160c0885d7c, type: 3}
---- !u!4 &4342261680055518559 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4587817253327138, guid: 7f745586162057b4ba599160c0885d7c, type: 3}
-  m_PrefabInstance: {fileID: 4346681062599808125}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4349880934921818153 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4330754933752916, guid: 7f745586162057b4ba599160c0885d7c, type: 3}
