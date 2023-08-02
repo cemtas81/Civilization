@@ -9,7 +9,7 @@ public class BarbScreenCont : MonoBehaviour
   
     [SerializeField] private Slider healthSlider,coinSlider;
     [SerializeField] private GameObject pausePanel,ammo;
-    [SerializeField] private Text scoreText, maxScoreText, deadZombiesText, bossText, woodText,comboText,spearText;   
+    [SerializeField] private Text scoreText, maxScoreText, deadZombiesText, bossText,specialText, woodText,comboText,spearText;   
     public GameObject upgradePanel, gameOverPanel;
     public int weaponLevel;
     private float maxScore,lastKillTime;
@@ -142,9 +142,10 @@ public class BarbScreenCont : MonoBehaviour
                 comboCount++;
                 comboText.text = string.Format("{1}x combo", headCount, comboCount);
                 StartCoroutine(TextDisappear(2, comboText));
-                if (comboCount >= 5)
+                if (comboCount >= 2&&!playerController.specialAttack)
                 {
                     canSpecial = true;
+                    StartCoroutine(TextDisappear(.7f,specialText));
                     StartCoroutine(SpecialFail());
                 }
             }
@@ -162,6 +163,7 @@ public class BarbScreenCont : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         canSpecial = false;
+        
     }
     public IEnumerator SpecialEnd(float time,Color color,GameObject trail)
     {

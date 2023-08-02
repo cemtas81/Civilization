@@ -8,7 +8,7 @@ public class BarbEnemyCont2 : MonoBehaviour, IKillable
     [SerializeField] private GameObject bloodParticle, aidKit, spear;
     [SerializeField] private GameObject head, cust, randomClothes;
     [SerializeField] private Transform ThrowPos;
-    [SerializeField] private bool Ranged, isBoss;
+    [SerializeField] private bool Ranged, isBoss,towered;
     [SerializeField] private float probabilityAidKit = 0.08f;
 
     [Header("References")]
@@ -73,7 +73,7 @@ public class BarbEnemyCont2 : MonoBehaviour, IKillable
         else HandleRangedEnemy(distance, direction);
     }
 
-    private bool ShouldDestroyEnemy(float distance) => distance >= 60 && agent == null;
+    private bool ShouldDestroyEnemy(float distance) => distance >= 60 && agent == null&&!towered;
 
     private void DestroyEnemy()
     {

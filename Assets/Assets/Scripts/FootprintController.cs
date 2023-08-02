@@ -43,6 +43,7 @@ public class FootprintController : MonoBehaviour
             {
                 Vector3 footprintPosition = hit.point + hit.normal * footprintOffset; // Calculate the footprint position with an offset
                 footprintPrefab.transform.SetPositionAndRotation(footprintPosition, Quaternion.LookRotation(hit.normal, rightFootPos.up));
+           
                 footprintPrefab.SetActive(true);
 
                 StartCoroutine(DeactivateFootstepDelayed(footprintPrefab));
@@ -67,4 +68,5 @@ public class FootprintController : MonoBehaviour
         yield return new WaitForSeconds(1f); 
         footprintPrefab.SetActive(false);
     }
+   
 }

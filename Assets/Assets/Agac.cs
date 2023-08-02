@@ -5,16 +5,19 @@ public class Agac : MonoBehaviour
 {
     private BarbScreenCont barb;
     private Rigidbody rb;
+    //private MeshCollider coll;
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         barb = FindObjectOfType<BarbScreenCont>();
+        //coll = GetComponent<MeshCollider>();
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Sword"))
         {
             rb.isKinematic = false;
+            //coll.convex = false;    
             rb.AddForceAtPosition(100 * Time.deltaTime * Vector3.forward, Vector3.forward,ForceMode.Impulse); 
          
         }
