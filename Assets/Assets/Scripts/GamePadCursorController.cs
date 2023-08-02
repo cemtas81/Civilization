@@ -74,7 +74,7 @@ public class GamePadCursorController : MonoBehaviour
 
             newPosition = hit.point;
             aim.position = newPosition;
-            if (hit.collider.gameObject.CompareTag("Enemy")|| hit.collider.gameObject.CompareTag("Boss"))
+            if (hit.collider.gameObject.CompareTag("Enemy2")|| hit.collider.gameObject.CompareTag("Boss"))
             {
                 joyCursor.color = Color.red;
                 hitted = true;

@@ -142,7 +142,7 @@ public class BarbScreenCont : MonoBehaviour
                 comboCount++;
                 comboText.text = string.Format("{1}x combo", headCount, comboCount);
                 StartCoroutine(TextDisappear(2, comboText));
-                if (comboCount >= 2&&!playerController.specialAttack)
+                if (comboCount >= 5&&!playerController.specialAttack)
                 {
                     canSpecial = true;
                     StartCoroutine(TextDisappear(.7f,specialText));

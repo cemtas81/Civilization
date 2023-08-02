@@ -1,5 +1,4 @@
 using System.Collections;
-
 using UnityEngine;
 
 public class SettlementSpawner : MonoBehaviour
@@ -15,7 +14,7 @@ public class SettlementSpawner : MonoBehaviour
     public bool couldBurn;
     private void Awake()
     {
-     
+        SharedVariables.Instance.settlementSpawner.Add(this);
         barbar = SharedVariables.Instance.cont;
         player = barbar.GetComponent<Transform>();
         StartCoroutine(SpawnCoroutine());

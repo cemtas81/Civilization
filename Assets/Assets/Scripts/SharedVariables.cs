@@ -1,5 +1,6 @@
 using Cinemachine;
 using Pathfinding.Examples;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class SharedVariables : MonoBehaviour
@@ -13,7 +14,7 @@ public class SharedVariables : MonoBehaviour
     public MeshRenderer swordIm;
     public BarbScreenCont screenCont;
     public MySolidSpawner spawner;
-    public SettlementSpawner settlementSpawner;
+    public List<SettlementSpawner> settlementSpawner;
     public BarbarWeaponCont weaponController;
     public AudioSource audioS;
     public AstarSmoothFollow2 astar;
@@ -58,7 +59,7 @@ public class SharedVariables : MonoBehaviour
         swordIm = sword.GetComponent<MeshRenderer>();
         screenCont = FindObjectOfType<BarbScreenCont>();
         spawner = FindObjectOfType<MySolidSpawner>();
-        settlementSpawner = FindObjectOfType<SettlementSpawner>();
+
         weaponController = FindObjectOfType<BarbarWeaponCont>();
         audioS = FindObjectOfType<AudioSource>();
         Ammo = GameObject.FindGameObjectWithTag("Spear");
