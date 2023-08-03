@@ -1338,9 +1338,9 @@ MonoBehaviour:
   - {fileID: 6332343693690062689, guid: f42db67b0e2e44b429e2ed6166ecd01a, type: 3}
   - {fileID: 7614905947255778318, guid: 6883b65ea180f444bbe5782cee23235d, type: 3}
   - {fileID: 7614905947255778318, guid: 6883b65ea180f444bbe5782cee23235d, type: 3}
-  minSpawnCount: 1
-  maxSpawnCount: 13
-  maxActivePrefabs: 26
+  minSpawnCount: 3
+  maxSpawnCount: 15
+  maxActivePrefabs: 52
   movableObject: {fileID: 1281240118}
   nadide: 0.8
   spawnedPrefabs: []
@@ -4812,6 +4812,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 213340865}
     m_Modifications:
+    - target: {fileID: 1952574194, guid: 4b696d284aaf53944adab03d7a6fa95b, type: 3}
+      propertyPath: amountToPool.Array.data[0]
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1952574194, guid: 4b696d284aaf53944adab03d7a6fa95b, type: 3}
+      propertyPath: amountToPool.Array.data[1]
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 2693321850349188106, guid: 4b696d284aaf53944adab03d7a6fa95b, type: 3}
       propertyPath: m_RootOrder
       value: 0
