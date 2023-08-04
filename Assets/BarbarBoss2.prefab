@@ -1210,7 +1210,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3369156882467900730
 Transform:
   m_ObjectHideFlags: 0
@@ -1784,6 +1784,7 @@ MonoBehaviour:
   ThrowPos: {fileID: 0}
   Ranged: 0
   isBoss: 1
+  towered: 0
   probabilityAidKit: 1
   EnemySpawner: {fileID: 0}
 --- !u!1 &3369156882467596486

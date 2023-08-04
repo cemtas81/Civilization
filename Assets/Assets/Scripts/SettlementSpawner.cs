@@ -16,6 +16,7 @@ public class SettlementSpawner : MonoBehaviour
     private List<SettlementSpawner> spawns;
     private bool burnCalled = false;
     public GameObject fire;
+    private Target parent;
     private void Awake()
     {
         SharedVariables.Instance.settlementSpawner.Add(this);
@@ -23,6 +24,7 @@ public class SettlementSpawner : MonoBehaviour
         player = barbar.GetComponent<Transform>();
         StartCoroutine(SpawnCoroutine());
         spawns=SharedVariables.Instance.settlementSpawner;
+        parent=GetComponentInParent<Target>();  
     }
  
     IEnumerator SpawnCoroutine()
@@ -75,7 +77,8 @@ public class SettlementSpawner : MonoBehaviour
 
     private void Burn()
     {
-        //Debug.Log("YANIYOOOOOOOOOOOOOOOOOOOOOOOOR");
+        StartCoroutine(parent.Destruction());
         fire.SetActive(true);
     }
+  
 }

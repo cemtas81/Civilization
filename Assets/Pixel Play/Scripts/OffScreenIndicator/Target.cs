@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-
+using System.Collections;
+using DG.Tweening;
 /// <summary>
 /// Attach this script to all the target game objects in the scene.
 /// </summary>
@@ -24,7 +25,8 @@ public class Target : MonoBehaviour
     /// its value is assigned at runtime by the offscreen indicator script.
     /// </summary>
     [HideInInspector] public Indicator indicator;
-
+    private MySolidSpawner spawner;
+    public GameObject dust;
     /// <summary>
     /// Gets the color for the target indicator.
     /// </summary>
@@ -35,7 +37,10 @@ public class Target : MonoBehaviour
             return targetColor;
         }
     }
-
+    private void Start()
+    {
+        spawner=SharedVariables.Instance.spawner;
+    }
     /// <summary>
     /// Gets if box indicator is required for the target.
     /// </summary>
@@ -101,4 +106,15 @@ public class Target : MonoBehaviour
         float distanceFromCamera = Vector3.Distance(cameraPosition, transform.position);
         return distanceFromCamera;
     }
+    public IEnumerator Destruction()
+    {    
+        yield return new WaitForSeconds(1);
+        transform.DOMoveY(transform.position.y - 8f, 3f);
+        Instantiate(dust, transform.position, Quaternion.identity);
+        yield return new WaitForSeconds(3);
+        Destroy(gameObject);
+        spawner.BossHere = false;
+    }
+
+
 }
