@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using static AnimatedMeshScriptableObject;
 
 public class BarbEnemyCont2 : MonoBehaviour, IKillable
 {
