@@ -5601,14 +5601,6 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
---- !u!124 &1209796843
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1209796831}
-  m_Enabled: 0
 --- !u!1001 &1221041499
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8153,6 +8145,10 @@ PrefabInstance:
       propertyPath: cursorAim
       value: 
       objectReference: {fileID: 1209796837}
+    - target: {fileID: 4416926083347132230, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
+      propertyPath: bloodParticle
+      value: 
+      objectReference: {fileID: 100000, guid: bc98890f6028f444eaa7789bde5e2eeb, type: 3}
     - target: {fileID: 4416926083347132230, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
       propertyPath: screenController
       value: 

@@ -101,8 +101,8 @@ MonoBehaviour:
     overrideState: 1
     value: 1
   filtering:
-    overrideState: 0
-    value: {x: 50, y: 95}
+    overrideState: 1
+    value: {x: 51.275883, y: 96.27589}
   minLuminance:
     overrideState: 1
     value: -9
@@ -114,7 +114,7 @@ MonoBehaviour:
     value: 1
   eyeAdaptation:
     overrideState: 1
-    value: 1
+    value: 0
   speedUp:
     overrideState: 0
     value: 2
@@ -164,16 +164,16 @@ MonoBehaviour:
     overrideState: 1
     value: 1
   colored:
-    overrideState: 0
+    overrideState: 1
     value: 1
   intensity:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: 1
   size:
-    overrideState: 0
+    overrideState: 1
     value: 1
   lumContrib:
-    overrideState: 0
+    overrideState: 1
     value: 0.8
 --- !u!114 &-1695834113240965192
 MonoBehaviour:
@@ -193,7 +193,7 @@ MonoBehaviour:
     value: 1
   focusDistance:
     overrideState: 1
-    value: 3
+    value: 5
   aperture:
     overrideState: 0
     value: 5.6
@@ -201,7 +201,7 @@ MonoBehaviour:
     overrideState: 0
     value: 50
   kernelSize:
-    overrideState: 0
+    overrideState: 1
     value: 1
 --- !u!114 &-234930992721939704
 MonoBehaviour:
@@ -269,19 +269,19 @@ MonoBehaviour:
     overrideState: 1
     value: -50
   intensityX:
-    overrideState: 0
+    overrideState: 1
     value: 1
   intensityY:
-    overrideState: 0
+    overrideState: 1
     value: 1
   centerX:
-    overrideState: 0
+    overrideState: 1
     value: 0
   centerY:
-    overrideState: 0
+    overrideState: 1
     value: 0
   scale:
-    overrideState: 0
+    overrideState: 1
     value: 1
 --- !u!114 &2775823186019155644
 MonoBehaviour:
@@ -295,16 +295,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1cb7e9e120078f43bce4f0b1be547a7, type: 3}
   m_Name: AmbientOcclusion
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   enabled:
     overrideState: 1
     value: 1
   mode:
     overrideState: 1
-    value: 1
+    value: 0
   intensity:
     overrideState: 1
-    value: 4
+    value: 2
   color:
     overrideState: 1
     value: {r: 0, g: 0, b: 0, a: 1}
@@ -330,7 +330,7 @@ MonoBehaviour:
     overrideState: 0
     value: 0.25
   quality:
-    overrideState: 0
+    overrideState: 1
     value: 2
 --- !u!114 &6067142147048413687
 MonoBehaviour:

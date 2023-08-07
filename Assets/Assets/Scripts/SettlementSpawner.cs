@@ -34,6 +34,7 @@ public class SettlementSpawner : MonoBehaviour
             yield return new WaitForSeconds(spawnInterval);
             if (soldiers<maxSoldier&&isHere)
             {
+               
                 Instantiate(prefab, transform.position, Quaternion.identity);
                 soldiers++;
                 if (soldiers == maxSoldier)
