@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Cinemachine;
+using UnityEngine.Rendering.PostProcessing;
 
 public class BarbScreenCont : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class BarbScreenCont : MonoBehaviour
     [SerializeField] private float comboTimeLimit = 2f;
     public bool canSpecial;
     public CinemachineVirtualCamera deadCam;
+    private PostProcessVolume cam;
     private void Start()
     {
         //ammo = GameObject.FindGameObjectWithTag("Spear");
@@ -32,6 +34,7 @@ public class BarbScreenCont : MonoBehaviour
         healthSlider.maxValue = playerController.playerStatus.health;
         UpdateHealthSlider();
         Time.timeScale = 1;
+        cam=Camera.main.GetComponent<PostProcessVolume>();  
     }
     private void Awake()
     {
@@ -96,6 +99,11 @@ public class BarbScreenCont : MonoBehaviour
     public void GameOver()
     {
         deadCam.enabled = true;
+        ChromaticAberration chromaticAberration;
+        if (cam.profile.TryGetSettings(out chromaticAberration))
+        {
+            chromaticAberration.active = true;
+        }
         //gameOverPanel.SetActive(true);
         Time.timeScale = 0.2f;
         Time.fixedDeltaTime = 0.02F * Time.timeScale;
