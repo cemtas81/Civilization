@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.AI;
-using static AnimatedMeshScriptableObject;
 
 public class BarbEnemyCont2 : MonoBehaviour, IKillable
 {
@@ -14,7 +13,7 @@ public class BarbEnemyCont2 : MonoBehaviour, IKillable
 
     [Header("References")]
     [HideInInspector] public EnemySpawner EnemySpawner;
-
+    private AudioSource source;
     private Status enemyStatus;
     private GameObject player;
     private CharacterMovement enemyMovement;
@@ -46,6 +45,7 @@ public class BarbEnemyCont2 : MonoBehaviour, IKillable
         agent = GetComponent<NavMeshAgent>();
         Parent.spawnedPrefabs.Add(this.gameObject);
         enabled = true;
+        source = SharedVariables.Instance.audioS;
     }
 
     private void GetRandomEnemy()
@@ -178,7 +178,7 @@ public class BarbEnemyCont2 : MonoBehaviour, IKillable
         screenController.UpdateDeadZombiesCount();
         HandleNonRangedNonBoss();
         Parent.spawnedPrefabs.Remove(this.gameObject);
-        AudioController.instance.PlayOneShot(deathSound, Random.Range(0.2f, 0.9f));
+        source.PlayOneShot(deathSound, Random.Range(0.2f, 0.9f));
         InstantiateAidKit(probabilityAidKit);
     }
 
@@ -216,7 +216,7 @@ public class BarbEnemyCont2 : MonoBehaviour, IKillable
         Quaternion targetRotation = Quaternion.LookRotation(direction);
         ThrowPos.rotation = targetRotation;
         Instantiate(spear, ThrowPos.position, targetRotation);
-        AudioController.instance.PlayOneShot(ThrowSound, 0.8f);
+        source.PlayOneShot(ThrowSound, 0.8f);
     }
     private void StopEnemy()
     {

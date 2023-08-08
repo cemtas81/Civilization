@@ -5042,6 +5042,7 @@ GameObject:
   - component: {fileID: 1008135214859523265}
   - component: {fileID: 768770347386907990}
   - component: {fileID: -4752743718160611356}
+  - component: {fileID: -943747120066108993}
   m_Layer: 8
   m_Name: HumanNavEnemy2
   m_TagString: Enemy2
@@ -5235,8 +5236,21 @@ MonoBehaviour:
   ThrowPos: {fileID: 4145717779530153016}
   Ranged: 0
   isBoss: 0
+  towered: 0
   probabilityAidKit: 0.08
   EnemySpawner: {fileID: 0}
+--- !u!114 &-943747120066108993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7712167626548112379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cabc05f22e130d4e9fbd32f5b2aa13a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7741326726288273477
 GameObject:
   m_ObjectHideFlags: 0

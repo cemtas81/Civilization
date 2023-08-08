@@ -4716,7 +4716,7 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   TimeMultiplier: 1
-  IsLoop: 0
+  IsLoop: 1
   HUE: -1
   canUpdate: 0
 --- !u!114 &5021480504624749641

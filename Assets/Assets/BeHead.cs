@@ -5,7 +5,7 @@ public class BeHead : MonoBehaviour
 {
     private Rigidbody body;
     private BarbScreenCont slider;
-    public float expForce, footprintOffset;
+    public float expForce, bloodprintOffset;
     private ObjectPooling2 objectPooling;
     public Transform Pos;
     private void Awake()
@@ -38,26 +38,21 @@ public class BeHead : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(Pos.position, Pos.forward, out hit, 0.1f))
             {
-                GameObject footprintPrefab = objectPooling.GetPooledObject(objectPooling.objectsToPool[2]);
+                GameObject bloodprintPrefab = objectPooling.GetPooledObject(objectPooling.objectsToPool[2]);
 
-                if (footprintPrefab != null)
+                if (bloodprintPrefab != null)
                 {
 
-                    Vector3 footprintPosition = hit.point + hit.normal * footprintOffset; // Calculate the footprint position with an offset
-                    footprintPrefab.transform.SetPositionAndRotation(footprintPosition, Quaternion.LookRotation(hit.normal, Pos.up));
-                    footprintPrefab.SetActive(true);
+                    Vector3 bloodprintPosition = hit.point + hit.normal * bloodprintOffset; // Calculate the footprint position with an offset
+                    bloodprintPrefab.transform.SetPositionAndRotation(bloodprintPosition, Quaternion.LookRotation(hit.normal, Pos.up));
+                    bloodprintPrefab.SetActive(true);
 
                 }
 
             }
 
         }
-        //else if (collision.collider.CompareTag("Spear"))
-        //{
-        //    this.gameObject.transform.parent = collision.collider.transform;
-        //    Debug.Log("MIzrak");
-        //}
-
+   
     }
   
    void OnBecameInvisible()

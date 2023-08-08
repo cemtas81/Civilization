@@ -99,8 +99,7 @@ public class BarbScreenCont : MonoBehaviour
     public void GameOver()
     {
         deadCam.enabled = true;
-        ChromaticAberration chromaticAberration;
-        if (cam.profile.TryGetSettings(out chromaticAberration))
+        if (cam.profile.TryGetSettings(out ChromaticAberration chromaticAberration))
         {
             chromaticAberration.active = true;
         }
@@ -173,13 +172,14 @@ public class BarbScreenCont : MonoBehaviour
         canSpecial = false;
         
     }
-    public IEnumerator SpecialEnd(float time,Color color,GameObject trail)
+    public IEnumerator SpecialEnd(float time,Color color,GameObject trail,GameObject burning)
     {
         yield return new WaitForSeconds(time);
         canSpecial=false;
         SharedVariables.Instance.cam2.enabled=false;
         SharedVariables.Instance.sceneLight.color=color;
         trail.SetActive(false);
+        burning.SetActive(false);
         playerController.specialAttack = false;
     }
     private void UpdateMaxScore(int minutes, int seconds, float time)

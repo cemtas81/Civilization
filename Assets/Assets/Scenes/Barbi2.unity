@@ -1604,7 +1604,7 @@ MonoBehaviour:
   swordIm: {fileID: 1612689836}
   screenCont: {fileID: 151342203}
   spawner: {fileID: 213340867}
-  settlementSpawner: []
+  settlementManager: {fileID: 0}
   weaponController: {fileID: 1281240138}
   audioS: {fileID: 2141658290}
   astar: {fileID: 1140146445}
@@ -8146,10 +8146,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1209796837}
     - target: {fileID: 4416926083347132230, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
-      propertyPath: bloodParticle
-      value: 
-      objectReference: {fileID: 100000, guid: bc98890f6028f444eaa7789bde5e2eeb, type: 3}
-    - target: {fileID: 4416926083347132230, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
       propertyPath: screenController
       value: 
       objectReference: {fileID: 151342203}
@@ -8209,13 +8205,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7692559120689015570, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
-      propertyPath: spear
-      value: 
-      objectReference: {fileID: 6252864901094407968, guid: 84d66554aa6d78244afb4885a9aa4c86, type: 3}
-    - target: {fileID: 7692559120689015582, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
-      propertyPath: initialHealth
-      value: 500
+    - target: {fileID: 6166814637076516900, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6166814637076516900, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6166814637076516900, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6166814637076516900, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6166814637076956516, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}

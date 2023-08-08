@@ -646,12 +646,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5dd1558ce2a9734b8e4059bd66c2f8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnInterval: 3
+  spawnInterval: 1
   maxSoldier: 20
   soldiers: 0
   prefab: {fileID: 7712167626548112379, guid: d30bbfa90b8b99a40aaf14dc046bbeef, type: 3}
-  dist: 40
-  couldBurn: 0
   fire: {fileID: 3403655235441487002}
 --- !u!1 &4896718513684992372
 GameObject:
@@ -731,12 +729,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5dd1558ce2a9734b8e4059bd66c2f8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnInterval: 6
+  spawnInterval: 4
   maxSoldier: 10
   soldiers: 0
   prefab: {fileID: 3369156882467596404, guid: 8a7b5f0a64d7e2644a930fe8fd05cc68, type: 3}
-  dist: 40
-  couldBurn: 0
   fire: {fileID: 4896718513684992372}
 --- !u!1 &5054296222942105309
 GameObject:
@@ -877,8 +873,6 @@ MonoBehaviour:
   maxSoldier: 1
   soldiers: 0
   prefab: {fileID: 3369156882467596404, guid: 51747feea8231d34da23706352efe69d, type: 3}
-  dist: 40
-  couldBurn: 0
   fire: {fileID: 8233581195629784066}
 --- !u!1 &5808180559154904626
 GameObject:
@@ -1065,6 +1059,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7614905947255778319}
   - component: {fileID: -4264961016677098011}
+  - component: {fileID: 3673271681219109872}
   m_Layer: 7
   m_Name: ForStoneAge
   m_TagString: Settlement
@@ -1080,7 +1075,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7614905947255778318}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -39.333748, y: 0, z: -152.13669}
+  m_LocalPosition: {x: -49.660263, y: 0, z: 11.345111}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1156,7 +1151,27 @@ MonoBehaviour:
   needArrowIndicator: 1
   needDistanceText: 1
   indicator: {fileID: 0}
-  dust: {fileID: 9041768898977403062, guid: 7b3b1328e308b1c48890db1905f1ee7d, type: 3}
+--- !u!114 &3673271681219109872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7614905947255778318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fd31695b74fd1e46b894570aca0fa89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dust: {fileID: 3625077558165447559, guid: 9b7fc248e42ee044fb977a55c60f2ae0, type: 3}
+  fire: {fileID: 0}
+  isHere: 0
+  dist: 50
+  spawns: 0
+  spawnPoints:
+  - {fileID: 1092814612033328346}
+  - {fileID: 3028468943655523041}
+  - {fileID: 9005034962960245066}
 --- !u!1 &8233581195629784066
 GameObject:
   m_ObjectHideFlags: 0

@@ -1587,6 +1587,7 @@ GameObject:
   - component: {fileID: 6739513424574160670}
   - component: {fileID: 3877717042262349721}
   - component: {fileID: -1697493853086180762}
+  - component: {fileID: -4163354607514523837}
   m_Layer: 8
   m_Name: RangedNavEnemy2
   m_TagString: Enemy2
@@ -1787,6 +1788,18 @@ MonoBehaviour:
   towered: 0
   probabilityAidKit: 0.08
   EnemySpawner: {fileID: 0}
+--- !u!114 &-4163354607514523837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3369156882467596404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cabc05f22e130d4e9fbd32f5b2aa13a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3369156882467596486
 GameObject:
   m_ObjectHideFlags: 0

@@ -25,7 +25,7 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
     private AudioSource audio1;
     private Light scLight;
     public Color normalColor;
-    public GameObject specialTrail;
+    public GameObject specialTrail,burningMan;
     private void Awake()
     {   
         myController = new MyController();
@@ -141,8 +141,9 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
             specialAttack = true;
             playerAnimation.Special1(specialAttack);
             specialTrail.SetActive(true);
+            burningMan.SetActive(true);
             SharedVariables.Instance.cam2.enabled=true;
-            SharedVariables.Instance.StartCoroutine(screenController.SpecialEnd(10,normalColor,specialTrail));      
+            StartCoroutine(screenController.SpecialEnd(10,normalColor,specialTrail,burningMan));      
             scLight.color = Color.red;
         }
     }

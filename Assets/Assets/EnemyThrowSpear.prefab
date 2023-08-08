@@ -137,7 +137,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6252864901094307684}
-  - component: {fileID: 6252864901091403044}
   m_Layer: 11
   m_Name: EnemyThrowSpear
   m_TagString: Untagged
@@ -161,11 +160,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &6252864901091403044
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6252864901094407968}
-  m_Mesh: {fileID: 4300000, guid: 5e10ea0bee69d294fbb9a693f50a6a48, type: 3}

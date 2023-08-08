@@ -52,6 +52,6 @@ public class SpearDamage : MonoBehaviour
 
     void Dest()
     {
-        Destroy(this.gameObject);
+        Destroy(this.transform.parent.gameObject);
     }
 }

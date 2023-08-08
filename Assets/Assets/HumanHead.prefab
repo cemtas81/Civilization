@@ -3670,7 +3670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expForce: 1
-  footprintOffset: 0.04
+  bloodprintOffset: 0.01
   Pos: {fileID: 120226263354686702}
 --- !u!65 &5669488808277132958
 BoxCollider:

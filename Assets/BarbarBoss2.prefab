@@ -1588,6 +1588,7 @@ GameObject:
   - component: {fileID: 6612923117372710375}
   - component: {fileID: -5004341834776292683}
   - component: {fileID: -3348400246316484580}
+  - component: {fileID: 5852192531286014984}
   m_Layer: 8
   m_Name: BarbarBoss2
   m_TagString: Boss
@@ -1787,6 +1788,18 @@ MonoBehaviour:
   towered: 0
   probabilityAidKit: 1
   EnemySpawner: {fileID: 0}
+--- !u!114 &5852192531286014984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3369156882467596404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cabc05f22e130d4e9fbd32f5b2aa13a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3369156882467596486
 GameObject:
   m_ObjectHideFlags: 0

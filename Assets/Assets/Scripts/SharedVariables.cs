@@ -1,3 +1,4 @@
+using cemtas81;
 using Cinemachine;
 using Pathfinding.Examples;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ public class SharedVariables : MonoBehaviour
     public MeshRenderer swordIm;
     public BarbScreenCont screenCont;
     public MySolidSpawner spawner;
-    public List<SettlementSpawner> settlementSpawner;
+    public SettlementManager settlementManager ;
     public BarbarWeaponCont weaponController;
     public AudioSource audioS;
     public AstarSmoothFollow2 astar;

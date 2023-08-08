@@ -28,8 +28,7 @@ public class MySolidSpawner : MonoBehaviour
 
     IEnumerator SpawnCoroutine()
     {
-        
-       
+      
             // Loop indefinitely
             while (true)
             {
