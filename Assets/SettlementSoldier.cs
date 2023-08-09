@@ -9,6 +9,7 @@ namespace cemtas81
         private void Start()
         {
             m_manager=SharedVariables.Instance.settlementManager;
+            m_manager.spawns++;
         }
         private void OnDestroy()
         {

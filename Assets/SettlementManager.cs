@@ -23,30 +23,28 @@ namespace cemtas81
             SharedVariables.Instance.settlementManager = this;
             barbar = SharedVariables.Instance.cont;
             player = barbar.GetComponent<Transform>();
-            StartCoroutine(SpawnCoroutine());
+            foreach (SettlementSpawner settlementSpawner in spawnPoints)
+            {
+                StartCoroutine(SpawnCoroutine(settlementSpawner));
+            }
         }
-        IEnumerator SpawnCoroutine()
+        private IEnumerator SpawnCoroutine(SettlementSpawner settlementSpawner)
         {
             while (gameObject.activeInHierarchy)
             {
-                foreach (SettlementSpawner settlementSpawner in spawnPoints)
-                {
-                    if (settlementSpawner.soldiers < settlementSpawner.maxSoldier && isHere)
-                    {
-                        yield return new WaitForSeconds(settlementSpawner.spawnInterval);
-                        Instantiate(settlementSpawner.prefab, settlementSpawner.transform.position, Quaternion.identity);
-                        settlementSpawner.soldiers++;
-                        spawns++;
-                    }
-                    else if(settlementSpawner.soldiers==settlementSpawner.maxSoldier)
-                    {
-                        settlementSpawner.fire.SetActive(true);
-                    }
+                if (settlementSpawner.soldiers < settlementSpawner.maxSoldier && isHere)
+        {
+                    yield return new WaitForSeconds(settlementSpawner.spawnInterval);
+                    Instantiate(settlementSpawner.prefab, settlementSpawner.transform.position, Quaternion.identity);
+                    settlementSpawner.soldiers++;
+                    //spawns++;
                 }
-
+        else if (settlementSpawner.soldiers == settlementSpawner.maxSoldier)
+                {
+                    settlementSpawner.fire.SetActive(true);
+                }
                 yield return null;
             }
-   
         }
         public IEnumerator Destruction()
         {
@@ -77,16 +75,19 @@ namespace cemtas81
             {
                 spawns--;
             }
-            else
+            else if(!couldBurn)
             {
-                couldBurn = true;
                 Burn();
             }
         }
       
         private void Burn()
         {
-            StartCoroutine(Destruction());
+            if (this!=null&&!couldBurn && gameObject.activeInHierarchy)
+            {
+                couldBurn = true;
+                StartCoroutine(Destruction());
+            }
             //fire.SetActive(true);
         }
     }
