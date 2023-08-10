@@ -10,7 +10,6 @@ public class BarbEnemyCont2 : MonoBehaviour, IKillable
     [SerializeField] private Transform ThrowPos;
     [SerializeField] private bool Ranged, isBoss,towered;
     [SerializeField] private float probabilityAidKit = 0.08f;
-
     [Header("References")]
     [HideInInspector] public EnemySpawner EnemySpawner;
     private AudioSource source;
