@@ -160,14 +160,9 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
             canShoot = false;
         }
     }
-    public void Attacking()
-    {
-        playerAnimation.PlayerAttack();    
-    }
-    public void Throwing()
-    {
-        playerAnimation.PlayerThrow();
-    }
+    public void Attacking() => playerAnimation.PlayerAttack();    
+    
+    public void Throwing() => playerAnimation.PlayerThrow();
 
     public void LoseHealth(int damage)
     {
@@ -182,10 +177,8 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
         }
        
     }
-    public void MakeSpear()
-    {
-        screenController.UpdateSpear(1);
-    }
+    public void MakeSpear() => screenController.UpdateSpear(1);
+
     public void Die()
     {
         screenController.GameOver();
@@ -200,12 +193,8 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
             playerStatus.health = playerStatus.initialHealth;
         screenController.UpdateHealthSlider();
     } 
-    public void Death()
-    {
-        screenController.gameOverPanel.SetActive(true);
-    }
-    private void OnDisable()
-    {
-        myController.Disable();
-    }
+    public void Death()=> screenController.gameOverPanel.SetActive(true);
+
+    private void OnDisable()=> myController.Disable();
+
 }

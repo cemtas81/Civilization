@@ -1660,8 +1660,8 @@ MonoBehaviour:
     overrideState: 1
     value: 1
   mode:
-    overrideState: 1
-    value: 1
+    overrideState: 0
+    value: 0
   color:
     overrideState: 1
     value: {r: 0.7607843, g: 0, b: 0, a: 1}
@@ -1669,17 +1669,17 @@ MonoBehaviour:
     overrideState: 0
     value: {x: 0.5, y: 0.5}
   intensity:
-    overrideState: 0
-    value: 0
-  smoothness:
-    overrideState: 0
+    overrideState: 1
     value: 0.2
+  smoothness:
+    overrideState: 1
+    value: 1
   roundness:
-    overrideState: 0
+    overrideState: 1
     value: 1
   rounded:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: 1
   mask:
     overrideState: 0
     value: {fileID: 0}

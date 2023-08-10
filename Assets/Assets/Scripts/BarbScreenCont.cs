@@ -9,7 +9,7 @@ public class BarbScreenCont : MonoBehaviour
 {
   
     [SerializeField] private Slider healthSlider,coinSlider;
-    [SerializeField] private GameObject pausePanel,ammo;
+    [SerializeField] private GameObject pausePanel,ammo,bloodyEye;
     [SerializeField] private Text scoreText, maxScoreText, deadZombiesText, bossText,specialText, woodText,comboText,spearText;   
     public GameObject upgradePanel, gameOverPanel;
     public int weaponLevel;
@@ -53,6 +53,14 @@ public class BarbScreenCont : MonoBehaviour
     public void UpdateHealthSlider()
     {
         healthSlider.value = playerController.playerStatus.health;
+        if (healthSlider.value<=40)
+        {
+            bloodyEye.SetActive(true);
+        }
+        else
+        {
+            bloodyEye.SetActive(false);
+        }
     }
     public void UpdateCoinSlider(int coin)
     {
