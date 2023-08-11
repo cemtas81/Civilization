@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8618480438997279897}
   m_Layer: 11
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: Spear
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f40de370a072d344eaa36010546a5c6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dust: {fileID: 1462327970484030, guid: 15e43e22029fb944fb844eb57025f82a, type: 3}
 --- !u!1 &6252864901094407968
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,7 +140,7 @@ GameObject:
   - component: {fileID: 6252864901094307684}
   m_Layer: 11
   m_Name: EnemyThrowSpear
-  m_TagString: Untagged
+  m_TagString: Spear
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
