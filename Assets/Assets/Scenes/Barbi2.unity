@@ -5061,6 +5061,10 @@ PrefabInstance:
       propertyPath: amountToPool.Array.data[1]
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 1952574194, guid: 4b696d284aaf53944adab03d7a6fa95b, type: 3}
+      propertyPath: objectsToPool.Array.data[3]
+      value: 
+      objectReference: {fileID: 2934551495136571217, guid: d04f54b888732b947b9d273497543e8f, type: 3}
     - target: {fileID: 2693321850349188106, guid: 4b696d284aaf53944adab03d7a6fa95b, type: 3}
       propertyPath: m_RootOrder
       value: 0

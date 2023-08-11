@@ -17,12 +17,12 @@ public class BeHead : MonoBehaviour
     private void OnEnable()
     {
         body.AddRelativeForce(expForce * Time.deltaTime * Vector3.right,ForceMode.Impulse);
-        //Invoke("Dissolve",2);
+        Invoke(nameof(Dissolve), 3);
     }
-    //void Dissolve()
-    //{
-    //    this.gameObject.SetActive(false);
-    //} 
+    void Dissolve()
+    {
+        this.gameObject.SetActive(false);
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -55,8 +55,8 @@ public class BeHead : MonoBehaviour
    
     }
   
-   void OnBecameInvisible()
-    {
-        this.gameObject.SetActive(false);
-    }
+   //void OnBecameInvisible()
+   // {
+   //     this.gameObject.SetActive(false);
+   // }
 }
