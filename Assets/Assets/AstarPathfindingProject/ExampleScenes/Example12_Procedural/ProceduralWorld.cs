@@ -7,7 +7,7 @@ namespace cemtas81 {
 
 	public class ProceduralWorld : MonoBehaviour {
 		public Transform target;
-
+		public GameObject pathPref;
 		public ProceduralPrefab[] prefabs;
 
 		/// <summary>How far away to generate tiles</summary>
@@ -82,10 +82,10 @@ namespace cemtas81 {
 			// Calculate the closest tiles
 			// and then recalculate the graph
 			Update();
-            if (AstarPath.active != null)
-            {
-                AstarPath.active.Scan();
-            }
+            //if (AstarPath.active != null)
+            //{
+            //    AstarPath.active.Scan();
+            //}
 
             StartCoroutine(GenerateTiles());
 		}
@@ -162,8 +162,22 @@ namespace cemtas81 {
 				this.world = world;
 				rnd = new System.Random((x * 10007) ^ (z*36007));
 			}
+            // Inside the ProceduralTile class
 
-			Transform root;
+           
+
+            // Helper function to calculate a point on the Bezier curve
+            private Vector3 BezierPoint(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float t)
+            {
+                float u = 1 - t;
+                float tt = t * t;
+                float uu = u * u;
+                float uuu = uu * u;
+                float ttt = tt * t;
+                return uuu * p0 + 3 * uu * t * p1 + 3 * u * tt * p2 + ttt * p3;
+            }
+
+            Transform root;
 			IEnumerator ie;
 
 			public IEnumerator Generate () {
@@ -235,7 +249,7 @@ namespace cemtas81 {
 								int count = Mathf.RoundToInt(fcount);
 
 								// Apply dithering
-								
+								// See http://en.wikipedia.org/wiki/Floyd%E2%80%93Steinberg_dithering
 								ditherMap[sx+1+1, sz+1+0] += (7f/16f) * (fcount - count);
 								ditherMap[sx+1-1, sz+1+1] += (3f/16f) * (fcount - count);
 								ditherMap[sx+1+0, sz+1+1] += (5f/16f) * (fcount - count);
@@ -259,6 +273,7 @@ namespace cemtas81 {
 				}
 
 				ditherMap = null;
+				AddPathPoints();
 
 				yield return null;
 				yield return null;
@@ -279,6 +294,32 @@ namespace cemtas81 {
 				// Make sure the tile generator coroutine is destroyed
 				ie = null;
 			}
-		}
-	}
+            public void AddPathPoints()
+            {
+                Vector3 start = new Vector3(x * world.tileSize, 0, z * world.tileSize);
+                Vector3 end = new Vector3((x + 1) * world.tileSize, 0, (z + 1) * world.tileSize);
+
+                Vector3 controlPoint1 = start + new Vector3(world.tileSize * rnd.Next(0, 2), 0, world.tileSize * rnd.Next(0, 2));
+                Vector3 controlPoint2 = end - new Vector3(world.tileSize * rnd.Next(0, 2), 0, world.tileSize * rnd.Next(0, 2));
+
+                GameObject roadParent = new GameObject("Road");
+                roadParent.transform.parent = root;
+
+                int numPathPoints = 100;
+                for (int i = 0; i < numPathPoints; i++) {
+                    float t = i / (float)numPathPoints;
+                    Vector3 pathPoint = BezierPoint(start, controlPoint1, controlPoint2, end, t);
+                    Vector3 nextPathPoint = BezierPoint(start, controlPoint1, controlPoint2, end, (i + 1) / (float)numPathPoints);
+
+                    Vector3 direction = (nextPathPoint - pathPoint).normalized;
+                    Quaternion rotation = Quaternion.LookRotation(direction, Vector3.up);
+
+                    GameObject roadInstance = GameObject.Instantiate(world.pathPref, pathPoint, rotation);
+                    roadInstance.transform.parent = roadParent.transform;
+                }
+            }
+
+        }
+
+    }
 }

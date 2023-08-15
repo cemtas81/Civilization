@@ -1339,6 +1339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1281240129}
+  pathPref: {fileID: 159870, guid: 5a62c7e1e3197a64b82ed0ce267f22cc, type: 3}
   prefabs:
   - prefab: {fileID: 1830106991322360239, guid: c1ad289bfeca1c948832d76b68140b0b, type: 3}
     density: 0
@@ -1380,7 +1381,7 @@ MonoBehaviour:
   disableAsyncLoadWithinRange: 1
   tileSize: 100
   subTiles: 10
-  staticBatching: 1
+  staticBatching: 0
 --- !u!114 &213340867
 MonoBehaviour:
   m_ObjectHideFlags: 0
