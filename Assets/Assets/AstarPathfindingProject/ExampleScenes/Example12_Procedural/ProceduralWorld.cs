@@ -1,10 +1,10 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Pathfinding;
 
-namespace Pathfinding.Examples {
-	/// <summary>Example script for generating an infinite procedural world</summary>
-	[HelpURL("http://arongranberg.com/astar/docs/class_pathfinding_1_1_examples_1_1_procedural_world.php")]
+namespace cemtas81 {
+
 	public class ProceduralWorld : MonoBehaviour {
 		public Transform target;
 
@@ -235,7 +235,7 @@ namespace Pathfinding.Examples {
 								int count = Mathf.RoundToInt(fcount);
 
 								// Apply dithering
-								// See http://en.wikipedia.org/wiki/Floyd%E2%80%93Steinberg_dithering
+								
 								ditherMap[sx+1+1, sz+1+0] += (7f/16f) * (fcount - count);
 								ditherMap[sx+1-1, sz+1+1] += (3f/16f) * (fcount - count);
 								ditherMap[sx+1+0, sz+1+1] += (5f/16f) * (fcount - count);

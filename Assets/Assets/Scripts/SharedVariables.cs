@@ -1,7 +1,5 @@
 using cemtas81;
 using Cinemachine;
-using Pathfinding.Examples;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class SharedVariables : MonoBehaviour

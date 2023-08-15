@@ -1,9 +1,8 @@
-using Pathfinding;
-using Pathfinding.Examples;
+
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using cemtas81;
 public class BarbCont2 : MonoBehaviour, IKillable, ICurable
 {
     [HideInInspector] public Status playerStatus;

@@ -100,6 +100,7 @@ public class BarbEnemyCont2 : MonoBehaviour, IKillable
             agent.enabled = false;
             obstacle.enabled = true;
             enemyAnimation.Attack(true);
+            direction.y = 0;
             enemyMovement.Rotation(direction - transform.position);
         }
     }

@@ -5563,24 +5563,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8944336655422409503, guid: f6d148d888ffbf54b9afe9936dfaec1f, type: 3}
   m_PrefabInstance: {fileID: 1221041499}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1209796837
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1209796831}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f903c2eb621d8418d88f8dad81b13dc6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  target: {fileID: 379758397}
-  onlyOnDoubleClick: 0
-  use2D: 0
 --- !u!114 &1209796838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5681,6 +5663,24 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &1209796845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209796831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f903c2eb621d8418d88f8dad81b13dc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mask:
+    serializedVersion: 2
+    m_Bits: 2147483647
+  target: {fileID: 379758397}
+  onlyOnDoubleClick: 0
+  use2D: 0
 --- !u!1001 &1221041499
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8221,22 +8221,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 213340865}
     m_Modifications:
-    - target: {fileID: 1281240128, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
-      propertyPath: m_Center.y
-      value: 0.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1281240128, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
-      propertyPath: m_Extents.x
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1281240128, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
-      propertyPath: m_Extents.y
-      value: 0.91
-      objectReference: {fileID: 0}
-    - target: {fileID: 1281240128, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
-      propertyPath: m_Extents.z
-      value: 0.4
-      objectReference: {fileID: 0}
     - target: {fileID: 4416926083347132230, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
       propertyPath: joyAim
       value: 
@@ -8244,11 +8228,7 @@ PrefabInstance:
     - target: {fileID: 4416926083347132230, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
       propertyPath: cursorAim
       value: 
-      objectReference: {fileID: 1209796837}
-    - target: {fileID: 4416926083347132230, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
-      propertyPath: bloodParticle
-      value: 
-      objectReference: {fileID: 1100003762409686, guid: 594557b01b0b27840a04cfcc7b3cabb4, type: 3}
+      objectReference: {fileID: 1209796845}
     - target: {fileID: 4416926083347132230, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
       propertyPath: screenController
       value: 
@@ -8262,7 +8242,7 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 169501628}
     - target: {fileID: 5068862358356120219, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
-      propertyPath: m_IsKinematic
+      propertyPath: m_Constraints
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5068862358356120220, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
@@ -8313,9 +8293,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6775800685354929042, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
-      propertyPath: m_Enabled
-      value: 1
+    - target: {fileID: 7692559120689015582, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
+      propertyPath: initialHealth
+      value: 500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}

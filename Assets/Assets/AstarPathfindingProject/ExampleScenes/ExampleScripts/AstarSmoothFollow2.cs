@@ -1,11 +1,7 @@
 using UnityEngine;
 
-namespace Pathfinding.Examples {
-	/// <summary>
-	/// Smooth Camera Following.
-	/// \author http://wiki.unity3d.com/index.php/SmoothFollow2
-	/// </summary>
-	[HelpURL("http://arongranberg.com/astar/docs/class_pathfinding_1_1_examples_1_1_astar_smooth_follow2.php")]
+namespace cemtas81 {
+
 	public class AstarSmoothFollow2 : MonoBehaviour {
 		public Transform target;
 		public float distance = 3.0f;

@@ -1,22 +1,13 @@
 using UnityEngine;
-using System.Linq;
 
-namespace Pathfinding {
-	/// <summary>
-	/// Moves the target in example scenes.
-	/// This is a simple script which has the sole purpose
-	/// of moving the target point of agents in the example
-	/// scenes for the A* Pathfinding Project.
-	///
-	/// It is not meant to be pretty, but it does the job.
-	/// </summary>
-	[HelpURL("http://arongranberg.com/astar/docs/class_pathfinding_1_1_target_mover.php")]
+namespace cemtas81 {
+
 	public class TargetMover : MonoBehaviour {
 		/// <summary>Mask for the raycast placement</summary>
 		public LayerMask mask;
 
 		public Transform target;
-		IAstarAI[] ais;
+		//IAstarAI[] ais;
 
 		/// <summary>Determines if the target position should be updated every frame or only on double-click</summary>
 		public bool onlyOnDoubleClick;
@@ -24,12 +15,13 @@ namespace Pathfinding {
 
 		Camera cam;
 
-		public void Start () {
+		public void Start()
+		{
 			//Cache the Main Camera
 			cam = Camera.main;
 			// Slightly inefficient way of finding all AIs, but this is just an example script, so it doesn't matter much.
 			// FindObjectsOfType does not support interfaces unfortunately.
-			ais = FindObjectsOfType<MonoBehaviour>().OfType<IAstarAI>().ToArray();
+			//ais = FindObjectsOfType<MonoBehaviour>().OfType<IAstarAI>().ToArray();
 			useGUILayout = false;
 		}
 
@@ -60,7 +52,7 @@ namespace Pathfinding {
 				if (Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity, mask)) 
 				{
 					newPosition = hit.point;
-				Debug.DrawLine(Input.mousePosition, hit.point);
+					//Debug.DrawLine(Input.mousePosition, hit.point);
 					positionFound = true;
 				}
 			}
@@ -68,11 +60,11 @@ namespace Pathfinding {
 			if (positionFound && newPosition != target.position) {
 				target.position = newPosition;
 
-				if (onlyOnDoubleClick) {
-					for (int i = 0; i < ais.Length; i++) {
-						if (ais[i] != null) ais[i].SearchPath();
-					}
-				}
+				//if (onlyOnDoubleClick) {
+				//	for (int i = 0; i < ais.Length; i++) {
+				//		if (ais[i] != null) ais[i].SearchPath();
+				//	}
+				//}
 			}
 		}
 	}

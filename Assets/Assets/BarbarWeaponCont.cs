@@ -29,7 +29,7 @@ public class BarbarWeaponCont : MonoBehaviour
     //}
     private void Start()
     {
-        aim=SharedVariables.Instance.plyrmvmnt.aim;
+        aim = SharedVariables.Instance.plyrmvmnt.aim;
     }
     public void Shoot()
     {
