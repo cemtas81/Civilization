@@ -11,7 +11,7 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
     [SerializeField] private AudioClip damageSound;
     private Vector3 direction;
     private PlayerMovement playerMovement;
-    private CharacterAnimation playerAnimation;
+    public CharacterAnimation playerAnimation;
     [SerializeField] private GameObject bloodParticle, spearCase, spearHold,ammo;
     [SerializeField] private Transform bloodEffect;
     private bool canShoot, canThrow,dead;
@@ -168,6 +168,7 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
         if (!specialAttack&&!dead)
         {
             playerStatus.health -= damage;
+            playerAnimation.Hurt();
             screenController.UpdateHealthSlider();
             Instantiate(bloodParticle, bloodEffect.transform.position, transform.rotation);
             audio1.PlayOneShot(damageSound, Random.Range(0.2f, 0.9f));

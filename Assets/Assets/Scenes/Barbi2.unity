@@ -7923,22 +7923,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1287725729}
     m_Modifications:
-    - target: {fileID: 1502419659, guid: 71b4170409c40d94baa94d11bb31d352, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 397805757228413515, guid: 71b4170409c40d94baa94d11bb31d352, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 397805757564094320, guid: 71b4170409c40d94baa94d11bb31d352, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 397805758140348379, guid: 71b4170409c40d94baa94d11bb31d352, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 397805758452101174, guid: 71b4170409c40d94baa94d11bb31d352, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -8026,26 +8010,6 @@ PrefabInstance:
     - target: {fileID: 397805758452101181, guid: 71b4170409c40d94baa94d11bb31d352, type: 3}
       propertyPath: m_Name
       value: 'GlowCanvas '
-      objectReference: {fileID: 0}
-    - target: {fileID: 397805758452101181, guid: 71b4170409c40d94baa94d11bb31d352, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 397805758452101181, guid: 71b4170409c40d94baa94d11bb31d352, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 397805758613626233, guid: 71b4170409c40d94baa94d11bb31d352, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -30.099854
-      objectReference: {fileID: 0}
-    - target: {fileID: 397805758613626235, guid: 71b4170409c40d94baa94d11bb31d352, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 397805759249216280, guid: 71b4170409c40d94baa94d11bb31d352, type: 3}
-      propertyPath: m_Layer
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 397805759249216287, guid: 71b4170409c40d94baa94d11bb31d352, type: 3}
       propertyPath: m_AnchorMax.x
@@ -8242,10 +8206,6 @@ PrefabInstance:
       propertyPath: pad
       value: 
       objectReference: {fileID: 169501628}
-    - target: {fileID: 5068862358356120219, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
-      propertyPath: m_Constraints
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5068862358356120220, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
       propertyPath: m_Name
       value: Barbar5th
@@ -8293,10 +8253,6 @@ PrefabInstance:
     - target: {fileID: 5554037688557504550, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7692559120689015582, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}
-      propertyPath: initialHealth
-      value: 500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f9884882391bf44fa31d7ce8ce89e23, type: 3}

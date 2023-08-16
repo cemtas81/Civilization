@@ -62,4 +62,23 @@ public class CharacterAnimation : MonoBehaviour {
 		animator.SetBool("Special1",state);
 		animator.applyRootMotion=state;
 	}
+	public void Hurt()
+	{
+        AnimatorStateInfo currentStateInfo = animator.GetCurrentAnimatorStateInfo(2);
+        bool isAnimationPlaying = currentStateInfo.IsName("Hurt1");
+        if (!isAnimationPlaying)
+		{
+            animator.SetTrigger("Hurt");
+        }
+            
+	}
+	public void Gather()
+	{
+        AnimatorStateInfo currentStateInfo = animator.GetCurrentAnimatorStateInfo(1);
+        bool isAnimationPlaying = currentStateInfo.IsName("Gather3");
+        if (!isAnimationPlaying)
+        {
+            animator.SetTrigger("Gather");
+        }
+    }
 }

@@ -83,6 +83,7 @@ public class BarbScreenCont : MonoBehaviour
     {
         woodCount++;
         woodText.text=woodCount.ToString();
+        
     }
     public void UpdateSpear(int spear)
     {
@@ -95,6 +96,7 @@ public class BarbScreenCont : MonoBehaviour
             woodCount--;
             woodText.text = woodCount.ToString();
             ammo.GetComponent<MeshRenderer>().enabled=true;
+            playerController.playerAnimation.Gather();
         }
         else
             Debug.Log("Bitti!");

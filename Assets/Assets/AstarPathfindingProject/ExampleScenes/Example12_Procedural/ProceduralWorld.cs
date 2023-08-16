@@ -273,7 +273,7 @@ namespace cemtas81 {
 				}
 
 				ditherMap = null;
-				AddPathPoints();
+				//AddPathPoints();
 
 				yield return null;
 				yield return null;
