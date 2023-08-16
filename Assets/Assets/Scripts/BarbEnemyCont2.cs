@@ -53,7 +53,7 @@ public class BarbEnemyCont2 : MonoBehaviour, IKillable
         randomClothes.transform.GetChild(randomEnemy).gameObject.SetActive(true);
     }
 
-    private void SetInitialSpeed() => enemyStatus.speed = Random.Range(2.6f, 3.1f);
+    private void SetInitialSpeed() => enemyStatus.speed = !isBoss ? Random.Range(2.6f, 3.1f) : enemyStatus.speed;
 
     private void SetRandomDamage() => random = isBoss? 20 : Random.Range(5, 10);
 

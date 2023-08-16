@@ -1397,7 +1397,7 @@ MonoBehaviour:
   prefabs:
   - {fileID: 6332343693690062689, guid: f42db67b0e2e44b429e2ed6166ecd01a, type: 3}
   - {fileID: 3369156882467596404, guid: 8a9e1d7db42d61142b28472449a2ae75, type: 3}
-  - {fileID: 6332343693690062689, guid: f42db67b0e2e44b429e2ed6166ecd01a, type: 3}
+  - {fileID: 3369156882467596404, guid: b37cb43588b898048afafd55b2c8544e, type: 3}
   - {fileID: 7614905947255778318, guid: 6883b65ea180f444bbe5782cee23235d, type: 3}
   - {fileID: 7614905947255778318, guid: 6883b65ea180f444bbe5782cee23235d, type: 3}
   minSpawnCount: 3

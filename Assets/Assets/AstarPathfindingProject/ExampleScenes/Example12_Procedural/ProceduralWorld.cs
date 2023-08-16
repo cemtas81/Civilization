@@ -279,7 +279,7 @@ namespace cemtas81 {
 				yield return null;
 
 				//Batch everything for improved performance
-				if (Application.HasProLicense() && world.staticBatching) {
+				if (world.staticBatching) {
 					StaticBatchingUtility.Combine(root.gameObject);
 				}
 			}
