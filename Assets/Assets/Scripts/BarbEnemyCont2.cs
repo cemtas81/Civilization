@@ -62,11 +62,8 @@ public class BarbEnemyCont2 : MonoBehaviour, IKillable
         Vector3 direction = (player.transform.position - transform.position).normalized;
         direction.y = 0;
         float distance = Vector3.Distance(transform.position, player.transform.position);
-        if (screenController.deadCam.enabled)
-        {
-            StopEnemy();
-            return;
-        }
+        if (screenController.deadCam.enabled) { StopEnemy(); return; }
+
         if (ShouldDestroyEnemy(distance)) { DestroyEnemy(); return; }
 
         if (!Ranged) HandleMeleeEnemy(distance, direction);
@@ -84,11 +81,7 @@ public class BarbEnemyCont2 : MonoBehaviour, IKillable
 
     private void UpdateAgentAndObstacle(float distance, Vector3 direction)
     {
-        if (!agent.enabled)
-        {
-            obstacle.enabled = false;
-            agent.enabled = true;
-        }
+        if (!agent.enabled) { obstacle.enabled = false; agent.enabled = true; }
 
         direction = IsPlayerOnNavMesh() ? player.transform.position : SharedVariables.Instance.gatherPoint.transform.position;
         enemyMovement.Movement(direction);
@@ -110,18 +103,14 @@ public class BarbEnemyCont2 : MonoBehaviour, IKillable
         if (agent != null) UpdateAgentAndObstacle(distance, direction);
         else
         {
-            if (distance >= 2.1f)
+            if (!IsPlayerOnNavMesh())
             {
-                enemyMovement.Movement(direction, enemyStatus.speed);
-                enemyAnimation.Movement(direction.magnitude);
-                enemyAnimation.Attack(false);
-                enemyMovement.Rotation(direction);
+                if (distance >= 2.1f) { enemyMovement.Movement(direction, enemyStatus.speed); enemyAnimation.Movement(direction.magnitude); 
+                    enemyAnimation.Attack(false); enemyMovement.Rotation(direction); }
+                else { enemyMovement.Rotation(direction); enemyAnimation.Attack(true); }       
             }
             else
-            {
-                enemyMovement.Rotation(direction);
-                enemyAnimation.Attack(true);
-            }
+                StopEnemy();
         }
     }
 
@@ -129,25 +118,21 @@ public class BarbEnemyCont2 : MonoBehaviour, IKillable
     {
         UpdatePlayerInSight();
         enemyMovement.Rotation(direction);
+        if (!agent && IsPlayerOnNavMesh()) { StopEnemy(); return; }
 
         if (distance <= 10 && playerInSight)
         {
-            if (agent != null)
-            {
-                agent.enabled = false;
-                obstacle.enabled = true;
-            }
+            if (agent != null) { agent.enabled = false; obstacle.enabled = true; }
+      
             enemyAnimation.Attack2(true);
         }
         else
         {
             enemyAnimation.Attack2(false);
             if (agent != null) UpdateAgentAndObstacle(distance, direction);
-            else
-            {
-                enemyMovement.Movement(transform.forward, enemyStatus.speed);
-                enemyAnimation.Movement(direction.magnitude);
-            }
+
+            else { enemyMovement.Movement(transform.forward, enemyStatus.speed); enemyAnimation.Movement(direction.magnitude); }
+     
         }
     }
 
@@ -157,9 +142,7 @@ public class BarbEnemyCont2 : MonoBehaviour, IKillable
         Vector3 rayDirection = (player.transform.position + Vector3.up) - rayOrigin;
         float rayDistance = rayDirection.magnitude;
         rayDirection.Normalize();
-
-        if (Physics.Raycast(rayOrigin, rayDirection, out RaycastHit hit, rayDistance))
-            playerInSight = hit.collider.gameObject == player;
+        playerInSight = Physics.Raycast(rayOrigin, rayDirection, out RaycastHit hit, rayDistance) && hit.collider.gameObject == player;
     }
 
     private bool IsPlayerOnNavMesh() => NavMesh.SamplePosition(player.transform.position, out _, 1f, NavMesh.AllAreas);
@@ -187,20 +170,13 @@ public class BarbEnemyCont2 : MonoBehaviour, IKillable
         Destroy(gameObject, 1.5f);
         enemyAnimation.Die();
         enemyMovement.Die();
-
         if (agent != null) agent.enabled = false;
-
         enabled = false;
     }
 
     private void HandleNonRangedNonBoss()
     {
-        if (!Ranged &&!isBoss)
-        {
-            Parent.Spawn3(this.transform.position);
-            head.SetActive(false);
-            cust.SetActive(false);
-        }
+        if (!Ranged && !isBoss) { Parent.Spawn3(this.transform.position); head.SetActive(false); cust.SetActive(false); }
     }
 
     private void InstantiateAidKit(float probability)
@@ -220,10 +196,8 @@ public class BarbEnemyCont2 : MonoBehaviour, IKillable
     }
     private void StopEnemy()
     {
-        if (agent != null && agent.enabled)
-    {
-            agent.velocity = Vector3.zero;
-        }
+        if (agent != null && agent.enabled) { agent.velocity = Vector3.zero; }
+     
         enemyAnimation.Attack(false);
         enemyAnimation.Attack2(false);
         enemyMovement.Movement(Vector3.zero);

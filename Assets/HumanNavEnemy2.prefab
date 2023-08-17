@@ -5171,7 +5171,7 @@ NavMeshAgent:
   m_Radius: 0.5
   m_Speed: 3.5
   m_Acceleration: 24
-  avoidancePriority: 50
+  avoidancePriority: 45
   m_AngularSpeed: 280
   m_StoppingDistance: 2.1
   m_AutoTraverseOffMeshLink: 1
@@ -5251,6 +5251,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cabc05f22e130d4e9fbd32f5b2aa13a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxSpeed: 3.8
+  minSpeed: 2.8
 --- !u!1 &7741326726288273477
 GameObject:
   m_ObjectHideFlags: 0

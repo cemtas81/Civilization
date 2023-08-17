@@ -18,7 +18,7 @@ MonoBehaviour:
     value: 1
   preset:
     overrideState: 1
-    value: 1
+    value: 5
   maximumIterationCount:
     overrideState: 0
     value: 16
@@ -267,7 +267,7 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: -50
+    value: 33.3
   intensityX:
     overrideState: 1
     value: 1

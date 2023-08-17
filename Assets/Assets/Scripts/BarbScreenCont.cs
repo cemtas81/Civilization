@@ -8,7 +8,7 @@ using UnityEngine.Rendering.PostProcessing;
 public class BarbScreenCont : MonoBehaviour
 {
   
-    [SerializeField] private Slider healthSlider,coinSlider;
+    [SerializeField] private Slider healthSlider,coinSlider,aggroSlider;
     [SerializeField] private GameObject pausePanel,ammo,bloodyEye;
     [SerializeField] private Text scoreText, maxScoreText, deadZombiesText, bossText,specialText, woodText,comboText,spearText;   
     public GameObject upgradePanel, gameOverPanel;
@@ -173,6 +173,7 @@ public class BarbScreenCont : MonoBehaviour
             }
 
             lastKillTime = Time.time;
+            aggroSlider.value = comboCount;
         }
 
     }

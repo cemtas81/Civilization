@@ -1628,7 +1628,7 @@ Animator:
   m_GameObject: {fileID: 3369156882467596404}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: a7fac331222ccf34d8f7fed95e50441e, type: 3}
-  m_Controller: {fileID: 9100000, guid: 61b3f045861e91c4c9a43105d5021fc0, type: 2}
+  m_Controller: {fileID: 9100000, guid: ecd5b17986244ed4a85a26fc1a0a3d22, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1723,7 +1723,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialHealth: 20
   health: 0
-  speed: 5
+  speed: 3
 --- !u!195 &6612923117372710375
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1800,6 +1800,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cabc05f22e130d4e9fbd32f5b2aa13a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxSpeed: 3.8
+  minSpeed: 3
 --- !u!1 &3369156882467596486
 GameObject:
   m_ObjectHideFlags: 0
@@ -3670,14 +3672,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8149946299931208831}
-  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
+  m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: 4.5, y: 2.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3369156882467862488}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: -90, z: 0}
 --- !u!1 &9048759970629462393
 GameObject:
   m_ObjectHideFlags: 0
