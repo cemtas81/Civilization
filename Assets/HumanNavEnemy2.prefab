@@ -5116,9 +5116,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 1.9110098
+  m_Height: 1.9
   m_Direction: 1
-  m_Center: {x: 0, y: 0.9296732, z: 0}
+  m_Center: {x: 0, y: 0.93, z: 0}
 --- !u!114 &8339102879347198421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5207,11 +5207,11 @@ NavMeshObstacle:
   m_Enabled: 0
   serializedVersion: 3
   m_Shape: 0
-  m_Extents: {x: 0.55, y: 0.975, z: 0.55}
+  m_Extents: {x: 0.5, y: 0.95, z: 0.5}
   m_MoveThreshold: 0.1
   m_Carve: 0
   m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0.9, z: 0}
+  m_Center: {x: 0, y: 0.93, z: 0}
   m_TimeToStationary: 0.5
 --- !u!114 &-4752743718160611356
 MonoBehaviour:
