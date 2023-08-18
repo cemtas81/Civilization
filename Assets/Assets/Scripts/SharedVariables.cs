@@ -22,6 +22,7 @@ public class SharedVariables : MonoBehaviour
     public Light sceneLight;
     //public bool gathering;
     public Transform gatherPoint;
+    public Transform ChainStart;
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -58,7 +59,7 @@ public class SharedVariables : MonoBehaviour
         swordIm = sword.GetComponent<MeshRenderer>();
         screenCont = FindObjectOfType<BarbScreenCont>();
         spawner = FindObjectOfType<MySolidSpawner>();
-
+        ChainStart = GameObject.FindGameObjectWithTag("Hand").transform;
         weaponController = FindObjectOfType<BarbarWeaponCont>();
         audioS = FindObjectOfType<AudioSource>();
         Ammo = GameObject.FindGameObjectWithTag("Spear");

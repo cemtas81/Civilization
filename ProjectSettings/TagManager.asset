@@ -21,6 +21,8 @@ TagManager:
   - AttackCam
   - Shield
   - Enemy2
+  - FxTemporaire
+  - Hand
   layers:
   - Default
   - TransparentFX
