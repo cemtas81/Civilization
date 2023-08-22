@@ -117,11 +117,13 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
                     }         
                     enemyMovement.Rotation(direction);
                     enemyAnimation.Attack(true);
+                    enemyMovement.Movement(Vector3.zero);
                 }
                 else
                 {                
                     direction = player.transform.position - transform.position;
                     enemyAnimation.Attack(true);
+                    enemyMovement.Movement(Vector3.zero);
                 }
 
             }
@@ -159,7 +161,8 @@ public class BarbEnemyCont : MonoBehaviour, IKillable
                     }
                   
                 }              
-                    enemyAnimation.Attack2(true);                       
+                    enemyAnimation.Attack2(true);
+                    enemyMovement.Movement(Vector3.zero);
             }
             else
             {

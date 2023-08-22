@@ -92,7 +92,7 @@ public class BarbEnemyCont2 : MonoBehaviour, IKillable
             agent.velocity = Vector3.zero;
             agent.enabled = false;
             obstacle.enabled = true;
-            enemyAnimation.Attack(true);
+            enemyAnimation.Attack(true); 
             direction.y = 0;
             enemyMovement.Rotation(direction - transform.position);
         }
@@ -107,7 +107,7 @@ public class BarbEnemyCont2 : MonoBehaviour, IKillable
             {
                 if (distance >= 2.1f) { enemyMovement.Movement(direction, enemyStatus.speed); enemyAnimation.Movement(direction.magnitude); 
                     enemyAnimation.Attack(false); enemyMovement.Rotation(direction); }
-                else { enemyMovement.Rotation(direction); enemyAnimation.Attack(true); }       
+                else { enemyMovement.Rotation(direction); enemyAnimation.Attack(true); enemyMovement.StandStill(); }       
             }
             else
                 StopEnemy();
@@ -124,7 +124,7 @@ public class BarbEnemyCont2 : MonoBehaviour, IKillable
         {
             if (agent != null) { agent.enabled = false; obstacle.enabled = true; }
       
-            enemyAnimation.Attack2(true);
+            enemyAnimation.Attack2(true); enemyMovement.StandStill();
         }
         else
         {

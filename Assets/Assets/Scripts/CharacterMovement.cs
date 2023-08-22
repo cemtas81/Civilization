@@ -16,7 +16,8 @@ public class CharacterMovement : MonoBehaviour {
 	public void Movement (Vector3 direction, float speed) {
 		// moves the enemy as in the PlayerController but 
 		// instead using the GetAxis method it uses the normalized direction vector
-		myRigidbody.MovePosition (myRigidbody.position + (speed * Time.deltaTime * direction.normalized));
+		myRigidbody.mass = 80;	
+        myRigidbody.MovePosition (myRigidbody.position + (speed * Time.deltaTime * direction.normalized));		
 	}
     public void Movement(Vector3 direction)
     {
@@ -46,5 +47,9 @@ public class CharacterMovement : MonoBehaviour {
 		myRigidbody.isKinematic = true;
 		GetComponent<Collider>().enabled = false;
 	}
-
+	public void StandStill()
+	{
+		//myRigidbody.constraints = RigidbodyConstraints.FreezePosition;
+		myRigidbody.mass = 1000;
+    }
 }
