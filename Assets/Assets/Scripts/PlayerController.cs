@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour, IKillable, ICurable {
 	private InputAction action1;
 	public GamePadCursorController joyAim;
 	public TargetMover cursorAim;
+	private Vector3 zone;
 	private void Awake()
 	{
 		myController1=new MyController();
@@ -73,9 +74,9 @@ public class PlayerController : MonoBehaviour, IKillable, ICurable {
 		float zAxis = moving.y;
 #endif
 #if UNITY_ANDROID || UNITY_IPHONE
-		
-		float xAxis = zone.move.x;
-		float zAxis = zone.move.y;
+
+		float xAxis = zone.x;
+		float zAxis = zone.y;
 #endif
 
 		// creates a Vector3 with the new direction

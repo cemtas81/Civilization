@@ -25,6 +25,7 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
     private Light scLight;
     public Color normalColor;
     public GameObject specialTrail,burningMan;
+  
     private void Awake()
     {   
         myController = new MyController();
@@ -40,7 +41,7 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
         map = FindObjectOfType<AstarSmoothFollow2>();
         audio1 = FindObjectOfType<AudioSource>();
         ammo = GameObject.FindGameObjectWithTag("Spear"); 
-        scLight=FindObjectOfType<Light>();  
+        scLight=FindObjectOfType<Light>();
     }
     private void OnEnable()
     {
@@ -83,8 +84,8 @@ public class BarbCont2 : MonoBehaviour, IKillable, ICurable
 
 #endif
 #if UNITY_ANDROID || UNITY_IPHONE
-		
-		float xAxis = zone.move.x;
+       
+        float xAxis = zone.move.x;
 		float zAxis = zone.move.y;
 #endif
         direction = new Vector3(xAxis, 0, zAxis);
