@@ -68,35 +68,27 @@ public class BarbScreenCont : MonoBehaviour
 
         if (coinSlider.value >= 100)
         {
-            weaponLevel++;
-            upgradePanel.SetActive(true);
-            coinSlider.value = 0;
+            weaponLevel++; upgradePanel.SetActive(true); coinSlider.value = 0;
         }
 
     }
     public void UpdateHead(int head)
     {
-        headCount++;
-        deadZombiesText.text=headCount.ToString();
+        headCount++; deadZombiesText.text = headCount.ToString();
+
     }  
     public void UpdateWood(int wood)
     {
-        woodCount++;
-        woodText.text=woodCount.ToString();
-        
+        woodCount++; woodText.text = woodCount.ToString();
     }
     public void UpdateSpear(int spear)
     {
         if (headCount >= 1 && woodCount >= 1)
         {
-            spearCount++;
-            spearText.text = spearCount.ToString();
-            headCount--;
-            deadZombiesText.text = headCount.ToString();
-            woodCount--;
-            woodText.text = woodCount.ToString();
-            ammo.GetComponent<MeshRenderer>().enabled=true;
-            playerController.playerAnimation.Gather();
+            spearCount++; spearText.text = spearCount.ToString();
+            headCount--; deadZombiesText.text = headCount.ToString();
+            woodCount--; woodText.text = woodCount.ToString();
+            ammo.GetComponent<MeshRenderer>().enabled=true; playerController.playerAnimation.Gather();
         }
         else
             Debug.Log("Bitti!");
@@ -114,11 +106,8 @@ public class BarbScreenCont : MonoBehaviour
             chromaticAberration.active = true;
         }
         //gameOverPanel.SetActive(true);
-        Time.timeScale = 0.2f;
-        Time.fixedDeltaTime = 0.02F * Time.timeScale;
-        float time = Time.timeSinceLevelLoad;
-        int minutes = (int)(time / 60);
-        int seconds = (int)(time % 100);
+        Time.timeScale = 0.2f; Time.fixedDeltaTime = 0.02F * Time.timeScale;
+        float time = Time.timeSinceLevelLoad; int minutes = (int)(time / 60); int seconds = (int)(time % 100);
         scoreText.text = "You survived for " + minutes + " centuries and " + seconds + " years.";
         UpdateMaxScore(minutes, seconds, time);
     }
@@ -126,8 +115,7 @@ public class BarbScreenCont : MonoBehaviour
     {
         if (pausePanel.activeInHierarchy == true && upgradePanel.activeInHierarchy == false)
         {
-            pausePanel.SetActive(false);
-            Time.timeScale = 1;
+            pausePanel.SetActive(false); Time.timeScale = 1;
         }
         if (upgradePanel.activeInHierarchy == true)
         {
@@ -135,8 +123,7 @@ public class BarbScreenCont : MonoBehaviour
         }
         if (pausePanel.activeInHierarchy == false)
         {
-            pausePanel.SetActive(true);
-            Time.timeScale = 0;
+            pausePanel.SetActive(true); Time.timeScale = 0;
         }
 
     }
@@ -155,8 +142,7 @@ public class BarbScreenCont : MonoBehaviour
         {
             if (Time.time - lastKillTime <= comboTimeLimit)
             {
-                comboText.gameObject.SetActive(true);
-                comboCount++;
+                comboText.gameObject.SetActive(true); comboCount++;
                 comboText.text = string.Format("{1}x combo", headCount, comboCount);
                 StartCoroutine(TextDisappear(2, comboText));
                 if (comboCount >= 5&&!playerController.specialAttack)
@@ -168,12 +154,10 @@ public class BarbScreenCont : MonoBehaviour
             }
             else
             {
-                comboCount = 1;
-                comboText.text = string.Format("", headCount);
+                comboCount = 1; comboText.text = string.Format("", headCount);
             }
 
-            lastKillTime = Time.time;
-            aggroSlider.value = comboCount;
+            lastKillTime = Time.time; aggroSlider.value = comboCount;
         }
 
     }
@@ -186,12 +170,8 @@ public class BarbScreenCont : MonoBehaviour
     public IEnumerator SpecialEnd(float time,Color color,GameObject trail,GameObject burning)
     {
         yield return new WaitForSeconds(time);
-        canSpecial=false;
-        SharedVariables.Instance.cam2.enabled=false;
-        SharedVariables.Instance.sceneLight.color=color;
-        trail.SetActive(false);
-        burning.SetActive(false);
-        playerController.specialAttack = false;
+        canSpecial=false; SharedVariables.Instance.cam2.enabled = false; SharedVariables.Instance.sceneLight.color = color;
+        trail.SetActive(false); burning.SetActive(false); playerController.specialAttack = false;
     }
     private void UpdateMaxScore(int minutes, int seconds, float time)
     {
@@ -203,9 +183,7 @@ public class BarbScreenCont : MonoBehaviour
         }
         else
         {
-            time = PlayerPrefs.GetFloat("MaxScore");
-            minutes = (int)(time / 100);
-            seconds = (int)(time % 100);
+            time = PlayerPrefs.GetFloat("MaxScore"); minutes = (int)(time / 100); seconds = (int)(time % 100);
             maxScoreText.text = string.Format("Your best time is {0} centuries and {1} years.", minutes, seconds);
         }
     }
@@ -217,17 +195,12 @@ public class BarbScreenCont : MonoBehaviour
 
     private IEnumerator TextDisappear(float time, Text text)
     {
-        text.gameObject.SetActive(true);
-        Color textColor = text.color;
-        textColor.a = 1;
-        text.color = textColor;
+        text.gameObject.SetActive(true); Color textColor = text.color; textColor.a = 1; text.color = textColor;
         yield return new WaitForSeconds(1);
         float count = 0;
         while (text.color.a > 0)
         {
-            count += Time.deltaTime / time;
-            textColor.a = Mathf.Lerp(1, 0, count);
-            text.color = textColor;
+            count += Time.deltaTime / time; textColor.a = Mathf.Lerp(1, 0, count); text.color = textColor;
             if (text.color.a <= 0)
                 text.gameObject.SetActive(false);
             yield return null;
