@@ -1,7 +1,8 @@
 # Civilization
  procedural terrain shmup
 
-
+Assets/SurvivalShooterECS 2024-01-23 14-46-42_Trim_Trim.mp4
+  
  ![ECSshmup](https://github.com/cemtas81/Civilization/assets/79138234/cadc2351-bd23-480c-ae88-cdd4014a5665)
 
 
