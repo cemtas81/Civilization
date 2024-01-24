@@ -1,9 +1,12 @@
 
-https://github.com/cemtas81/Civilization/assets/79138234/e807d070-c16e-4776-aec0-ba722562407e
 # Civilization
  procedural terrain shmup
 
   
+
+
+
+https://github.com/cemtas81/Civilization/assets/79138234/342e4ec6-7df1-40d8-a7fe-48ebc164df90
 
 
 
