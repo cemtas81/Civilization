@@ -202,13 +202,13 @@ namespace BzKovSoft.ObjectSlicer
 
 		protected class MeshColliderConf
 		{
-			public MeshColliderConf(Mesh mesh, PhysicMaterial material)
+			public MeshColliderConf(Mesh mesh, PhysicsMaterial material)
 			{
 				Mesh = mesh;
 				Material = material;
 			}
 			public readonly Mesh Mesh;
-			public readonly PhysicMaterial Material;
+			public readonly PhysicsMaterial Material;
 		}
 	}
 }

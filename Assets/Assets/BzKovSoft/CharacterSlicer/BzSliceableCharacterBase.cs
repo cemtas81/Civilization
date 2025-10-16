@@ -11,7 +11,7 @@ namespace BzKovSoft.CharacterSlicer
 		private void Awake()
 		{
 			var animator = GetComponent<Animator>();
-			if (animator != null && animator.updateMode != AnimatorUpdateMode.AnimatePhysics)
+			if (animator != null && animator.updateMode != AnimatorUpdateMode.Fixed)
 				UnityEngine.Debug.LogWarning("Recomended to use Animator.UpdateMode = AnimatePhysics for your sliceable character");
 		}
 

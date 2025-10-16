@@ -288,7 +288,7 @@ namespace BzKovSoft.CharacterSlicer.Samples
 			{
 				var rigid = rigids[i];
 
-				rigid.velocity = velocityContinue;
+				rigid.linearVelocity = velocityContinue;
 				rigid.angularVelocity = angularVelocityContinue;
 			}
 		}

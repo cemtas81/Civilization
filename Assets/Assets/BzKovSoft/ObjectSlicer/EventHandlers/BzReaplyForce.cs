@@ -28,8 +28,8 @@ namespace BzKovSoft.ObjectSlicer.EventHandlers
 
 			aRigid.angularVelocity = oRigid.angularVelocity;
 			bRigid.angularVelocity = oRigid.angularVelocity;
-			aRigid.velocity = oRigid.velocity;
-			bRigid.velocity = oRigid.velocity;
+			aRigid.linearVelocity = oRigid.linearVelocity;
+			bRigid.linearVelocity = oRigid.linearVelocity;
 		}
 	}
 }

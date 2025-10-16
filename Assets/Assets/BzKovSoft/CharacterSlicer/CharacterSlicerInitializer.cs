@@ -38,7 +38,7 @@ namespace BzKovSoft.CharacterSlicer
 			};
 
 			var animator = go.AddComponent<Animator>();
-			animator.updateMode = AnimatorUpdateMode.AnimatePhysics;
+			animator.updateMode = AnimatorUpdateMode.Fixed;
 
 			go.AddComponent<Rigidbody>().isKinematic = true;
 			b1.AddComponent<Rigidbody>().isKinematic = true;

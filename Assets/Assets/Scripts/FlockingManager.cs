@@ -35,7 +35,7 @@ namespace cemtas81
 
                 Vector3 flockingForce = alignment * alignmentWeight + cohesion * cohesionWeight + separation * separationWeight;
 
-                enemyRigidbody.velocity += flockingForce * Time.deltaTime; // Update velocity based on flocking force
+                enemyRigidbody.linearVelocity += flockingForce * Time.deltaTime; // Update velocity based on flocking force
             }
         }
 
@@ -55,7 +55,7 @@ namespace cemtas81
                         Rigidbody otherRigidbody = otherEnemy.GetComponent<Rigidbody>();
                         if (otherRigidbody != null)
                         {
-                            averageDirection += otherRigidbody.velocity.normalized;
+                            averageDirection += otherRigidbody.linearVelocity.normalized;
                             neighborCount++;
                         }
                     }
@@ -65,7 +65,7 @@ namespace cemtas81
             if (neighborCount > 0)
             {
                 averageDirection /= neighborCount;
-                return (averageDirection - enemy.GetComponent<Rigidbody>().velocity.normalized).normalized;
+                return (averageDirection - enemy.GetComponent<Rigidbody>().linearVelocity.normalized).normalized;
             }
 
             return Vector3.zero;
